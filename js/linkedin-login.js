@@ -24,8 +24,8 @@ var linkedinapi = {
         //has granted us access to their data.
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
-            alert('start: ' + url);
-            var code = /\?code=(.+)$/.exec(url);
+            
+            var code = /\?code=(.+)&state=.+$/.exec(url);
             var error = /\?error=(.+)$/.exec(url);
 
             if (code || error) {
@@ -35,13 +35,10 @@ var linkedinapi = {
 
             if (code) {
                 //Exchange the authorization code for an access token
-                $.post('https://www.linkedin.com/uas/oauth2/accessToken', {
-                    code: code[1],
-                    client_id: options.client_id,
-                    client_secret: options.client_secret,
-                    redirect_uri: options.redirect_uri,
-                    grant_type: authorization_code
-                }).done(function(data) {
+                var request_url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code='+code[1]+'&redirect_uri='+options.redirect_uri+'&client_id='+options.client_id+'&client_secret='+options.client_secret;
+
+                //$.get('http://0.0.0.0:3000/test?url='+request_url);
+                $.post(request_url).done(function(data) {
                     deferred.resolve(data);
                 }).fail(function(response) {
                     deferred.reject(response.responseJSON);
@@ -66,7 +63,7 @@ $(document).on('deviceready', function() {
         linkedinapi.authorize({
             client_id: '77mmcb71lyvzps',
             client_secret: 'bopWSZtXGkWWVxD5',
-            redirect_uri: 'https://www.aftrwork.com'
+            redirect_uri: 'http://0.0.0.0:3000'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
         }).fail(function(data) {
