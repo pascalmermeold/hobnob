@@ -24,6 +24,7 @@ var linkedinapi = {
         //has granted us access to their data.
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
+            alert('start: ' + url);
             var code = /\?code=(.+)$/.exec(url);
             var error = /\?error=(.+)$/.exec(url);
 
@@ -39,7 +40,7 @@ var linkedinapi = {
                     client_id: options.client_id,
                     client_secret: options.client_secret,
                     redirect_uri: options.redirect_uri,
-                    grant_type: 'authorization_code'
+                    grant_type: authorization_code
                 }).done(function(data) {
                     deferred.resolve(data);
                 }).fail(function(response) {
