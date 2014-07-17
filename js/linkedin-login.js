@@ -6,7 +6,8 @@ var linkedinapi = {
         var authUrl = 'https://www.linkedin.com/uas/oauth2/authorization?' + $.param({
             client_id: options.client_id,
             redirect_uri: options.redirect_uri,
-            response_type: 'code'
+            response_type: 'code',
+            state: 'adazd324234Fs1413'
         });
 
         //Open the OAuth consent page in the InAppBrowser
@@ -64,7 +65,7 @@ $(document).on('deviceready', function() {
         linkedinapi.authorize({
             client_id: '77mmcb71lyvzps',
             client_secret: 'bopWSZtXGkWWVxD5',
-            redirect_uri: 'http://localhost'
+            redirect_uri: 'https://www.aftrwork.com'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
         }).fail(function(data) {
