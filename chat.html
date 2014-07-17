@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>AftrWork</title>
+
+  <!-- Path to Framework7 Library CSS-->
+  <link rel="stylesheet" href="css/framework7.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/my-app.css">
+</head>
+<body>
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar-overlay"></div>
+  <!-- Views-->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <!-- Right link contains only icon - additional "icon-only" class-->
+            <a href="contact.html" class="link icon-only"><i class="icon icon-prev-blue"></i></a>
+          </div>
+          <!-- We have home navbar without left link-->
+          <div class="center sliding">NAME</div>
+        </div>
+      </div>
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="page toolbar-fixed">
+        <!-- messagebar -->
+        <div class="toolbar messagebar">
+          <div class="toolbar-inner">
+            <textarea placeholder="Message"></textarea><a href="#" class="link">Send</a>
+          </div>
+        </div>
+        <!-- messages-content -->        
+        <div class="page-content messages-content">
+          <div class="messages">
+            <div class="messages-date">Sunday, Feb 9 <span>12:58</span></div>
+            <div class="message message-sent">
+              <div class="message-text">Hello</div>
+            </div>
+            <div class="message message-sent">
+              <div class="message-text">How are you?</div>
+            </div>
+            <div class="message message-received">
+              <div class="message-name">Kate</div>
+              <div class="message-text">I am fine, thanks</div>
+              <div style="background-image:url(http://lorempixel.com/output/people-q-c-100-100-9.jpg)" class="message-avatar"></div>
+            </div>
+            <div class="messages-date">Sunday, Feb 3 <span>11:58</span></div>
+            <div class="message message-sent">
+              <div class="message-text">Nice photo?</div>
+            </div>
+            <div class="message message-sent message-pic">
+              <div class="message-text"><img src="http://lorempixel.com/300/300/"></div>
+            </div>
+            <div class="message message-received">
+              <div class="message-name">Kate</div>
+              <div class="message-text">Wow, awesome!</div>
+              <div style="background-image:url(http://lorempixel.com/output/people-q-c-100-100-9.jpg)" class="message-avatar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="js/framework7.js"></script>
+  <!-- Path to your app js-->
+  <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+</html>

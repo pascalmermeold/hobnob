@@ -1,0 +1,61 @@
+/*
+  AftrWork CSS
+  By Luis
+*/
+
+/* AftrWork Profile View */
+.profil_pic {
+  border-radius: 100%;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.profil_info {
+  margin: 10px 0;
+}
+
+.profil_info_details {
+  margin: 5px 0;
+}
+
+
+.skill {
+border: 1px solid #007aff;
+color: #007aff;
+text-decoration: none;
+text-align: center;
+display: block;
+border-radius: 5px;
+line-height: 25px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+appearance: none;
+padding: 0 3px;
+margin: 0 3px;;
+/*height: 29px;*/
+white-space: nowrap;
+position: relative;
+overflow: hidden;
+text-overflow: ellipsis;
+font-size: 12px;
+font-family: inherit;
+cursor: pointer;
+}
+
+/* AftrWork Contact View */
+.chat {
+  background-color: #4cd964 !important;
+}
+
+/* AfterWork Login View */
+
+.logo {
+
+}
+
+.linkedin-login {
+}
