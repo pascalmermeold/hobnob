@@ -34,11 +34,8 @@ var linkedinapi = {
             }
 
             if (code) {
-                //Exchange the authorization code for an access token
-                var request_url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code='+code[1]+'&redirect_uri='+options.redirect_uri+'&client_id='+options.client_id+'&client_secret='+options.client_secret;
-
-                //$.get('http://0.0.0.0:3000/test?url='+request_url);
-                $.post(request_url).done(function(data) {
+                //Exchange the authorization code for an access token via our server
+                $.get('http://0.0.0.0:3000/access_token?code='+code[1]).done(function(data) {
                     deferred.resolve(data);
                 }).fail(function(response) {
                     deferred.reject(response.responseJSON);
@@ -62,7 +59,6 @@ $(document).on('deviceready', function() {
     $loginButton.on('click', function() {
         linkedinapi.authorize({
             client_id: '77mmcb71lyvzps',
-            client_secret: 'bopWSZtXGkWWVxD5',
             redirect_uri: 'http://0.0.0.0:3000'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
