@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/framework7.css">
   <!-- Path to your custom app styles-->
   <link rel="stylesheet" href="css/my-app.css">
+  <link rel="stylesheet" href="css/fontello.css">
+  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <!-- Status bar overlay for fullscreen mode-->
@@ -24,12 +26,12 @@
         <div class="navbar-inner">
           <div class="left">
             <!-- Right link contains only icon - additional "icon-only" class-->
-            <a href="settings.html" class="link icon-only"><i class="icon icon-form-settings"></i></a>
+            <a href="settings.html" class="link icon-only"><i class="icon-cog"></i></a>
           </div>
           <!-- We have home navbar without left link-->
-          <div class="center sliding">AftrWork</div>
+          <div class="center sliding">aftrwork</div>
           <div class="right">
-            <a href="contact.html"class="link"><span>Connections</span></a>
+            <a href="contact.html"class="link"><i class="icon-users"></i></a>
           </div>
         </div>
       </div>
@@ -42,8 +44,8 @@
             <!-- Profil Basic Info -->
             <div class="content-block">
               <div class="row">
-                <div class="col-100">
-                  <img class="profil_pic" src="http://placehold.it/100x100">
+                <div class="col-100 profil_pic">
+                  <img src="http://placehold.it/100x100">
                 </div>
                 <div class="row">
                   <div class="col-100 profil_info">
@@ -55,35 +57,31 @@
               </div>
             </div>
             <!-- Summary -->
-            <div class="content-block">
+            <div class="content-block summary">
               <div class="content-block-inner">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum elit semper, posuere nibh ut, vulputate tortor. Aenean lectus sed.
               </div>
             </div>
             <!-- Experience -->
-            <div class="content-block">
+            <div class="content-block skills">
               <div class="content-block-inner">
-                <p class="skills buttons-row">
                   <a href="#" class="skill">HTML</a>
                   <a href="#" class="skill">CSS</a>
                   <a href="#" class="skill">Javascript</a>
-                </p>
-                <p class="buttons-row">
                   <a href="#" class="skill">Team Work</a>
                   <a href="#" class="skill">faelknflaefae</a>
                   <a href="#" class="skill">ldazndlknaldn</a>
-                </p>
-                <p class="buttons-row">
                   <a href="#" class="skill">dlazdlazldblazldblazbdla</a>
                   <a href="#" class="skill">Skill 2</a>
                   <a href="#" class="skill">Skill 3</a>
-                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div id='profile-accepted'><i class="icon-check"></i> Ca m'intéresse !</div>
+    <div id='profile-rejected'><i class="icon-cancel"></i> Bof, non merci.</div>
   </div>
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Path to Framework7 Library JS-->

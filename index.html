@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/framework7.css">
   <!-- Path to your custom app styles-->
   <link rel="stylesheet" href="css/my-app.css">
+  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
   <!--  jQuery -->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -22,34 +23,20 @@
   <div class="views">
     <!-- Your main view, should have "view-main" class-->
     <div class="view view-main">
-      <!-- Top Navbar-->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <!-- We have home navbar without left link-->
-          <div class="center sliding">AftrWork</div>
-        </div>
-      </div>
+      
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-through toolbar-through">
+      <div class="pages navbar-through toolbar-through login">
         <!-- Page, data-page contains page name -->
         <div data-page="index" class="page">
           <!-- Scrollable page content -->
           <div class="page-content">
             <!-- Linkedin Login -->
             <div class="content-block logo">
-              <img src="http://placehold.it/290x114" alt="" />
+              <img class="logo" src="img/logo-white.png" alt="" />
             </div>
             <div class="content-block" id="login">
-              <a class="button button-submit">Submit</a>
+              <a class="button button-submit">Me connecter via LinkedIn</a>
               <p></p>
-            </div>
-            <div class="content-block" id="test">
-              <a class="button button-submit">Test</a>
-            </div>
-            <div class="content-block" id="app-status-div">
-              <ul id="app-status-ul">
-                <li>Cordova PushNotification Plugin Demo</li>
-              </ul>
             </div>
           </div>
         </div>

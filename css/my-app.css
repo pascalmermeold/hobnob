@@ -3,8 +3,41 @@
   By Luis
 */
 
+/* General */
+
+.navbar {
+	background: #085b9c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #085b9c 0%, #127bb6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#085b9c), color-stop(100%,#127bb6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #085b9c 0%,#127bb6 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b9c', endColorstr='#127bb6',GradientType=0 ); /* IE6-9 */
+
+	border: none !important;
+	font-family: 'Quando', serif;
+	color: #fff;
+}
+
+.navbar a, .navbar a:visited, .navbar a:link {
+	color: #fff;
+}
+
+.navbar a:hover {
+	color: #eee;
+}
+
+.page {
+	background: #fff;
+}
+
 /* AftrWork Profile View */
 .profil_pic {
+	text-align: center;
+}
+
+.profil_pic img {
   border-radius: 100%;
   margin: auto;
   vertical-align: middle;
@@ -18,32 +51,38 @@
   margin: 5px 0;
 }
 
+.summary .content-block-inner {
+	background: #eee;
+	border: none;
+}
+
+.skills, .summary {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.skills .content-block-inner {
+	border: none;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.skills .buttons-row {
+	margin: 5px 0;
+}
 
 .skill {
-border: 1px solid #007aff;
-color: #007aff;
-text-decoration: none;
-text-align: center;
-display: block;
-border-radius: 5px;
-line-height: 25px;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
--webkit-appearance: none;
--moz-appearance: none;
--ms-appearance: none;
-appearance: none;
-padding: 0 3px;
-margin: 0 3px;;
-/*height: 29px;*/
-white-space: nowrap;
-position: relative;
-overflow: hidden;
-text-overflow: ellipsis;
-font-size: 12px;
-font-family: inherit;
-cursor: pointer;
+	display: inline-block;
+	border: none;
+	background: #127bb6;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 3px;
+	padding: 3px 6px;
+	margin: 3px;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 /* AftrWork Contact View */
@@ -52,10 +91,52 @@ cursor: pointer;
 }
 
 /* AfterWork Login View */
+.login .page {
+	background: #085b9c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #085b9c 0%, #127bb6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#085b9c), color-stop(100%,#127bb6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #085b9c 0%,#127bb6 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b9c', endColorstr='#127bb6',GradientType=0 ); /* IE6-9 */
 
-.logo {
-
+	color: #fff !important;
 }
 
-.linkedin-login {
+.login .logo {
+	text-align: center;
+	padding: 0 0 20px 0;
 }
+
+.login .logo img {
+	max-width: 80%;
+}
+
+.login .button {
+	background: #fff;
+	border: none;
+	color: #127bb6;
+	font-weight: bold;
+}
+
+#profile-accepted, #profile-rejected {
+	position: absolute;
+	z-index: 10000;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	padding: 20px 10px;
+	font-size: 20px;
+	color: #222;
+}
+
+#profile-rejected {
+	background: #e6adad;
+}
+
+#profile-accepted {
+	display: none;
+	background: #cce6ad;
+}
+

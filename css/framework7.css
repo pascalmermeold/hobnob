@@ -1906,7 +1906,7 @@ html.android .label-switch input[type="checkbox"] + .checkbox:before {
   text-align: center;
   display: block;
   border-radius: 5px;
-  line-height: 27px;
+  line-height: 29px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
