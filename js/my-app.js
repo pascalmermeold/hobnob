@@ -52,7 +52,7 @@ $$('.messagebar .toolbar-inner .link').on('click', function () {
     // Day
     day: !conversationStarted ? 'Today' : false,
     time: !conversationStarted ? (new Date()).getHours() + ':' + (new Date()).getMinutes() : false
-  })
+  });
 
   // Update conversation flag
   conversationStarted = true;

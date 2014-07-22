@@ -61,8 +61,6 @@ $(document).on('deviceready', function() {
   var $loginStatus = $('#login p');
 
   document.addEventListener("deviceready", initRead, false);
-  db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
-  db.transaction(populateDB, errorCB, successCB);
   $loginButton.on('click', function() {
     linkedinapi.authorize({
       client_id: '77mmcb71lyvzps',
@@ -70,35 +68,40 @@ $(document).on('deviceready', function() {
     }).done(function(data) {
       $loginStatus.html(data.access_token);
       access_token = data.access_token;
-      initWrite();
+      // initWrite();
+      initDb();
     }).fail(function(data) {
       $loginStatus.html(data.error);
     });
   });
 });
 
+// DB on local mobile
+
+function initDb() {
+  alert("INITDB");
+  db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
+  db.transaction(populateDB, errorCB, successCB);
+}
 function populateDB(tx) {
-  tx.executeSql('DROP TABLE IF EXISTS DEMO');
-  tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-  tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-  tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+  alert("POPULATE");
+  tx.executeSql('DROP TABLE IF EXISTS OPTIONS');
+  tx.executeSql('CREATE TABLE IF NOT EXISTS OPTIONS (id unique, key, value)');
+  tx.executeSql('INSERT INTO OPTIONS (id, key, value) VALUES (1, "access_token", "hello")');
 }
 
 function queryDB(tx) {
-  tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+  tx.executeSql('SELECT * FROM OPTIONS', [], querySuccess, errorCB);
 }
 
 // Query the success callback
 //
-function querySuccess(tx, results) {
-  console.log("Returned rows = " + results.rows.length);
-  // this will be true since it was a select statement and so rowsAffected was 0
-  if (!results.rowsAffected) {
-    console.log('No rows affected!');
-    return false;
+function querySuccess(tx, res) {
+  var len = res.rows.length;
+  alert("OPTIONS table: " + len + " rows found.");
+  for (var i=0; i<len; i++){
+    alert("Row = " + i + " ID = " + res.rows.item(i).id + " Key =  " + res.rows.item(i).key + " Value = " + res.rows.item(i).value);
   }
-  // for an insert statement, this property will return the ID of the last inserted row
-  console.log("Last inserted row ID = " + results.insertId);
 }
 
 function errorCB(err) {
@@ -110,6 +113,7 @@ function successCB() {
   db.transaction(queryDB, errorCB);
 }
 
+//Write and Read of a local file on mobile
 
 function initWrite() {
   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFsWrite, fail);
