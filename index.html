@@ -31,11 +31,11 @@
       </div>
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
       <div class="pages navbar-through toolbar-through">
-        <!-- Page, data-page contains page name-->
+        <!-- Page, data-page contains page name -->
         <div data-page="index" class="page">
-          <!-- Scrollable page content-->
+          <!-- Scrollable page content -->
           <div class="page-content">
-            <!-- Linkedin Login  -->
+            <!-- Linkedin Login -->
             <div class="content-block logo">
               <img src="http://placehold.it/290x114" alt="" />
             </div>
@@ -43,14 +43,20 @@
               <a class="button button-submit">Submit</a>
               <p></p>
             </div>
-            <div class="content-block" id="write">
-              <a href="home.html" class="button button-submit">Write Test</a>
+            <div class="content-block" id="test">
+              <a class="button button-submit">Test</a>
+            </div>
+            <div class="content-block" id="app-status-div">
+              <ul id="app-status-ul">
+                <li>Cordova PushNotification Plugin Demo</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Path to Framework7 Library JS-->
   <script type="text/javascript" src="js/framework7.js"></script>
@@ -58,5 +64,7 @@
   <script type="text/javascript" src="js/my-app.js"></script>
   <!-- Path to Linkedin Oauth -->
   <script type="text/javascript" src="js/linkedin-login.js"></script>
+  <!-- Path to PushNotification Js -->
+  <script type="text/javascript" src="js/plugins/PushNotification.js"></script>
 </body>
 </html>
