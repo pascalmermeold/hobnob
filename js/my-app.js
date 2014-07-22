@@ -6,14 +6,20 @@ var $$ = Framework7.$;
 
 // Add view
 var mainView = myApp.addView('.view-main', {
-    // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
-
-// Left Panel Swip
-// var myApp = new Framework7({
-//     swipePanel: 'left'
-// });
+var homeView = myApp.addView('.view-home', {
+    dynamicNavbar: true
+});
+var optionsView = myApp.addView('.view-settings', {
+    dynamicNavbar: true
+});
+var contactsView = myApp.addView('.view-contact', {
+    dynamicNavbar: true
+});
+var chatView = myApp.addView('.view-chat', {
+    dynamicNavbar: true
+});
 
 // CHAT
 
