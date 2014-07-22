@@ -6,7 +6,6 @@ var linkedinapi = {
   authorize: function(options) {
     var deferred = $.Deferred();
 
-    //Build the OAuth consent page URL
     var authUrl = 'https://www.linkedin.com/uas/oauth2/authorization?' + $.param({
       client_id: options.client_id,
       redirect_uri: options.redirect_uri,
@@ -14,18 +13,8 @@ var linkedinapi = {
       state: 'adazd324234Fs1413'
     });
 
-    //Open the OAuth consent page in the InAppBrowser
     var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
 
-    //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
-    //which sets the authorization code in the browser's title. However, we can't
-    //access the title of the InAppBrowser.
-    //
-    //Instead, we pass a bogus redirect_uri of "http://localhost", which means the
-    //authorization code will get set in the url. We can access the url in the
-    //loadstart and loadstop events. So if we bind the loadstart event, we can
-    //find the authorization code and close the InAppBrowser after the user
-    //has granted us access to their data.
     $(authWindow).on('loadstart', function(e) {
       var url = e.originalEvent.url;
 
@@ -33,19 +22,16 @@ var linkedinapi = {
       var error = /\?error=(.+)$/.exec(url);
 
       if (code || error) {
-        //Always close the browser when match is found
         authWindow.close();
       }
 
       if (code) {
-        //Exchange the authorization code for an access token via our server
         $.get('http://0.0.0.0:3000/access_token?code='+code[1]).done(function(data) {
           deferred.resolve(data);
         }).fail(function(response) {
           deferred.reject(response.responseJSON);
         });
       } else if (error) {
-        //The user denied access to the app
         deferred.reject({
           error: error[1]
         });
@@ -68,7 +54,7 @@ $(document).on('deviceready', function() {
     initPushNotif();
   });
 
-  loginVerif();
+  tokenCheck();
   $loginButton.on('click', function() {
     linkedinapi.authorize({
       client_id: '77mmcb71lyvzps',
@@ -77,6 +63,7 @@ $(document).on('deviceready', function() {
       $loginStatus.html(data.access_token);
       access_token = data.access_token;
       initDb();
+      mainView.loadPage('home.html');
     }).fail(function(data) {
       $loginStatus.html(data.error);
     });
@@ -84,14 +71,14 @@ $(document).on('deviceready', function() {
 });
 
 
-function loginVerif() {
+function tokenCheck() {
   alert("logVerif");
   db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
-  db.transaction(queryTokenDB, errorCB);
+  db.transaction(queryTokenDB, queryErrorInit);
 }
 function queryTokenDB(tx) {
   alert("queryTokenDB");
-  tx.executeSql("SELECT value FROM OPTIONS", [], querySuccessInit, errorCB);
+  tx.executeSql("SELECT value FROM OPTIONS", [], querySuccessInit, queryErrorInit);
 }
 
 // PushNotification
@@ -148,13 +135,20 @@ function querySuccess(tx, res) {
 }
 function querySuccessInit(tx, res) {
   alert("token is " +  res.rows.item(0).value);
-  $.get("http://0.0.0.0:3000/hello").done(function(res) {
+  $.get("http://0.0.0.0:3000/hello?access_token="+res.rows.item(0).value).done(function(res) {
     alert("OK");
-    alert(res);
+    mainView.loadPage('home.html');
+    $.get("http://0.0.0.0:3000/random").done(function(res) {
+      alert("OK");
+    }).fail(function(res) {
+      alert("NOK");
+    });
   }).fail(function(res) {
     alert("NOK");
-    alert(res);
   });
+}
+function queryErrorInit(err) {
+  alert("Error. Try to login.");
 }
 function errorCB(err) {
 
@@ -162,54 +156,3 @@ function errorCB(err) {
 function successCB() {
 
 }
-
-//
-// //Write and Read of a local file on mobile
-// function initWrite() {
-//   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFsWrite, fail);
-// }
-// function initRead() {
-//   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFsRead, fail);
-// }
-//
-//
-// function gotFsWrite(fileSystem) {
-//   fileSystem.root.getFile("localUserInfo", {create: true, exclusive: false}, gotFileEntryWrite, fail);
-// }
-// function gotFsRead(fileSystem) {
-//   fileSystem.root.getFile("localUserInfo", {create: true, exclusive: false}, gotFileEntryRead, fail);
-// }
-//
-//
-// function gotFileEntryWrite(fileEntry) {
-//   fileEntry.createWriter(gotFileWriter, fail);
-// }
-//
-// function gotFileEntryRead(fileEntry) {
-//   fileEntry.file(gotFileReader, fail);
-// }
-//
-//
-// function gotFileWriter(writer) {
-//   writer.onwriteend = function(evt) {
-//     // alert(access_token);
-//   };
-//   writer.write("Access Token: " + access_token );
-// }
-//
-// function gotFileReader(file){
-//   readAsText(file);
-// }
-// function readAsText(file) {
-//   var reader = new FileReader();
-//   reader.onloadend = function(evt) {
-//     // alert(evt.target.result);
-//   };
-//   reader.readAsText(file);
-// }
-//
-//
-// function fail(error) {
-//   alert("Error on saving your token localy");
-//   // alert(error.code);
-// }
