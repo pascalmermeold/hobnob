@@ -22,10 +22,6 @@ var chatView = myApp.addView('.view-chat', {
 });
 
 // CHAT
-
-// Conversation flag
-var conversationStarted = false;
-
 // Handle message
 $$('.messagebar .toolbar-inner .link').on('click', function () {
   var textarea = $$('.messagebar textarea');
@@ -61,5 +57,5 @@ $$('.messagebar .toolbar-inner .link').on('click', function () {
   });
 
   // Update conversation flag
-  conversationStarted = true;
+  conversationStarted = false;
 });

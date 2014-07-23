@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/my-app.css">
   <link rel="stylesheet" href="css/fontello.css">
   <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <!--  jQuery -->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
   <!-- Status bar overlay for fullscreen mode-->
@@ -44,14 +46,14 @@
             <!-- Profil Basic Info -->
             <div class="content-block">
               <div class="row">
-                <div class="col-100 profil_pic">
+                <div class="col-100 profil_pic" id="profil_pic">
                   <img src="http://placehold.it/100x100">
                 </div>
                 <div class="row">
                   <div class="col-100 profil_info">
-                    <h3 style="text-align: center;" class="profil_name profil_info_details">John Doe</h3>
-                    <h4 style="text-align: center;" class="profil_lastjob profil_info_details">Everything at Something</h4>
-                    <h5 style="text-align: center;" class="profil_lastschool profil_info_details">Somewhere Something Diploma</h5>
+                    <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name"></h3>
+                    <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob"></h4>
+                    <h5 style="text-align: center;" class="profil_lastschool profil_info_details"id="profil_lastschool"></h5>
                   </div>
                 </div>
               </div>
@@ -64,7 +66,7 @@
             </div>
             <!-- Experience -->
             <div class="content-block skills">
-              <div class="content-block-inner">
+              <div class="content-block-inner" id="profil_skills">
                   <a href="#" class="skill">HTML</a>
                   <a href="#" class="skill">CSS</a>
                   <a href="#" class="skill">Javascript</a>
@@ -88,5 +90,9 @@
   <script type="text/javascript" src="js/framework7.js"></script>
   <!-- Path to your app js-->
   <script type="text/javascript" src="js/my-app.js"></script>
-</body>
+  <!-- Path to home.js-->
+  <script type="text/javascript" src="js/home.js"></script>
+  <!-- Path to Linkedin Oauth-->
+  <script type="text/javascript" src="js/login.js"></script>
+  </body>
 </html>

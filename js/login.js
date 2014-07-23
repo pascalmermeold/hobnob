@@ -64,6 +64,7 @@ $(document).on('deviceready', function() {
       access_token = data.access_token;
       initDb();
       mainView.loadPage('home.html');
+      getRandom();
     }).fail(function(data) {
       $loginStatus.html(data.error);
     });
@@ -135,17 +136,15 @@ function querySuccess(tx, res) {
 }
 function querySuccessInit(tx, res) {
   alert("token is " +  res.rows.item(0).value);
-  $.get("http://0.0.0.0:3000/hello?access_token="+res.rows.item(0).value).done(function(res) {
-    alert("OK");
+  access_token = res.rows.item(0).value;
+  $.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
+    alert("OK HELLO");
+    getRandom();
     mainView.loadPage('home.html');
-    $.get("http://0.0.0.0:3000/random").done(function(res) {
-      alert("OK");
-    }).fail(function(res) {
-      alert("NOK");
-    });
   }).fail(function(res) {
     alert("NOK");
   });
+
 }
 function queryErrorInit(err) {
   alert("Error. Try to login.");
@@ -156,3 +155,22 @@ function errorCB(err) {
 function successCB() {
 
 }
+
+// function getRandom() {
+//   var $pic = $('#profil_pic');
+//   var $name = $('#profil_name');
+//   var $job = $('#profil_job');
+//   var $school = $('#profil-school');
+//
+//   alert("getRandom");
+//   $.get("http://0.0.0.0:3000/random?access_token="+access_token).done(function(res) {
+//     alert(res);
+//     alert("OK");
+//     $pic.append();
+//     $name.append();
+//     $job.append();
+//     $school.append();
+//   }).fail(function(res) {
+//     alert("NOK");
+//   });
+// }
