@@ -6,6 +6,7 @@ function getRandom() {
 
   alert("getRandom");
   $.get("http://0.0.0.0:3000/random?access_token="+access_token).done(function(res) {
+    alert("OK");
     alert(res.first_name);
     // $pic.append();
     alert(res.last_name);
