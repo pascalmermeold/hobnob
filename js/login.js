@@ -44,17 +44,11 @@ var linkedinapi = {
 
 
 $(document).on('deviceready', function() {
+  tokenCheck();
+
   var $loginButton = $('#login a');
   var $loginStatus = $('#login p');
 
-  var $testButton = $('#test a');
-  var $testStatus = $('#test p');
-
-  $testButton.on('click', function() {
-    initPushNotif();
-  });
-  mainView.hideNavbar();
-  tokenCheck();
   $loginButton.on('click', function() {
     linkedinapi.authorize({
       client_id: '77mmcb71lyvzps',
@@ -63,8 +57,7 @@ $(document).on('deviceready', function() {
       $loginStatus.html(data.access_token);
       access_token = data.access_token;
       initDb();
-      mainView.loadPage('home.html', false);
-      // getRandom();
+      mainView.loadPage('home.html',false);
     }).fail(function(data) {
       $loginStatus.html(data.error);
     });
@@ -73,18 +66,15 @@ $(document).on('deviceready', function() {
 
 
 function tokenCheck() {
-  // alert("logVerif");
   db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
   db.transaction(queryTokenDB, queryErrorInit);
 }
 function queryTokenDB(tx) {
-  // alert("queryTokenDB");
   tx.executeSql("SELECT value FROM OPTIONS", [], querySuccessInit, queryErrorInit);
 }
 
 // PushNotification
 function initPushNotif() {
-  // alert("INIT PUSHNOTIF");
   pushNotification = window.plugins.pushNotification;
   pushNotification.register(tokenHandler,errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});
 }
@@ -116,12 +106,10 @@ function tokenHandler (result) {
 
 // DB on local mobile
 function initDb() {
-  // alert("INITDB");
   db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
   db.transaction(populateDB, errorCB, successCB);
 }
 function populateDB(tx) {
-  // alert("POPULATE");
   tx.executeSql("DROP TABLE IF EXISTS OPTIONS");
   tx.executeSql("CREATE TABLE IF NOT EXISTS OPTIONS (id unique, key, value)");
   tx.executeSql("INSERT INTO OPTIONS (id, key, value) VALUES (1, 'access_token', '" + access_token + "')" );
@@ -135,19 +123,18 @@ function querySuccess(tx, res) {
   // alert("token is " +  res.rows.item(0).value);
 }
 function querySuccessInit(tx, res) {
-  // alert("token is " +  res.rows.item(0).value);
   access_token = res.rows.item(0).value;
   $.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
-    // alert("OK HELLO");
-    // getRandom();
-    mainView.loadPage('home.html', false);
+    mainView.loadPage('home.html',false);
   }).fail(function(res) {
-    alert("NOK");
+    alert("Error");
+    mainView.loadPage('login.html',false);
   });
 
 }
 function queryErrorInit(err) {
-  // alert("Error. Try to login.");
+  alert("Error. Try to login.");
+  mainView.loadPage('login.html',false);
 }
 function errorCB(err) {
 
@@ -155,22 +142,3 @@ function errorCB(err) {
 function successCB() {
 
 }
-
-// function getRandom() {
-//   var $pic = $('#profil_pic');
-//   var $name = $('#profil_name');
-//   var $job = $('#profil_job');
-//   var $school = $('#profil-school');
-//
-//   alert("getRandom");
-//   $.get("http://0.0.0.0:3000/random?access_token="+access_token).done(function(res) {
-//     alert(res);
-//     alert("OK");
-//     $pic.append();
-//     $name.append();
-//     $job.append();
-//     $school.append();
-//   }).fail(function(res) {
-//     alert("NOK");
-//   });
-// }

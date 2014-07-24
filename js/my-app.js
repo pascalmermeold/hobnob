@@ -1,6 +1,5 @@
 // Initialize your app
 var myApp = new Framework7({
-
 });
 
 // Export selectors engine
@@ -8,20 +7,18 @@ var $$ = Framework7.$;
 
 // Add view
 var mainView = myApp.addView('.view-main', {
-    dynamicNavbar: true
 });
 
 $$(document).on('pageInit', function (e) {
   // Page Data contains all required information about loaded and initialized page
   var page = e.detail.page
   // alert(page);
-  if (page.name == 'index') {
-    // alert("coucou");
-    // alert(mainView);
+  if (page.name == 'login') {
   }
   if (page.name == 'home') {
-    mainView.showNavbar();
     getRandom();
+  }
+  if (page.name == "settings") {
   }
 })
 

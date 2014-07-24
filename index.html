@@ -11,10 +11,12 @@
   <link rel="stylesheet" href="css/framework7.css">
   <!-- Path to your custom app styles-->
   <link rel="stylesheet" href="css/my-app.css">
+  <!-- Font Awesome -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
   <!--  jQuery -->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
 </head>
 <body>
   <!-- Status bar overlay for fullscreen mode-->
@@ -23,33 +25,17 @@
   <div class="views">
     <!-- Your main view, should have "view-main" class-->
     <div class="view view-main">
-      <!-- Top Navbar-->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="left">
-            <!-- Right link contains only icon - additional "icon-only" class-->
-            <a href="settings.html" class="link icon-only"><i class="icon-cog"></i></a>
-          </div>
-          <!-- We have home navbar without left link-->
-          <div class="center sliding">aftrwork</div>
-          <div class="right">
-            <a href="contact.html"class="link"><i class="icon-users"></i></a>
-          </div>
-        </div>
-      </div>
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-through toolbar-through">
+      <div class="pages">
         <!-- Page, data-page contains page name -->
-        <div data-page="index" class="page">
-          <!-- Scrollable page content -->
-          <div class="page-content login">
-            <!-- Linkedin Login -->
-            <div class="content-block logo">
-              <img class="logo" src="img/logo-white.png" alt="" />
-            </div>
-            <div class="content-block" id="login">
-              <a class="button button-submit">Me connecter via LinkedIn</a>
-              <p></p>
+        <div class="page" data-page="index">
+          <div class="page-content">
+            <div class="content-block row">
+              <!-- Default preloader -->
+              <div class="col-100">
+                Aftr Work is loading<br>
+                <span style="width:42px; height:42px" class="preloader"></span>
+              </div>
             </div>
           </div>
         </div>
