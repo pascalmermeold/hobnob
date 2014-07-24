@@ -53,7 +53,7 @@ $(document).on('deviceready', function() {
   $testButton.on('click', function() {
     initPushNotif();
   });
-
+  mainView.hideNavbar();
   tokenCheck();
   $loginButton.on('click', function() {
     linkedinapi.authorize({
@@ -63,8 +63,8 @@ $(document).on('deviceready', function() {
       $loginStatus.html(data.access_token);
       access_token = data.access_token;
       initDb();
-      mainView.loadPage('home.html');
-      getRandom();
+      mainView.loadPage('home.html', false);
+      // getRandom();
     }).fail(function(data) {
       $loginStatus.html(data.error);
     });
@@ -73,18 +73,18 @@ $(document).on('deviceready', function() {
 
 
 function tokenCheck() {
-  alert("logVerif");
+  // alert("logVerif");
   db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
   db.transaction(queryTokenDB, queryErrorInit);
 }
 function queryTokenDB(tx) {
-  alert("queryTokenDB");
+  // alert("queryTokenDB");
   tx.executeSql("SELECT value FROM OPTIONS", [], querySuccessInit, queryErrorInit);
 }
 
 // PushNotification
 function initPushNotif() {
-  alert("INIT PUSHNOTIF");
+  // alert("INIT PUSHNOTIF");
   pushNotification = window.plugins.pushNotification;
   pushNotification.register(tokenHandler,errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});
 }
@@ -103,25 +103,25 @@ function onNotificationAPN (event) {
   }
 }
 function successHandler (result) {
-    alert('result = ' + result);
+    // alert('result = ' + result);
 }
 function errorHandler (error) {
-    alert('error = ' + error);
+    // alert('error = ' + error);
 }
 function tokenHandler (result) {
   // Your iOS push server needs to know the token before it can push to this device
   // here is where you might want to send it the token for later use.
-  alert('device token = ' + result);
+  // alert('device token = ' + result);
 }
 
 // DB on local mobile
 function initDb() {
-  alert("INITDB");
+  // alert("INITDB");
   db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
   db.transaction(populateDB, errorCB, successCB);
 }
 function populateDB(tx) {
-  alert("POPULATE");
+  // alert("POPULATE");
   tx.executeSql("DROP TABLE IF EXISTS OPTIONS");
   tx.executeSql("CREATE TABLE IF NOT EXISTS OPTIONS (id unique, key, value)");
   tx.executeSql("INSERT INTO OPTIONS (id, key, value) VALUES (1, 'access_token', '" + access_token + "')" );
@@ -132,22 +132,22 @@ function queryDB(tx) {
 // Query the success callback
 //
 function querySuccess(tx, res) {
-  alert("token is " +  res.rows.item(0).value);
+  // alert("token is " +  res.rows.item(0).value);
 }
 function querySuccessInit(tx, res) {
-  alert("token is " +  res.rows.item(0).value);
+  // alert("token is " +  res.rows.item(0).value);
   access_token = res.rows.item(0).value;
   $.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
-    alert("OK HELLO");
-    getRandom();
-    mainView.loadPage('home.html');
+    // alert("OK HELLO");
+    // getRandom();
+    mainView.loadPage('home.html', false);
   }).fail(function(res) {
     alert("NOK");
   });
 
 }
 function queryErrorInit(err) {
-  alert("Error. Try to login.");
+  // alert("Error. Try to login.");
 }
 function errorCB(err) {
 

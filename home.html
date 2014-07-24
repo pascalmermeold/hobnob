@@ -1,98 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>AftrWork</title>
-
-  <!-- Path to Framework7 Library CSS-->
-  <link rel="stylesheet" href="css/framework7.css">
-  <!-- Path to your custom app styles-->
-  <link rel="stylesheet" href="css/my-app.css">
-  <link rel="stylesheet" href="css/fontello.css">
-  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <!--  jQuery -->
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-</head>
-<body>
-  <!-- Status bar overlay for fullscreen mode-->
-  <div class="statusbar-overlay"></div>
-  <!-- Views-->
-  <div class="views">
-    <!-- Your main view, should have "view-main" class-->
-    <div class="view-home">
-      <!-- Top Navbar-->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="left">
-            <!-- Right link contains only icon - additional "icon-only" class-->
-            <a href="settings.html" class="link icon-only"><i class="icon-cog"></i></a>
-          </div>
-          <!-- We have home navbar without left link-->
-          <div class="center sliding">aftrwork</div>
-          <div class="right">
-            <a href="contact.html"class="link"><i class="icon-users"></i></a>
-          </div>
+<!-- Page, data-page contains page name-->
+<div data-page="home" class="page">
+  <!-- Scrollable page content-->
+  <div class="page-content">
+    <!-- Profil Basic Info -->
+    <div class="content-block">
+      <div class="row">
+        <div class="col-100 profil_pic" id="profil_pic">
+          <img src="">
         </div>
-      </div>
-      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-through toolbar-through">
-        <!-- Page, data-page contains page name-->
-        <div data-page="home" class="page">
-          <!-- Scrollable page content-->
-          <div class="page-content">
-            <!-- Profil Basic Info -->
-            <div class="content-block">
-              <div class="row">
-                <div class="col-100 profil_pic" id="profil_pic">
-                  <img src="http://placehold.it/100x100">
-                </div>
-                <div class="row">
-                  <div class="col-100 profil_info">
-                    <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name"></h3>
-                    <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob"></h4>
-                    <h5 style="text-align: center;" class="profil_lastschool profil_info_details"id="profil_lastschool"></h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Summary -->
-            <div class="content-block summary">
-              <div class="content-block-inner">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum elit semper, posuere nibh ut, vulputate tortor. Aenean lectus sed.
-              </div>
-            </div>
-            <!-- Experience -->
-            <div class="content-block skills">
-              <div class="content-block-inner" id="profil_skills">
-                  <a href="#" class="skill">HTML</a>
-                  <a href="#" class="skill">CSS</a>
-                  <a href="#" class="skill">Javascript</a>
-                  <a href="#" class="skill">Team Work</a>
-                  <a href="#" class="skill">faelknflaefae</a>
-                  <a href="#" class="skill">ldazndlknaldn</a>
-                  <a href="#" class="skill">dlazdlazldblazldblazbdla</a>
-                  <a href="#" class="skill">Skill 2</a>
-                  <a href="#" class="skill">Skill 3</a>
-              </div>
-            </div>
+        <div class="row">
+          <div class="col-100 profil_info">
+            <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name"></h3>
+            <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob"></h4>
+            <h5 style="text-align: center;" class="profil_lastschool profil_info_details"id="profil_lastschool"></h5>
           </div>
         </div>
       </div>
     </div>
-    <div id='profile-accepted'><i class="icon-check"></i> Ca m'intéresse !</div>
-    <div id='profile-rejected'><i class="icon-cancel"></i> Bof, non merci.</div>
+    <!-- Summary -->
+    <div class="content-block summary">
+      <div class="content-block-inner">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum elit semper, posuere nibh ut, vulputate tortor. Aenean lectus sed.
+      </div>
+    </div>
+    <!-- Experience -->
+    <div class="content-block skills">
+      <div class="content-block-inner" id="profil_skills">
+        <a href="#" class="skill">HTML</a>
+        <a href="#" class="skill">CSS</a>
+        <a href="#" class="skill">Javascript</a>
+        <a href="#" class="skill">Team Work</a>
+        <a href="#" class="skill">faelknflaefae</a>
+        <a href="#" class="skill">ldazndlknaldn</a>
+        <a href="#" class="skill">dlazdlazldblazldblazbdla</a>
+        <a href="#" class="skill">Skill 2</a>
+        <a href="#" class="skill">Skill 3</a>
+      </div>
+    </div>
   </div>
-  <script type="text/javascript" src="cordova.js"></script>
-  <!-- Path to Framework7 Library JS-->
-  <script type="text/javascript" src="js/framework7.js"></script>
-  <!-- Path to your app js-->
-  <script type="text/javascript" src="js/my-app.js"></script>
-  <!-- Path to home.js-->
-  <script type="text/javascript" src="js/home.js"></script>
-  <!-- Path to Linkedin Oauth-->
-  <script type="text/javascript" src="js/login.js"></script>
-  </body>
-</html>
+</div>

@@ -1,5 +1,7 @@
 // Initialize your app
-var myApp = new Framework7();
+var myApp = new Framework7({
+
+});
 
 // Export selectors engine
 var $$ = Framework7.$;
@@ -8,18 +10,21 @@ var $$ = Framework7.$;
 var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
-var homeView = myApp.addView('.view-home', {
-    dynamicNavbar: true
-});
-var optionsView = myApp.addView('.view-settings', {
-    dynamicNavbar: true
-});
-var contactsView = myApp.addView('.view-contact', {
-    dynamicNavbar: true
-});
-var chatView = myApp.addView('.view-chat', {
-    dynamicNavbar: true
-});
+
+$$(document).on('pageInit', function (e) {
+  // Page Data contains all required information about loaded and initialized page
+  var page = e.detail.page
+  // alert(page);
+  if (page.name == 'index') {
+    // alert("coucou");
+    // alert(mainView);
+  }
+  if (page.name == 'home') {
+    mainView.showNavbar();
+    getRandom();
+  }
+})
+
 
 // CHAT
 // Handle message
