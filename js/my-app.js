@@ -26,7 +26,7 @@ $$(document).on('pageInit', function (e) {
 
 // CHAT
 // Handle message
-$$('.messagebar .toolbar-inner .link').on('click', function () {
+$$('.messagebar .toolbar-inner .link').on('submit', function (e) {
   var textarea = $$('.messagebar textarea');
   // Message text
   var messageText = textarea.val().trim();
