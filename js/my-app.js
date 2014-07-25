@@ -19,6 +19,7 @@ $$(document).on('pageInit', function (e) {
     getRandom();
   }
   if (page.name == "settings") {
+    getSettings();
   }
 })
 

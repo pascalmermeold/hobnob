@@ -23,19 +23,6 @@ var lastSchool;
 //   db.transaction(saveProfilDB, saveProfilError, saveProfilError);
 // };
 
-$('#goSettings a').on('click', function(){
-
-  alert("HELLO");
-  var $pic = $('#profil_pic_sett');
-  var $name = $('#profil_name_sett');
-  var $job = $('#profil_lastjob_sett');
-  var $school = $('#profil_lastschool_sett');
-
-  $pic.append("<img src='" + urlPic + "'>");
-  $name.append(firstName + " " + lastName);
-  $job.append(lastJob);
-  $school.append(lastSchool);
-});
 
 function getRandom() {
   var $pic = $('#profil_pic_home');
@@ -44,15 +31,26 @@ function getRandom() {
   var $school = $('#profil_lastschool_home');
 
   $.get("http://0.0.0.0:3000/random?access_token="+access_token).done(function(res) {
-    urlPic = res[0].picture_url,
-    $pic.append("<img src='" + res[0].picture_url + "'>");
-    firstName = res[0].first_name;
-    lastName = res[0].last_name
-    $name.append(res[0].first_name + " " + res[0].last_name);
-    lastJob = res[0].headline;
-    $job.append(res[0].headline);
-    lastSchool = res[0].last_school;
-    $school.append(res[0].last_school);
+    for (i = 0; i < 10; i++) {
+      res[i].id = i;
+      add_swipe(res[i], function mark_callback(accepted, id){
+        if (accepted === true) {
+          myApp.alert("Connections OK", "Connections");
+        }
+        else {
+          myApp.alert("Connections NOK", "Connections");
+        }
+      });
+    }
+    // urlPic = res[0].picture_url;
+    // $pic.append("<img src='" + res[0].picture_url + "'>");
+    // firstName = res[0].first_name;
+    // lastName = res[0].last_name;
+    // $name.append(res[0].first_name + " " + res[0].last_name);
+    // lastJob = res[0].headline;
+    // $job.append(res[0].headline);
+    // lastSchool = res[0].last_school;
+    // $school.append(res[0].last_school);
   }).fail(function(res) {
     alert("Error");
     mainView.loadPage('login.html');
