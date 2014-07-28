@@ -9,6 +9,7 @@
 // 'id' is the id of the swipe that has been swiped
 function add_swipe(object, mark_callback) {
 	var rendered = Mustache.render($('#swipe_template').html(), object);
+	
 	var lowest_index = 0;
 	$('.swipe').each(function() {
 		var current_index = parseInt($(this).css("zIndex"), 10);
@@ -18,7 +19,6 @@ function add_swipe(object, mark_callback) {
 	});
 
 	$('.swipes').append(rendered);
-	// new_swipe = $('.swipes #' + object['id']);
 	new_swipe = $('.swipes #' + object.id);
 	new_swipe.css('zIndex',lowest_index - 100);
 	new_swipe.swipe_profile(mark_callback);

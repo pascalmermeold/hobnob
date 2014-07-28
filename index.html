@@ -10,7 +10,7 @@
   <!-- Path to Framework7 Library CSS-->
   <link rel="stylesheet" href="css/framework7.css">
   <!-- Path to your custom app styles-->
-  <link rel="stylesheet" href="css/my-app.css">
+  <link rel="stylesheet" href="css/aftrwork.css">
   <!-- Font Awesome -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Google Fonts -->
@@ -28,55 +28,38 @@
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
       <div class="pages">
         <!-- Page, data-page contains page name -->
-        <div class="page" data-page="index">
+        <div class="page loader" data-page="index">
           <div class="page-content">
             <div class="content-block row">
               <!-- Default preloader -->
-              <div class="col-100">
-                Aftr Work is loading<br>
-                <span style="width:42px; height:42px" class="preloader"></span>
-              </div>
+                <div style="width:42px; height:42px" class="preloader preloader-white"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script id="swipe_template" type="x-tmpl-mustache">
-  <div class="content-block">
-  <div class="row">
-  <div class="col-100 profil_pic" id="profil_pic_home">
-  <img src="{{picture_url}}">
-  </div>
-  <div class="row">
-  <div class="col-100 profil_info">
-  <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name_home">{{first_name}} {{last_name}}</h3>
-  <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob_home">{{headline}}</h4>
-  <h5 style="text-align: center;" class="profil_lastschool profil_info_details"id="profil_lastschool_home">{{last_school}}</h5>
-  </div>
-  </div>
-  </div>
-  </div>
-  </script>
+
   <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Path to Framework7 Library JS-->
   <script type="text/javascript" src="js/framework7.js"></script>
+  <!-- Path to other libraries-->
+  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <script type="text/javascript" src="js/libs/mustache.js"></script>
+  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+
+
   <!-- Path to your app js-->
-  <script type="text/javascript" src="js/my-app.js"></script>
-  <!-- Path to Mustache js-->
-  <script type="text/javascript" src="js/mustache.js"></script>
-  <!-- Path to your touchSwipe js-->
-  <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-  <!-- Path ti your swipe js -->
-  <script type="text/javascript" src="js/swipe.js"></script>
-  <!-- Path to PushNotification Js -->
-  <script type="text/javascript" src="js/plugins/PushNotification.js"></script>
-  <!-- Path to settings.js -->
-  <script type="text/javascript" src="js/settings.js"></script>
-  <!-- Path to home.js -->
-  <script type="text/javascript" src="js/home.js"></script>
-  <!-- Path to Linkedin Oauth -->
-  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/aftrwork.js"></script>
+  
+  <!-- Paths to custom js-->
+  <script type="text/javascript" src="js/app/linkedin.js"></script>
+  <script type="text/javascript" src="js/app/database.js"></script>
+  <script type="text/javascript" src="js/app/home.js"></script>
+  <script type="text/javascript" src="js/app/swipe.js"></script>
+  <!-- <script type="text/javascript" src="js/chat.js"></script> -->
+  <!-- <script type="text/javascript" src="js/settings.js"></script> -->
+  
 </body>
 </html>

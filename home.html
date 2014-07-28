@@ -1,5 +1,5 @@
 <!-- Page, data-page contains page name -->
-<div class="page navbar-fixed" data-page="home">
+<div class="page navbar-fixed home" data-page="home">
   <!-- Top Navbar -->
   <div class="navbar">
     <div class="navbar-inner">
@@ -12,30 +12,33 @@
       </div>
     </div>
   </div>
-  <div class="swipes">
-    <!-- Scrollable page content-->
-    <div class="page-content">
-      <!-- Profil Basic Info -->
-      <!-- <div class="content-block">
+  <div class="page-content">
+    <div class="swipes">
+    </div>
+  </div>
+
+  <script id="swipe_template" type="x-tmpl-mustache">
+    <div id="{{id}}" class="swipe">
+      <div class="content-block">
         <div class="row">
-          <div class="col-100 profil_pic" id="profil_pic_home">
+          <div class="col-100 profile-pic" id="profile-pic">
+            <img src="{{picture_url}}" />
           </div>
           <div class="row">
-            <div class="col-100 profil_info">
-              <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name_home"></h3>
-              <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob_home"></h4>
-              <h5 style="text-align: center;" class="profil_lastschool profil_info_details"id="profil_lastschool_home"></h5>
+            <div class="col-100 profile-info">
+              <h3 style="text-align: center;" class="profile-name profile-info-details">{{first_name}} {{last_name}}</h3>
+              <h4 style="text-align: center;" class="profile-lastjob profile-info-details">{{headline}}</h4>
+              <h5 style="text-align: center;" class="profile-lastschool profile-info-details">Studied at {{last_school}}</h5>
             </div>
           </div>
         </div>
       </div>
       <div class="content-block summary">
         <div class="content-block-inner">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum elit semper, posuere nibh ut, vulputate tortor. Aenean lectus sed.
         </div>
       </div>
       <div class="content-block skills">
-        <div class="content-block-inner" id="profil_skills">
+        <div class="content-block-inner" id="profile-skills">
           <a href="#" class="skill">HTML</a>
           <a href="#" class="skill">CSS</a>
           <a href="#" class="skill">Javascript</a>
@@ -46,7 +49,7 @@
           <a href="#" class="skill">Skill 2</a>
           <a href="#" class="skill">Skill 3</a>
         </div>
-      </div>-->
+      </div>
     </div>
-  </div>
+  </script>
 </div>

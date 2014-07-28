@@ -1,28 +1,3 @@
-// Initialize your app
-var myApp = new Framework7({
-});
-
-// Export selectors engine
-var $$ = Framework7.$;
-
-// Add view
-var mainView = myApp.addView('.view-main', {
-});
-
-$$(document).on('pageInit', function (e) {
-  // Page Data contains all required information about loaded and initialized page
-  var page = e.detail.page
-  // alert(page);
-  if (page.name == 'login') {
-  }
-  if (page.name == 'home') {
-    getRandom();
-  }
-  if (page.name == "settings") {
-    getSettings();
-  }
-})
-
 
 // CHAT
 // Handle message
