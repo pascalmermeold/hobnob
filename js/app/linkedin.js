@@ -1,5 +1,5 @@
 var client_id = '77mmcb71lyvzps';
-var redirect_uri = 'http://0.0.0.0:3000';
+var redirect_uri = 'https://www.aftrwork.com';
 
 var linkedinapi = {
   authorize: function(options) {
@@ -24,11 +24,8 @@ var linkedinapi = {
         authWindow.close();
       }
 
-      
-      
-
       if (code) {
-        $.get('http://0.0.0.0:3000/access_token?code='+code[1]).done(function(data) {
+        $.get(server_url + '/access_token?code='+code[1]).done(function(data) {
           deferred.resolve(data);
         }).fail(function(response) {
           deferred.reject(response.responseJSON);

@@ -1,6 +1,7 @@
 // Initialize your app
 var myApp = new Framework7({});
 var access_token;
+var server_url = 'http://aftrwork.herokuapp.com';
 
 // Export selectors engine
 var $$ = Framework7.$;
@@ -36,7 +37,7 @@ function checkAccessToken() {
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
 	
-	$.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
+	$.get(server_url + "/hello?access_token="+access_token).done(function(res) {
 		mainView.loadPage('home.html',false);
 	}).fail(function(res) {
 		mainView.loadPage('login.html',false);

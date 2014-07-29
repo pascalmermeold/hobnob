@@ -19,7 +19,7 @@
 
 
 function getRandom() {
-  $.get("http://0.0.0.0:3000/random?access_token="+access_token).done(function(res) {
+  $.get(server_url + "/random?access_token="+access_token).done(function(res) {
     res.forEach(add_swiping_profile);
   }).fail(function(res) {
     alert("Error");
