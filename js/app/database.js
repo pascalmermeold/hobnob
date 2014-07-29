@@ -16,12 +16,13 @@ var database = {
 		});
 	},
 
-	sql_query: function(query, success_callback) {
+	sql_query: function(query, success_callback, err_callback) {
 		this.db.transaction(function(tx) {
-				tx.executeSql(query, [], success_callback, this.error_callback);
+				tx.executeSql(query, [], success_callback, err_callback);
 			},
 			function (e) {
-				alert(e);
+				alert("Database Error: " + e.code);
+				err_callback();
 			}
 		);
 	},
