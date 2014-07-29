@@ -1,12 +1,16 @@
 // Initialize your app
-var myApp = new Framework7({});
+var myApp = new Framework7();
 var access_token;
 var server_url = 'http://aftrwork.herokuapp.com';
 
 // Export selectors engine
 var $$ = Framework7.$;
 
-var mainView = myApp.addView('.view-main', {});
+var mainView = myApp.addView('.view-main');
+
+var settingsView = myApp.addView('.view-settings');
+
+var chatView = myApp.addView('.view-chat');
 
 // Device ready handler
 $(document).on('deviceready', function() {
@@ -31,13 +35,12 @@ $$(document).on('pageInit', function (e) {
 });
 
 function checkAccessToken() {
-	database.sql_query("SELECT value FROM OPTIONS WHERE key = 'access_token'", setAccessTokenAndHello);
+	database.sql_query("SELECT value FROM OPTIONS WHERE key = 'access_token'", setAccessTokenAndHello, wrongAccessToken);
 }
 
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
-	
-	$.get(server_url + "/hello?access_token="+access_token).done(function(res) {
+	$.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
 		mainView.loadPage('home.html',false);
 	}).fail(function(res) {
 		mainView.loadPage('login.html',false);
@@ -60,9 +63,9 @@ function initLoginPage() {
 	});
 }
 
+function wrongAccessToken() {
+	mainView.loadPage("login.html");
+}
 function initHomePage() {
 	getRandom();
 }
-
-
-
