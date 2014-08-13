@@ -40,9 +40,14 @@ function checkAccessToken() {
 
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
-	$.get("http://0.0.0.0:3000/hello?access_token="+access_token).done(function(res) {
+	alert(server_url + "/hello?access_token=" + access_token);
+	$.get(server_url + "/hello?access_token=" + access_token).done(function(res) {
+		alert('hello ok');
 		mainView.loadPage('home.html',false);
-	}).fail(function(res) {
+	}).fail(function(res, textStatus, errorThrown) {
+		alert('hello not ok');
+		alert(textStatus);
+		alert(errorThrown);
 		mainView.loadPage('login.html',false);
 	});
 }
@@ -53,17 +58,23 @@ function initLoginPage() {
 
     $loginButton.on('click', function() {
 		linkedinapi.authorize().done(function(data) {
+			alert('data.access_token');
 			access_token = data.access_token;
 			database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
+			alert('row deleted');
 			database.sql_query("INSERT INTO OPTIONS (id, key, value) VALUES (1, 'access_token', '" + access_token + "')", function() {});
+			alert('new row created');
 			mainView.loadPage('home.html',false);
 		}).fail(function(data) {
+			alert('error');
+			alert(data);
 			$loginStatus.html(data);
 		});
 	});
 }
 
 function wrongAccessToken() {
+	alert('wrong access token');
 	mainView.loadPage("login.html");
 }
 function initHomePage() {

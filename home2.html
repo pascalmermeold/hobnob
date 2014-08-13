@@ -10,12 +10,12 @@
   <!-- Path to Framework7 Library CSS-->
   <link rel="stylesheet" href="css/framework7.css">
   <!-- Path to your custom app styles-->
+
   <link rel="stylesheet" href="css/aftrwork.css">
   <!-- Font Awesome -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
   <!--  jQuery -->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
@@ -27,26 +27,62 @@
     <!-- Your main view, should have "view-main" class-->
     <div class="view view-main">
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      
+   
       <div class="pages">
         <!-- Page, data-page contains page name -->
-        <div class="page loader" data-page="index">
-          <div class="page-content">
-            <div class="content-block row">
-              <!-- Default preloader -->
-                <div style="width:42px; height:42px" class="preloader preloader-white"></div>
+<div class="page navbar-fixed home" data-page="home">
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left" id="goSettings">
+        <a href="settings.html" data-view=".view-settings" class="link icon-only"><i class="fa fa-cog"></i></a>
+      </div>
+      <div class="center">aftrwork</div>
+      <div class="right">
+        <a href="contact.html" data-view=".view-chat" class="link"><i class="fa fa-users"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="swipes">
+      <div id="{{id}}" class="swipe">
+        <div class="content-block head">
+          <div class="row">
+            <div class="col-100 profile-pic" id="profile-pic">
+              <img src="test/39fa6d6.jpg" />
+            </div>
+              <div class="col-100 profile-info">
+                <h3 style="text-align: center;" class="profile-name profile-info-details">Pascal Merme</h3>
+                <h4 style="text-align: center;" class="profile-lastjob profile-info-details">Entrepreneur, Webdesigner, Développeur</h4>
+                <h5 style="text-align: center;" class="profile-lastschool profile-info-details">Studied at University of Melbourne - Melbourne Business School</h5>
             </div>
           </div>
         </div>
+        <div class="content-block summary">
+          <div class="content-block-inner">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elementum est. Aliquam non sem ultricies sapien aliquam dapibus. Cras dictum risus ligula, a fermentum odio posuere et
+          </div>
+        </div>
+        <div class="content-block skills">
+          <div class="content-block-inner" id="profile-skills">
+            <a href="#" class="skill">HTML</a>
+            <a href="#" class="skill">CSS</a>
+            <a href="#" class="skill">Javascript</a>
+            <a href="#" class="skill">Team Work</a>
+            <a href="#" class="skill">faelknflaefae</a>
+            <a href="#" class="skill">ldazndlknaldn</a>
+            <a href="#" class="skill">dlazdlazldblazldblazbdla</a>
+            <a href="#" class="skill">Skill 2</a>
+            <a href="#" class="skill">Skill 3</a>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
-    <div class="view view-settings">
-      <div class="pages">
 
-      </div>
-    </div>
-    <div class="view view-chat">
-      <div class="pages">
-
+ 
+  
       </div>
     </div>
   </div>
@@ -74,3 +110,5 @@
 
 </body>
 </html>
+
+</div>

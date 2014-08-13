@@ -21,7 +21,6 @@ var database = {
 				tx.executeSql(query, [], success_callback, err_callback);
 			},
 			function (e) {
-				alert("Database Error: " + e.code);
 				err_callback();
 			}
 		);
