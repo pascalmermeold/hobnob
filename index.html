@@ -26,8 +26,17 @@
   <div class="views">
     <!-- Your main view, should have "view-main" class-->
     <div class="view view-main">
+
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="center"><img src="img/logo-white.png" /></div>
+        </div>
+      </div>
+      <!-- /End of Top Navbar-->  
+
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages">
+      <div class="pages navbar-through toolbar-through">
         <!-- Page, data-page contains page name -->
         <div class="page loader" data-page="index">
           <div class="page-content">
@@ -38,16 +47,22 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="view view-settings">
-      <div class="pages">
 
-      </div>
-    </div>
-    <div class="view view-chat">
-      <div class="pages">
-
-      </div>
+      <!-- Bottom Toolbar-->
+      <div class="toolbar tabbar">
+        <div class="toolbar-inner">
+          <a href="#tab1" class="tab-link active">
+              <i class="fa fa-users"></i>
+          </a>
+          <a href="#tab2" class="tab-link">
+              <i class="fa fa-comments-o"></i>
+          </a>
+          <a href="#tab3" class="tab-link">
+              <i class="fa fa-sliders"></i>
+          </a>
+        </div>
+      </div>          
+      <!-- /End of Bottom Toolbar-->
     </div>
   </div>
 

@@ -5,15 +5,16 @@
 
 /* General */
 
-.navbar {
-	background: none;
-	border: none !important;
-	font-family: 'Quando', serif;
-	color: #fff;
+body {
+	font-family: "Raleway";
 }
 
-.navbar a, .navbar a:visited, .navbar a:link {
-	color: #fff;
+a {
+	color: #eb9f0c;
+}
+
+.navbar {
+	color: #555;
 }
 
 .navbar a:hover {
@@ -33,50 +34,10 @@
   border-radius: 100%;
   margin: auto;
   vertical-align: middle;
-  border: solid 5px #fff;
-}
-
-.profile-info {
-  margin: 10px 0;
-}
-
-.profile-info-details {
-  margin: 5px 0;
-}
-
-.summary .content-block-inner {
-	border: none;
-	text-align: center;
-	font-family: "Raleway";
-}
-
-.skills, .summary {
-	margin: 0;
-}
-
-.skills .content-block-inner {
-	border: none;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-.skills .buttons-row {
-	margin: 0;
-}
-
-.skill {
-	display: inline-block;
-	border: none;
-	background: #127bb6;
-	color: #fff;
-	text-decoration: none;
-	text-align: center;
-	border-radius: 3px;
-	padding: 3px 6px;
-	margin: 3px;
-	font-size: 12px;
-	cursor: pointer;
-	font-family: "Raleway";
+  border: solid 1px #888;
+  width: 80px;
+  height: 80px;
+  background: url(http://placehold.it/80x80&text=No+Pic);
 }
 
 /* AftrWork Contact View */
@@ -86,27 +47,18 @@
 
 /* AfterWork Login View */
 .login {
-	background: #085b9c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #085b9c 0%, #127bb6 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#085b9c), color-stop(100%,#127bb6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #085b9c 0%,#127bb6 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b9c', endColorstr='#127bb6',GradientType=0 ); /* IE6-9 */
-
-	color: #fff !important;
+	
 }
 
 .loader {
-	background: #085b9c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #085b9c 0%, #127bb6 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#085b9c), color-stop(100%,#127bb6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #085b9c 0%,#127bb6 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b9c', endColorstr='#127bb6',GradientType=0 ); /* IE6-9 */
+	background: #eb9f0c; /* Old browsers */
+	background: -moz-linear-gradient(top,  #eb9f0c 0%, #f3b337 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eb9f0c), color-stop(100%,#f3b337)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #eb9f0c 0%,#f3b337 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb9f0c', endColorstr='#f3b337',GradientType=0 ); /* IE6-9 */
 
 }
 
@@ -140,14 +92,14 @@
 	padding: 0 0 20px 0;
 }
 
-.login .logo img {
+.logo img {
 	max-width: 80%;
 }
 
 .login .button {
-	background: #fff;
+	background: #eb9f0c;
 	border: none;
-	color: #127bb6;
+	color: #fff;
 	font-weight: bold;
 }
 
@@ -182,7 +134,8 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: white;
+	overflow: scroll;
+	background: #fff;
 }
 
 .home .page-content {
@@ -190,36 +143,125 @@
 }
 
 .head {
-	background: #085b9c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #085b9c 0%, #127bb6 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#085b9c), color-stop(100%,#127bb6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #085b9c 0%,#127bb6 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #085b9c 0%,#127bb6 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#085b9c', endColorstr='#127bb6',GradientType=0 ); /* IE6-9 */
-
 	margin: 0;
-	padding-top: 50px;
-	color: white;
+	padding: 60px 10px 10px 10px;
+	text-align: center;
+	border-bottom: solid 1px #ddd;
 }
 
 .head h3 {
 	font-family: "Raleway";
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 500;
+	margin: 10px 0 0 0;
 }
 
 .head h4 {
 	font-family: "Raleway";
-	font-size: 15px;
-	font-weight: 300;
-}
-
-.head h5 {
-	font-family: "Raleway";
 	font-size: 14px;
-	font-weight: 200;
+	font-weight: 500;
+	color: #eb9f0c;
+	margin: 10px 0 5px 0;
 }
 
+.profile-buttons a {
+	width: 33.3%;
+	display: inline-block;
+	text-align: center;
+	padding: 10px 0;
+	color: #fff;
+	border-right: solid 1px #ddd;
+	margin: 0;
+	float: left;
+	border-bottom: solid 1px #ddd;
+	position: relative;
+	z-index: 100;
+}
 
+.profile-buttons a:last-child {
+	border-right: none;
+}
+
+.profile-buttons a i {
+	background: #eb9f0c;
+	border-radius: 50px;
+	height: 26px;
+	width: 26px;
+	color: #fff;
+	font-size: 22px;
+	padding: 10px;
+	line-height: 26px;
+}
+
+.profile-buttons a.active {
+	border-bottom: none;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.list-block {
+	width: 100%;
+	margin: 0;
+}
+
+.list-block ul {
+	border: none;
+	font-family: "Raleway";
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.list-block .item-content {
+	border-bottom: solid 1px #ddd;
+}
+
+.list-block .item-inner {
+	border: none;
+}
+
+.list-block .item-title {
+	font-size: 14px;
+	color: #888;
+}
+
+.toolbar {
+	position: fixed;
+	bottom: 0;
+}
+
+.tabbar {
+	font-size: 24px;
+	color: #fff;
+	background: #333;
+	border: none;
+}
+
+.tabbar .toolbar-inner {
+	padding: 0;
+}
+
+.tabbar .tab-link {
+	color: #eee;
+	border-right: solid 1px #fff;
+}
+
+.tabbar .tab-link.active {
+	background: #fff;
+	color: #333;
+}
+
+.tabbar .tab-link:last-child {
+	border: none;
+}
+
+.navbar {
+	border: none;
+	background: #333;
+	color: #eee;
+}
+
+.navbar img {
+	width: 120px;
+}

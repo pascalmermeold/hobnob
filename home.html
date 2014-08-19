@@ -1,17 +1,7 @@
 <!-- Page, data-page contains page name -->
 <div class="page navbar-fixed home" data-page="home">
   <!-- Top Navbar -->
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="left" id="goSettings">
-        <a href="settings.html" data-view=".view-settings" class="link icon-only"><i class="fa fa-cog"></i></a>
-      </div>
-      <div class="center">aftrwork</div>
-      <div class="right">
-        <a href="contact.html" data-view=".view-chat" class="link"><i class="fa fa-users"></i></a>
-      </div>
-    </div>
-  </div>
+ 
   <div class="page-content">
     <div class="swipes">
     </div>
@@ -21,34 +11,35 @@
     <div id="{{id}}" class="swipe">
       <div class="content-block head">
         <div class="row">
-          <div class="col-100 profile-pic" id="profile-pic">
+          <div class="profile-pic" id="profile-pic">
             <img src="{{picture_url}}" />
           </div>
-          <div class="row">
-            <div class="col-100 profile-info">
-              <h3 style="text-align: center;" class="profile-name profile-info-details">{{first_name}} {{last_name}}</h3>
-              <h4 style="text-align: center;" class="profile-lastjob profile-info-details">{{headline}}</h4>
-              <h5 style="text-align: center;" class="profile-lastschool profile-info-details">Studied at {{last_school}}</h5>
+          <h3>{{first_name}} {{last_name}}</h3>
+          <h4>{{headline}}</h4>
+        </div>
+      </div>
+      <div class="profile-buttons">
+        <a href="#tab1" class="active">
+            <i class="fa fa-star"></i>
+        </a>
+        <a href="#tab2">
+            <i class="fa fa-building"></i>
+        </a>
+        <a href="#tab3">
+            <i class="fa fa-mortar-board"></i>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+      <div class="list-block">
+        <ul>
+          {{#skills}}
+          <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title">{{name}}</div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="content-block summary">
-        <div class="content-block-inner">
-        </div>
-      </div>
-      <div class="content-block skills">
-        <div class="content-block-inner" id="profile-skills">
-          <a href="#" class="skill">HTML</a>
-          <a href="#" class="skill">CSS</a>
-          <a href="#" class="skill">Javascript</a>
-          <a href="#" class="skill">Team Work</a>
-          <a href="#" class="skill">faelknflaefae</a>
-          <a href="#" class="skill">ldazndlknaldn</a>
-          <a href="#" class="skill">dlazdlazldblazldblazbdla</a>
-          <a href="#" class="skill">Skill 2</a>
-          <a href="#" class="skill">Skill 3</a>
-        </div>
+          </li>
+          {{/skills}}
+        </ul>
       </div>
     </div>
   </script>

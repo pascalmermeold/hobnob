@@ -1,12 +1,3 @@
-// Include mustache.js in the html file
-// Include jquery.touchSwipe.min.js in the html file
-// Add a mustache template with id="swipe_templat" in html file
-// Add a div with class="swipes" in html file
-
-// object = data for the template, must contain an id, for example {id: 1, title: 'Titre1', text: 'test'}
-// mark_callback = a callback function taking two parameters accepted and id, for example mark(accepted, id)
-// 'accepted' is a boolean, true if the user has swiped right, false if user has swiped left
-// 'id' is the id of the swipe that has been swiped
 function add_swipe(object, mark_callback) {
 	var rendered = Mustache.render($('#swipe_template').html(), object);
 	
@@ -58,14 +49,17 @@ function add_swipe(object, mark_callback) {
 
 	        	if (phase == 'move') {
 		        	if (direction == 'left') {
-		        		distance *= -1.0;
+		        		$(this).css("left", (distance * -1.0));
 		        	}
-		        	$(this).css("left", distance);
+		        	if (direction == 'right') {
+		        		$(this).css("left", distance);
+			        }
 		        }
 	        },
 	        threshold:200,
 	        maxTimeThreshold:5000,
-	        fingers:'all'
+	        fingers:'all',
+	        allowPageScroll: 'auto'
 	    });
     };
 })(jQuery);

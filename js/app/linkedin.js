@@ -1,5 +1,4 @@
 var client_id = '77mmcb71lyvzps';
-var redirect_uri = 'https://www.aftrwork.com';
 
 var linkedinapi = {
   authorize: function(options) {
@@ -7,7 +6,7 @@ var linkedinapi = {
 
     var authUrl = 'https://www.linkedin.com/uas/oauth2/authorization?' + $.param({
       client_id: client_id,
-      redirect_uri: redirect_uri,
+      redirect_uri: server_url,
       response_type: 'code',
       state: 'adazd324234Fs1413'
     });
