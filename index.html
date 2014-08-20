@@ -23,20 +23,27 @@
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
   <!-- Views-->
-  <div class="views">
+  <div class="views navbar-through toolbar-through">
+
+
     <!-- Your main view, should have "view-main" class-->
-    <div class="view view-main">
+    <div class="view main-view">
 
       <!-- Top Navbar-->
       <div class="navbar">
         <div class="navbar-inner">
-          <div class="center"><img src="img/logo-white.png" /></div>
+          <div class="nav-left">
+            <a href="contacts.html" class="back_to_contacts"><i class="fa fa-chevron-circle-left"></i></a>
+          </div>
+          <div class="nav-center"><img src="img/logo-white.png" /></div>
+          <div class="nav-right"></div>
+          <div class="clearfix"></div>
         </div>
       </div>
-      <!-- /End of Top Navbar-->  
+      <!-- /End of Top Navbar--> 
 
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-through toolbar-through">
+      <div class="pages ">
         <!-- Page, data-page contains page name -->
         <div class="page loader" data-page="index">
           <div class="page-content">
@@ -51,10 +58,10 @@
       <!-- Bottom Toolbar-->
       <div class="toolbar tabbar">
         <div class="toolbar-inner">
-          <a href="#tab1" class="tab-link active">
+          <a href="home.html" class="tab-link active home-button">
               <i class="fa fa-users"></i>
           </a>
-          <a href="#tab2" class="tab-link">
+          <a href="contacts.html" class="tab-link contacts-button">
               <i class="fa fa-comments-o"></i>
           </a>
           <a href="#tab3" class="tab-link">
@@ -63,8 +70,11 @@
         </div>
       </div>          
       <!-- /End of Bottom Toolbar-->
+
     </div>
+   
   </div>
+
 
   <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
@@ -84,7 +94,7 @@
   <script type="text/javascript" src="js/app/database.js"></script>
   <script type="text/javascript" src="js/app/home.js"></script>
   <script type="text/javascript" src="js/app/swipe.js"></script>
-  <!-- <script type="text/javascript" src="js/chat.js"></script> -->
+  <script type="text/javascript" src="js/app/chat.js"></script>
   <!-- <script type="text/javascript" src="js/settings.js"></script> -->
 
 </body>

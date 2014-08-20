@@ -1,13 +1,14 @@
 // Initialize your app
 var myApp = new Framework7();
 var access_token;
+
 //var server_url = 'http://aftrwork.herokuapp.com';
 var server_url = 'http://0.0.0.0:3000';
 
 // Export selectors engine
 var $$ = Framework7.$;
 
-var mainView = myApp.addView('.view-main');
+var mainView = myApp.addView('.main-view');
 
 //var settingsView = myApp.addView('.view-settings');
 
@@ -15,8 +16,8 @@ var mainView = myApp.addView('.view-main');
 
 // Device ready handler
 $(document).on('deviceready', function() {
-	mainView.hideNavbar();
-	mainView.hideToolbar();
+	$('.navbar').hide();
+	$('.toolbar').hide();
 	database.init();
 	checkAccessToken();
 });
@@ -27,19 +28,40 @@ $$(document).on('pageInit', function (e) {
   var page = e.detail.page
 
   if (page.name == 'login') {
-  	mainView.hideNavbar();
-	mainView.hideToolbar();
+
     initLoginPage();
   }
   if (page.name == 'home') {
-  	mainView.showNavbar();
-	mainView.showToolbar();
+	$('.navbar .back_to_contacts').hide();
+  	$('.navbar').show();
+	$('.toolbar').show();
+	setActive('home');
     initHomePage();
+  }
+  if (page.name == 'contacts') {
+	$('.navbar .back_to_contacts').hide();
+  	$('.navbar').show();
+	$('.toolbar').show();
+	setActive('contacts');
+    initContactsPage();
+  }
+  if (page.name == 'chat') {
+  	$('.navbar').show();
+  	$('.navbar .back_to_contacts').fadeIn();
+	$('.toolbar.tabbar').hide(500);
+	setActive('contacts');
+	//myApp.initMessagebar('.chat-page');
+    initChat(page.query['linkedin_id']);
   }
   if (page.name == "settings") {
     getSettings();
   }
 });
+
+function setActive(mode) {
+	$('.toolbar a').removeClass('active');
+	$('.toolbar .' + mode + '-button').addClass('active');
+}
 
 function checkAccessToken() {
 	database.sql_query("SELECT value FROM OPTIONS WHERE key = 'access_token'", setAccessTokenAndHello, wrongAccessToken);
@@ -48,9 +70,9 @@ function checkAccessToken() {
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
 	$.get(server_url + "/hello?access_token=" + access_token).done(function(res) {
-		mainView.loadPage('home.html',false);
+		mainView.loadPage('home.html');
 	}).fail(function(res, textStatus, errorThrown) {
-		mainView.loadPage('login.html',false);
+		mainView.loadPage('login.html');
 	});
 }
 
@@ -75,4 +97,8 @@ function wrongAccessToken() {
 }
 function initHomePage() {
 	getRandom();
+}
+
+function initContactsPage() {
+	loadContacts();
 }

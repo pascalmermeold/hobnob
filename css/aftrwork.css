@@ -194,11 +194,7 @@ a {
 }
 
 .profile-buttons a.active {
-	border-bottom: none;
-}
-
-.clearfix {
-	clear: both;
+	border-bottom: solid 1px #fff;
 }
 
 .list-block {
@@ -260,8 +256,66 @@ a {
 	border: none;
 	background: #333;
 	color: #eee;
+	position: fixed;
+	z-index: 10000;
+	text-align: center;
 }
 
 .navbar img {
 	width: 120px;
+	margin: 0 auto;
 }
+
+.home .tabs {
+	margin-bottom: 50px;
+}
+
+.no-more-results {
+	position: relative;
+	margin-top: 40px;
+	z-index: -100000;
+	text-align: center;
+	padding: 20px;
+}
+
+.contacts img {
+	border-radius: 100%;
+	border: solid 1px #888;
+	width: 64px;
+	height: 64px;
+	background: url(http://placehold.it/80x80&text=No+Pic);
+
+}
+
+.contacts .item-title {
+	font-size: 20px;
+}
+
+.back_to_contacts, .back_to_contacts:hover, .back_to_contacts:visited, .back_to_contacts:link {
+	font-size: 28px;
+	color: #eee;
+	display: none;
+}
+
+.nav-left, .nav-right {
+	width: 20%;
+	float: left;
+}
+
+.nav-left {
+	text-align: left;
+}
+
+.nav-center {
+	text-align: center;
+	width: 60%;
+}
+
+.nav-right {
+	text-align: right;
+}
+
+.clearfix {
+	clear: both;
+}
+

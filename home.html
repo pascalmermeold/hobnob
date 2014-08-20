@@ -5,6 +5,10 @@
   <div class="page-content">
     <div class="swipes">
     </div>
+
+    <div class="no-more-results">
+      Il n'y a plus d'utilisateurs à marquer autour de vous, revenez d'ici quelques temps !
+    </div>
   </div>
 
   <script id="swipe_template" type="x-tmpl-mustache">
@@ -19,27 +23,69 @@
         </div>
       </div>
       <div class="profile-buttons">
-        <a href="#tab1" class="active">
-            <i class="fa fa-star"></i>
-        </a>
-        <a href="#tab2">
+        <a href="#positions-tab" class="active tab-link">
             <i class="fa fa-building"></i>
         </a>
-        <a href="#tab3">
+        <a href="#educations-tab" class="tab-link">
             <i class="fa fa-mortar-board"></i>
+        </a>
+        <a href="#skills-tab" class="tab-link">
+            <i class="fa fa-star"></i>
         </a>
       </div>
       <div class="clearfix"></div>
-      <div class="list-block">
-        <ul>
-          {{#skills}}
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title">{{name}}</div>
-            </div>
-          </li>
-          {{/skills}}
-        </ul>
+      <div class="tabs">
+
+        <div class="tab active" id="positions-tab">
+          <div class="list-block media-list">
+            <ul>
+              {{#positions}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{company_name}}</div>
+                    <div class="item-after">{{end_date}}</div>
+                  </div>
+                  <div class="item-subtitle">{{title}}</div>
+                </div>
+              </li>
+              {{/positions}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab" id="educations-tab">
+          <div class="list-block media-list">
+            <ul>
+              {{#educations}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{school_name}}</div>
+                    <div class="item-after">{{end_date}}</div>
+                  </div>
+                  <div class="item-subtitle">{{field_of_study}}</div>
+                </div>
+              </li>
+              {{/educations}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab" id="skills-tab">
+          <div class="list-block">
+            <ul>
+              {{#skills}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">{{name}}</div>
+                </div>
+              </li>
+              {{/skills}}
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </script>

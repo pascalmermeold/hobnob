@@ -13,6 +13,7 @@ function add_swipe(object, mark_callback) {
 	new_swipe = $('.swipes #' + object.id);
 	new_swipe.css('zIndex',lowest_index - 100);
 	new_swipe.swipe_profile(mark_callback);
+	new_swipe.find('.profile-buttons')
 }
 
 (function($)
@@ -24,27 +25,29 @@ function add_swipe(object, mark_callback) {
 	        {
 	        	if ((phase == 'end') || (phase == 'cancel'))  {
 
-	        		if (distance > ($(window).width() * 0.5)) {
-	        			if (direction == 'left') {
-	        				$(this).animate({
-			        			left: $(window).width() * -1
-			        		}, 300, function() {
-			        			callback(false,$(this).attr('id'));
-			        		});
-	        			}
-	        			else {
-	        				$(this).animate({
-			        			left: $(window).width()
-			        		}, 300, function() {
-			        			callback(true,$(this).attr('id'));
-			        		});
-	        			}
-	        		}
-	        		else {
-	        			$(this).animate({
-		        			left: 0
-		        		}, 300);
-	        		}
+	        		if ((direction == 'left') || (direction == 'right')) {
+		        		if (distance > ($(window).width() * 0.5)) {
+		        			if (direction == 'left') {
+		        				$(this).animate({
+				        			left: $(window).width() * -1
+				        		}, 300, function() {
+				        			callback(false,$(this).attr('id'));
+				        		});
+		        			}
+		        			else {
+		        				$(this).animate({
+				        			left: $(window).width()
+				        		}, 300, function() {
+				        			callback(true,$(this).attr('id'));
+				        		});
+		        			}
+		        		}
+		        		else {
+		        			$(this).animate({
+			        			left: 0
+			        		}, 300);
+		        		}
+		        	}
 	        	}
 
 	        	if (phase == 'move') {
