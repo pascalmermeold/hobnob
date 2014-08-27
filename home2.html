@@ -8,7 +8,7 @@
   <title>AftrWork</title>
 
   <!-- Path to Framework7 Library CSS-->
-  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-new.css">
   <!-- Path to your custom app styles-->
 
   <link rel="stylesheet" href="css/aftrwork.css"> 
@@ -19,156 +19,98 @@
   <!--  jQuery -->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
-<body>
-  <!-- Status bar overlay for fullscreen mode-->
+<body class="theme-orange">
+ <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
   <!-- Views-->
-  <div class="views">
+  <div class="views navbar-through toolbar-through">
+
+
     <!-- Your main view, should have "view-main" class-->
-    <div class="view view-main">
+    <div class="view main-view" data-page="chat">
 
       <!-- Top Navbar-->
-      <div class="navbar">
+      <div class="navbar" style="display: block;">
         <div class="navbar-inner">
-          <div class="center">HobNob</div>
+          <div class="nav-left">
+            <a href="contacts.html" class="back_to_contacts" style="display: inline;"><i class="fa fa-chevron-circle-left"></i></a>
+          </div>
+          <div class="nav-center"><img src="img/logo-white.png"></div>
+          <div class="nav-right"></div>
+          <div class="clearfix"></div>
         </div>
       </div>
-      <!-- /End of Top Navbar-->  
+      <!-- /End of Top Navbar--> 
 
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages navbar-through toolbar-through">
+      <div class="pages ">
         <!-- Page, data-page contains page name -->
-        <div class="page home" data-page="home">
-          <!-- Top Navbar -->
+        
+     
+    <!-- Page, data-page contains page name-->
+        <div class="page toolbar-fixed settings" data-page="settings">
+          
+          <!-- Scrollable page content-->
           <div class="page-content">
-            <div class="swipes">
-              <div id="{{id}}" class="swipe">
-                <div class="content-block head">
-                  <div class="row">
-                    <div class="profile-pic" id="profile-pic">
-                      <img src="test/39fa6d6.jpg" />
-                    </div>
-                    <h3>Pascal Merme</h3>
-                    <h4>Entrepreneur, Webdesigner, Développeur</h4>
-                  </div>
-                </div>
-                <div class="profile-buttons">
-                  <a href="#skills-tab" class="active tab-link">
-                      <i class="fa fa-star"></i>
-                  </a>
-                  <a href="#positions-tab" class="tab-link">
-                      <i class="fa fa-building"></i>
-                  </a>
-                  <a href="#educations-tab" class="tab-link">
-                      <i class="fa fa-mortar-board"></i>
-                  </a>
-                </div>
-                <div class="clearfix"></div>
-                <div class="tabs">
-                  <div class="tab active" id="skills-tab">
-                    <div class="list-block">
-                      <ul>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                        <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                         <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                         <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                         <li class="item-content">
-                          <div class="item-inner">
-                            <div class="item-title">Item title</div>
-                            <div class="item-after">Label</div>
-                          </div>
-                        </li>
-                      </ul>
+            
+            <div class="content-block-title">Mode Evènement</div>
+            <div class="list-block inset"> 
+              <ul>
+                <li> 
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Activer</div>
+                      <div class="item-input">
+                        <label class="label-switch">
+                          <input type="checkbox" disabled>
+                          <div class="checkbox"></div>
+                        </label>
+                      </div>
                     </div>
                   </div>
-
-                  <div class="tab" id="positions-tab">
-                    positions
-                  </div>
-
-                  <div class="tab" id="educations-tab">
-                    educations
-                  </div>
-
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
+
+            <div class="content-block-title">Distance max</div>
+            <div class="list-block inset">  
+              <ul>
+                <li> 
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label"><span class="distance">10km</span></div>
+                      <div class="item-input">
+                        <div class="range-slider">
+                          <input type="range" min="1" max="50" value="10" step="1">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="list-block inset">
+              <ul>
+                <li>
+                  <a href="#" class="item-link list-button">Envoyer un feedback</a>
+                </li>
+                <li>
+                  <a href="#" class="item-link list-button">Se déconnecter</a>
+                </li>
+              </ul>
+            </div>
+            
           </div>
+
         </div>
+
       </div>
-      <!-- Bottom Toolbar-->
-      <div class="toolbar tabbar">
-        <div class="toolbar-inner">
-          <a href="#tab1" class="tab-link active">
-              <i class="fa fa-users"></i>
-          </a>
-          <a href="#tab2" class="tab-link">
-              <i class="fa fa-comments-o"></i>
-          </a>
-          <a href="#tab3" class="tab-link">
-              <i class="fa fa-sliders"></i>
-          </a>
-        </div>
-      </div>          
-      <!-- /End of Bottom Toolbar-->
     </div>
+
+   
   </div>
+
 
   <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
@@ -188,10 +130,11 @@
   <script type="text/javascript" src="js/app/database.js"></script>
   <script type="text/javascript" src="js/app/home.js"></script>
   <script type="text/javascript" src="js/app/swipe.js"></script>
-  <!-- <script type="text/javascript" src="js/chat.js"></script> -->
+  <script type="text/javascript" src="js/app/chat.js"></script>
+  <script type="text/javascript" src="js/app/notifications.js"></script>
   <!-- <script type="text/javascript" src="js/settings.js"></script> -->
 
-</body>
+
 </html>
 
 </div>

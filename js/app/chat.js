@@ -41,6 +41,7 @@ function sendMessage(e) {
 }
 
 function loadChatHistory(linkedin_id) {
+  lastMessageTimestamp = 0;
   $.get(server_url + "/messages?access_token="+access_token+"&linkedin_id="+linkedin_id).done(function(res) {
     res['messages'].forEach(loadChatMessage, res);
     current_user_first_name = res['current_user']['first_name'];
@@ -79,7 +80,11 @@ function loadChatMessage(message) {
 
 function loadContacts() {
   $.get(server_url + "/matches?access_token="+access_token).done(function(res) {
+    $('.contacts').empty();
     res.forEach(loadContact);
+    if($('.contacts').children().size() == 0) {
+      $('.contacts').append("<div class='no-contacts'>Vous n'avez aucune connexion pour le moment</div>");
+    }
   }).fail(function(res) {
     alert('error');
   });

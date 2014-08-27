@@ -8,7 +8,7 @@
   <title>AftrWork</title>
 
   <!-- Path to Framework7 Library CSS-->
-  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/framework7-new.css">
   <!-- Path to your custom app styles-->
   <link rel="stylesheet" href="css/aftrwork.css">
   <!-- Font Awesome -->
@@ -19,7 +19,7 @@
   <!--  jQuery -->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
-<body>
+<body class="theme-orange">
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
   <!-- Views-->
@@ -45,12 +45,10 @@
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
       <div class="pages ">
         <!-- Page, data-page contains page name -->
-        <div class="page loader" data-page="index">
-          <div class="page-content">
-            <div class="content-block row">
+        <div class="page" data-page="index">
+          <div class="page-content loader">
               <!-- Default preloader -->
-                <div style="width:42px; height:42px" class="preloader preloader-white"></div>
-            </div>
+              <span class="preloader"></span>
           </div>
         </div>
       </div>
@@ -64,7 +62,7 @@
           <a href="contacts.html" class="tab-link contacts-button">
               <i class="fa fa-comments-o"></i>
           </a>
-          <a href="#tab3" class="tab-link">
+          <a href="settings.html" class="tab-link settings-button">
               <i class="fa fa-sliders"></i>
           </a>
         </div>
@@ -95,7 +93,8 @@
   <script type="text/javascript" src="js/app/home.js"></script>
   <script type="text/javascript" src="js/app/swipe.js"></script>
   <script type="text/javascript" src="js/app/chat.js"></script>
-  <!-- <script type="text/javascript" src="js/settings.js"></script> -->
+  <script type="text/javascript" src="js/app/notifications.js"></script>
+  <script type="text/javascript" src="js/app/settings.js"></script>
 
 </body>
 </html>

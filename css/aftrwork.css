@@ -9,10 +9,6 @@ body {
 	font-family: "Raleway";
 }
 
-a {
-	color: #eb9f0c;
-}
-
 .navbar {
 	color: #555;
 }
@@ -28,6 +24,7 @@ a {
 /* AftrWork Profile View */
 .profile-pic {
 	text-align: center;
+	width: 100%;
 }
 
 .profile-pic img {
@@ -45,24 +42,7 @@ a {
   background-color: #4cd964 !important;
 }
 
-/* AfterWork Login View */
-.login {
-	
-}
-
 .loader {
-	background: #eb9f0c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #eb9f0c 0%, #f3b337 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eb9f0c), color-stop(100%,#f3b337)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #eb9f0c 0%,#f3b337 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #eb9f0c 0%,#f3b337 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb9f0c', endColorstr='#f3b337',GradientType=0 ); /* IE6-9 */
-
-}
-
-.loader .page-content {
 	width: 100%;
 	height: 100%;
 
@@ -87,6 +67,7 @@ a {
 	box-align:center;
 }
 
+
 .login .logo {
 	text-align: center;
 	padding: 0 0 20px 0;
@@ -94,17 +75,6 @@ a {
 
 .logo img {
 	max-width: 80%;
-}
-
-.login .button {
-	background: #eb9f0c;
-	border: none;
-	color: #fff;
-	font-weight: bold;
-}
-
-#login p {
-	color: white;
 }
 
 #profile-accepted, #profile-rejected {
@@ -151,17 +121,21 @@ a {
 
 .head h3 {
 	font-family: "Raleway";
-	font-size: 18px;
+	font-size: 22px;
 	font-weight: 500;
 	margin: 10px 0 0 0;
+	width: 100%;
+	text-align: center;
 }
 
 .head h4 {
 	font-family: "Raleway";
 	font-size: 14px;
 	font-weight: 500;
-	color: #eb9f0c;
+	color: #ff9500;
 	margin: 10px 0 5px 0;
+	width: 100%;
+	text-align: center;
 }
 
 .profile-buttons a {
@@ -183,7 +157,7 @@ a {
 }
 
 .profile-buttons a i {
-	background: #eb9f0c;
+	background: #ff9500;
 	border-radius: 50px;
 	height: 26px;
 	width: 26px;
@@ -197,27 +171,27 @@ a {
 	border-bottom: solid 1px #fff;
 }
 
-.list-block {
+.swipe .list-block {
 	width: 100%;
 	margin: 0;
 }
 
-.list-block ul {
+.swipe .list-block ul {
 	border: none;
 	font-family: "Raleway";
 	font-weight: 400;
 	font-size: 14px;
 }
 
-.list-block .item-content {
+.swipe .list-block .item-content {
 	border-bottom: solid 1px #ddd;
 }
 
-.list-block .item-inner {
+.swipe .list-block .item-inner {
 	border: none;
 }
 
-.list-block .item-title {
+.swipe .list-block .item-title {
 	font-size: 14px;
 	color: #888;
 }
@@ -228,7 +202,7 @@ a {
 }
 
 .tabbar {
-	font-size: 24px;
+	font-size: 30px;
 	color: #fff;
 	background: #333;
 	border: none;
@@ -239,6 +213,7 @@ a {
 }
 
 .tabbar .tab-link {
+	position: relative;
 	color: #eee;
 	border-right: solid 1px #fff;
 }
@@ -250,6 +225,12 @@ a {
 
 .tabbar .tab-link:last-child {
 	border: none;
+}
+
+.tabbar .badge {
+	position: absolute;
+	top: 25px;
+	right: 25px;
 }
 
 .navbar {
@@ -283,7 +264,7 @@ a {
 	border: solid 1px #888;
 	width: 64px;
 	height: 64px;
-	background: url(http://placehold.it/80x80&text=No+Pic);
+	background: url(http://placehold.it/64x64&text=No+Pic);
 
 }
 
@@ -319,3 +300,15 @@ a {
 	clear: both;
 }
 
+.navbar, .tabbar {
+	display: none;
+}
+
+.no-contacts {
+	padding: 20px;
+	text-align: center;
+}
+
+.settings {
+	background: #eee;
+}

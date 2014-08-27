@@ -1,68 +1,57 @@
 <!-- Page, data-page contains page name-->
-<div class="page navbar-fixed" data-page="settings">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="left">
-        <!-- Right link contains only icon - additional "icon-only" class -->
-        <a href="home.html" class="link icon-only"><i class="fa fa-chevron-left"></i></a>
-      </div>
-      <!-- We have home navbar without left link -->
-      <div class="center">aftrwork</div>
-      <div class="right">
-        <a href="contact.html" class="link"><i class="fa fa-users"></i></a>
-      </div>
-    </div>
-  </div>
+<div class="page toolbar-fixed settings" data-page="settings">
+  
   <!-- Scrollable page content-->
   <div class="page-content">
-    <!-- Options View -->
-    <div class="content-block">
-      <div class="row">
-        <div class="col-100" id="profil_pic_sett">
-        </div>
-        <div class="row">
-          <div class="col-100 profil_info">
-            <h3 style="text-align: center;" class="profil_name profil_info_details" id="profil_name_sett"></h3>
-            <h4 style="text-align: center;" class="profil_lastjob profil_info_details" id="profil_lastjob_sett"></h4>
-            <h5 style="text-align: center;" class="profil_lastschool profil_info_details" id="profil_lastschool_sett"></h5>
+
+    <div class="content-block-title">Distance max</div>
+    <div class="list-block inset">  
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label"><span class="distance">10km</span></div>
+              <div class="item-input">
+                <div class="range-slider">
+                  <input id='distance' type="range" min="1" max="50" value="10" step="1">
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
-    <!-- Summary -->
-    <div class="content-block-title">Summary</div>
-    <div class="list-block">
+
+    <div class="content-block-title">Mode Evènement (à venir)</div>
+    <div class="list-block inset"> 
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Activer</div>
+              <div class="item-input">
+                <label class="label-switch">
+                  <input type="checkbox" disabled>
+                  <div class="checkbox"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="list-block inset">
       <ul>
         <li>
-          <a href="summary_options.html" class="item-link item-content">
-            <div class="item-inner">
-              <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Integer interdum elit semper, posuere nibh ut, vulputate tortor. Aenean lectus sed.</div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="content-block-title">Other Params</div>
-      <div class="list-block">
-        <ul>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title"><a href="discovery_options.html" class="list-button">Discovery Preferences</a></div>
-            </div>
-          </li>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title"><a href="app_options.html" class="list-button">App Settings</a></div>
-            </div>
-          </li>
-          <li class="item-content">
-            <div class="item-inner">
-              <div class="item-title"><a href="share_options.html" class="list-button">Share AftrWork</a></div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <a href="#" class="button button-cancel logoutButton">Déconnexion</a>
+          <a href="mailto:pascal@lafactoria.fr" class="item-link list-button">Envoyer un feedback</a>
+        </li>
+        <li>
+          <a href="#" class="item-link list-button" id="disconnect-button">Se déconnecter</a>
+        </li>
+      </ul>
     </div>
+
   </div>
+
+</div>

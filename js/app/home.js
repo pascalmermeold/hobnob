@@ -1,9 +1,22 @@
-function getRandom() {
-  $.get(server_url + "/random?access_token="+access_token).done(function(res) {
+function geolocateForRandomRequest() {
+  navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, {enableHighAccuracy: true });
+}
+
+function getRandom(latitude, longitude, accuracy) {
+  $.get(server_url + "/random?access_token="+access_token+"&latitude="+latitude+"&longitude="+longitude+"&accuracy="+accuracy+"&distance="+distance).done(function(res) {
     res.forEach(add_swiping_profile);
   }).fail(function(res) {
     mainView.loadPage('login.html');
   });
+}
+
+function geolocationSuccess(position) {
+  getRandom(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
+}
+
+function geolocationError(error) {
+  console.log(error.code);
+  console.log(error.message);
 }
 
 function add_swiping_profile(profile, index, array) {
@@ -15,11 +28,11 @@ function add_swiping_profile(profile, index, array) {
     else {
       mark = 0
     }
-    $.get(server_url + "/new_mark?access_token="+access_token+"&linkedin_id="+id+"&mark="+mark).done(function(res) {
-      alert('ok');
-    }).fail(function(res) {
-      alert("Un problème est survenu, merci de réessayer");
-    });
+    $.get(server_url + "/new_mark?access_token="+access_token+"&linkedin_id="+id+"&mark="+mark);
+
+    if($('.swipes .swipe').size() == 1) {
+      getRandom();
+    }
   });
 }
 
