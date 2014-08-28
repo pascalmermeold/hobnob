@@ -1,10 +1,11 @@
 // Initialize your app
 var myApp = new Framework7({
-	swipeBackPage: true
+	//swipeBackPage: true
 });
 var access_token;
-var distance;
 var pushNotification;
+
+var options = {};
 
 var server_url = 'http://aftrwork.herokuapp.com';
 //var server_url = 'http://0.0.0.0:3000';
@@ -22,7 +23,7 @@ var mainView = myApp.addView('.main-view');
 $(document).on('deviceready', function() {
 	database.init();
 	checkAccessToken();
-	checkDistance();
+	checkOptions();
 });
 
 // Page init handlers
@@ -65,6 +66,13 @@ $$(document).on('pageInit', function (e) {
 	initSettings();
 	loadSettings();
   }
+  if (page.name == 'tags') {
+	$('.navbar .back_to_contacts').hide();
+  	$('.navbar').show();
+	$('.toolbar').show();
+	setActive('tags');
+	initTags();
+  }
 });
 
 function setActive(mode) {
@@ -77,12 +85,11 @@ function checkAccessToken() {
 	database.sql_query("SELECT value FROM OPTIONS WHERE key = 'access_token'", setAccessTokenAndHello, wrongAccessToken);
 }
 
-function checkDistance() {
-	database.sql_query("SELECT value FROM OPTIONS WHERE key = 'distance'", function(tx, res) {
-		distance = res.rows.item(0).value;
-	}, function() {
-		distance = 10;
-	});
+function checkOptions() {
+	database.fetch_option('distance', 10);
+	database.fetch_option('search_type', 'geo');
+	database.fetch_option('selected_tag', '');
+	console.log(options['search_type']);
 }
 
 function setAccessTokenAndHello(tx, res) {
@@ -103,7 +110,7 @@ function initLoginPage() {
 		linkedinapi.authorize().done(function(data) {
 			access_token = data.access_token;
 			database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
-			database.sql_query("INSERT INTO OPTIONS (id, key, value) VALUES (1, 'access_token', '" + access_token + "')", function() {});
+			database.sql_query("INSERT INTO OPTIONS (key, value) VALUES ('access_token', '" + access_token + "')", function() {});
 			registerPushNotification();
 			mainView.loadPage('home.html',false);
 		}).fail(function(data) {
@@ -117,7 +124,11 @@ function wrongAccessToken() {
 }
 
 function initHomePage() {
-	geolocateForRandomRequest();
+	if(options['search_type'] == 'tag') {
+		getRandomFromTag();
+	} else {
+		geolocateForRandomRequest();
+	}
 }
 
 function initContactsPage() {

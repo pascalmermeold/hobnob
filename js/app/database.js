@@ -4,8 +4,7 @@ var database = {
 	init: function() {
 		this.db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
 		this.create_table_if_not_exists('OPTIONS','id unique, key, value');
-		// create_table_if_not_exists('CONTACTS','...');
-		// create_table_if_not_exists('MESSAGES','...');
+		this.create_table_if_not_exists('TAGS','id unique, tag, enabled');
 	},
 
 	create_table_if_not_exists: function(table_name, table_options) {
@@ -24,6 +23,14 @@ var database = {
 				err_callback();
 			}
 		);
+	},
+
+	fetch_option: function(option_name, default_value) {
+		this.sql_query("SELECT value FROM OPTIONS WHERE key = '" + option_name + "'", function(tx, res) {
+			options[option_name] = res.rows.item(0).value;
+		}, function() {
+			options[option_name] = default_value;
+		});
 	},
 
 	error_callback: function(e) {

@@ -309,6 +309,6 @@ body {
 	text-align: center;
 }
 
-.settings {
+.settings, .tags {
 	background: #eee;
 }

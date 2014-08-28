@@ -2,8 +2,16 @@ function geolocateForRandomRequest() {
   navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, {enableHighAccuracy: true });
 }
 
-function getRandom(latitude, longitude, accuracy) {
-  $.get(server_url + "/random?access_token="+access_token+"&latitude="+latitude+"&longitude="+longitude+"&accuracy="+accuracy+"&distance="+distance).done(function(res) {
+function getRandomFromGeo(latitude, longitude, accuracy) {
+  $.get(server_url + "/random?access_token="+access_token+"&type=geo&latitude="+latitude+"&longitude="+longitude+"&accuracy="+accuracy+"&distance="+options['distance']).done(function(res) {
+    res.forEach(add_swiping_profile);
+  }).fail(function(res) {
+    mainView.loadPage('login.html');
+  });
+}
+
+function getRandomFromTag() {
+  $.get(server_url + "/random?access_token="+access_token+"&type=tag&tag="+options['selected_tag']).done(function(res) {
     res.forEach(add_swiping_profile);
   }).fail(function(res) {
     mainView.loadPage('login.html');
@@ -11,7 +19,7 @@ function getRandom(latitude, longitude, accuracy) {
 }
 
 function geolocationSuccess(position) {
-  getRandom(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
+  getRandomFromGeo(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
 }
 
 function geolocationError(error) {

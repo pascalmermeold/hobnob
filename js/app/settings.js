@@ -19,8 +19,8 @@ function loadSettings() {
 
 function setDistance() {
   database.sql_query("SELECT value FROM OPTIONS WHERE key = 'distance'", function(tx, res) {
-    distance = res.rows.item(0).value;
-    $('#distance').val(distance);
-    $('.distance').text(distance+'km');
+    options['distance'] = res.rows.item(0).value;
+    $('#distance').val(options['distance']);
+    $('.distance').text(options['distance']+'km');
   }, function() {});
 }
