@@ -109,9 +109,12 @@ function initLoginPage() {
     $loginButton.on('click', function() {
 		linkedinapi.authorize().done(function(data) {
 			access_token = data.access_token;
+			alert(access_token);
 			database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
 			database.sql_query("INSERT INTO OPTIONS (key, value) VALUES ('access_token', '" + access_token + "')", function() {});
+			alert('store db ok');
 			registerPushNotification();
+			alert('push register ok');
 			mainView.loadPage('home.html',false);
 		}).fail(function(data) {
 			$loginStatus.html(data);
