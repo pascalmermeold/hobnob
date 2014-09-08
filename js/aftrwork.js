@@ -24,7 +24,6 @@ $(document).on('deviceready', function() {
 	database.init();
 	checkAccessToken();
 	checkOptions();
-	alert('ok');
 });
 
 // Page init handlers
