@@ -6,6 +6,7 @@ var access_token;
 var pushNotification;
 
 var options = {};
+var just_logged_in = false;
 
 var server_url = 'http://aftrwork.herokuapp.com';
 //var server_url = 'http://0.0.0.0:3000';
@@ -13,7 +14,9 @@ var server_url = 'http://aftrwork.herokuapp.com';
 // Export selectors engine
 var $$ = Framework7.$;
 
-var mainView = myApp.addView('.main-view');
+var mainView = myApp.addView('.main-view', {
+	dynamicNavbar: true
+});
 
 //var settingsView = myApp.addView('.view-settings');
 
@@ -30,6 +33,8 @@ $(document).on('deviceready', function() {
 $$(document).on('pageInit', function (e) {
   // Page Data contains all required information about loaded and initialized page
   var page = e.detail.page
+
+  $('.loader').show();
 
   if (page.name == 'login') {
   	$('.navbar').hide();
@@ -65,6 +70,7 @@ $$(document).on('pageInit', function (e) {
 	setActive('settings');
 	initSettings();
 	loadSettings();
+	$('.loader').hide();
   }
   if (page.name == 'tags') {
 	$('.navbar .back_to_contacts').hide();
@@ -72,6 +78,7 @@ $$(document).on('pageInit', function (e) {
 	$('.toolbar').show();
 	setActive('tags');
 	initTags();
+	$('.loader').hide();
   }
 });
 
@@ -107,31 +114,24 @@ function initLoginPage() {
     var $loginStatus = $('#status');
 
     $loginButton.on('click', function() {
+    	$('.loader').show();
 		linkedinapi.authorize().done(function(data) {
 			access_token = data.access_token;
-			alert(access_token);
 			database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
 			database.sql_query("INSERT INTO OPTIONS (key, value) VALUES ('access_token', '" + access_token + "')", function() {});
-			alert('store db ok');
 			registerPushNotification();
-			alert('push register ok');
+			$('.loader').hide();
+			just_logged_in = true;
 			mainView.loadPage('home.html',false);
 		}).fail(function(data) {
 			$loginStatus.html(data);
 		});
 	});
+	$('.loader').hide();
 }
 
 function wrongAccessToken() {
 	mainView.loadPage("login.html");
-}
-
-function initHomePage() {
-	if(options['search_type'] == 'tag') {
-		getRandomFromTag();
-	} else {
-		geolocateForRandomRequest();
-	}
 }
 
 function initContactsPage() {

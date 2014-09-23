@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>AftrWork</title>
+
+  <!-- Path to Framework7 Library CSS-->
+  <link rel="stylesheet" href="css/framework7-new.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/aftrwork-new.css">
+  <!-- Font Awesome -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+  <!--  jQuery -->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body class="theme-lightblue">
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar-overlay"></div>
+  <!-- Views-->
+  <div class="views">
+
+
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view main-view navbar-through">
+
+      <!-- Top Navbar-->
+      <div class="navbar">
+          <div class="navbar-inner">
+              <div class="left">
+                  <a href="settings-template.html" class="link"><i class='fa fa-cog'></i></a>
+              </div>
+              <div class="center"><img src='img/logo-blue.png' class='logo'/></div>
+              <div class="right">
+                  <a href="#" class="link"><i class='fa fa-comment'></i></a>
+              </div>
+          </div>
+      </div>
+      <!-- /End of Top Navbar--> 
+      
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages">
+
+        <!-- Page, data-page contains page name -->
+        <div class="page" data-page="index">
+
+          <div class="page-content">
+
+            <div class='swipes'>
+
+              <!-- Start swipe -->
+              <div class='swipe'>
+                <div class="content-block inset">
+
+                    <div class='heading content-block-inner'>
+                      <img src='https://media.licdn.com/mpr/mprx/0_SEVdfpW5FUioFD_XS7InfYIcbx9XIm-XfHanfxsBZJGqqoLk3uoLT0aMWtnReW1HuW4ch4XeOihF' class='thumbnail'/>
+                      <h1>Pascal Merme</h1>
+                      <h2>Entrepreneur, Webdesigner, Développeur</h2>
+                      <h3>
+                        <span><i class='fa fa-map-marker'></i> à 3km</span>
+                        <span><i class='fa fa-bookmark'></i> #leweb</span>
+                      </h3>
+                    </div>
+
+                    <div class='footer content-block-inner'>
+                      <h4>Non-Profit Organization Management</h4>
+                      <div class='common'>
+                        <a href='#' data-popup=".popup-xxx" class='open-popup'><i class='fa fa-building'></i> 0</a>
+                        <a href='#' class='active'><i class='fa fa-graduation-cap'></i> 1</a>
+                        <a href='#'><i class='fa fa-heart'></i> 0</a>
+                      </div>
+                    </div>
+
+                    <div class='details'>
+
+                      <div class="details-buttons">
+                        <!-- Link to 1st tab, active -->
+                        <a href="#positions-tab" class="tab-link active"><i class='fa fa-building'></i></a>
+                        <!-- Link to 2nd tab -->
+                        <a href="#educations-tab" class="tab-link"><i class='fa fa-graduation-cap'></i></a>
+                        <!-- Link to 3rd tab -->
+                        <a href="#skills-tab" class="tab-link"><i class='fa fa-heart'></i></a>
+                      </div>
+
+                      <div class='content-block-inner'>
+
+                        <div class="tabs">
+                          
+                          <div class="tab active" id="positions-tab">
+                            <div class="list-block media-list">
+                              <ul>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title-row">
+                                      <div class="item-title">La Factoria</div>
+                                      <div class="item-after">08/2014</div>
+                                    </div>
+                                    <div class="item-subtitle">Fondateur</div>
+                                  </div>
+                                </li>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title-row">
+                                      <div class="item-title">La Factoria</div>
+                                      <div class="item-after">08/2014</div>
+                                    </div>
+                                    <div class="item-subtitle">Fondateur</div>
+                                  </div>
+                                </li>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title-row">
+                                      <div class="item-title">La Factoria</div>
+                                      <div class="item-after">08/2014</div>
+                                    </div>
+                                    <div class="item-subtitle">Fondateur</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div class="tab" id="educations-tab">
+                            <div class="list-block media-list">
+                              <ul>
+                                {{#educations}}
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title-row">
+                                      <div class="item-title">{{school_name}}</div>
+                                      <div class="item-after">{{end_date}}</div>
+                                    </div>
+                                    <div class="item-subtitle">{{field_of_study}}</div>
+                                  </div>
+                                </li>
+                                {{/educations}}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div class="tab" id="skills-tab">
+                            <div class="list-block">
+                              <ul>
+                                {{#skills}}
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title">{{name}}</div>
+                                  </div>
+                                </li>
+                                {{/skills}}
+                              </ul>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class='choice'>
+                      <a href='#' class='nope'><i class='fa fa-times'></i></a>
+                      <a href='#' class='info'><i class='fa fa-info'></i></a>
+                      <a href='#' class='interesting'><i class='fa fa-check'></i></a>
+                    </div>
+
+                    <!--<div class='show-yes'></div>-->
+                    <!--<div class='show-nope'></div>-->
+
+                </div>
+              </div>
+              <!-- end swipe -->
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+ 
+    </div>
+   
+  </div>
+
+
+  <!--  Cordova.js will be add when building -->
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="js/libs/framework7.js"></script>
+  <!-- Path to other libraries-->
+  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <script type="text/javascript" src="js/libs/mustache.js"></script>
+  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+
+  <script type="text/javascript" src="js/aftrwork.js"></script>
+  <script type="text/javascript" src="js/app/home.js"></script>
+
+  
+</body>
+</html>
+
+
+<!--<p class="buttons-row swipe-buttons">
+<a href="" class="left-button button button-big button-fill color-pink">Non merci.</a>
+<a href="" class="right-button button button-big button-fill color-green">Intéressant !</a>
+</p>-->

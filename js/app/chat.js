@@ -47,6 +47,7 @@ function loadChatHistory(linkedin_id) {
     current_user_first_name = res['current_user']['first_name'];
     current_user_picture_url = res['current_user']['picture_url'];
     contact_linkedin_id = res['contact_user']['linkedin_id'];
+    $('.loader').hide();
   }).fail(function(res) {
     alert('error');
   });
@@ -82,6 +83,7 @@ function loadContacts() {
   $.get(server_url + "/matches?access_token="+access_token).done(function(res) {
     $('.contacts').empty();
     res.forEach(loadContact);
+    $('.loader').hide();
     if($('.contacts').children().size() == 0) {
       $('.contacts').append("<div class='no-contacts'>Vous n'avez aucune connexion pour le moment</div>");
     }

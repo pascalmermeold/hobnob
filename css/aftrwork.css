@@ -132,14 +132,14 @@ body {
 	font-family: "Raleway";
 	font-size: 14px;
 	font-weight: 500;
-	color: #ff9500;
+	color: #5ac8fa;
 	margin: 10px 0 5px 0;
 	width: 100%;
 	text-align: center;
 }
 
 .profile-buttons a {
-	width: 33.3%;
+	width: 33%;
 	display: inline-block;
 	text-align: center;
 	padding: 10px 0;
@@ -157,7 +157,7 @@ body {
 }
 
 .profile-buttons a i {
-	background: #ff9500;
+	background: #5ac8fa;
 	border-radius: 50px;
 	height: 26px;
 	width: 26px;
@@ -312,3 +312,14 @@ body {
 .settings, .tags {
 	background: #eee;
 }
+
+.swipe-buttons {
+	position: absolute;
+	bottom: 65px;
+	left: 0;
+	width: 94%;
+	margin: 0 3%;
+	z-index: 200;
+}
+
+

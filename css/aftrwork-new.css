@@ -1,0 +1,331 @@
+body {
+	font-family: "Raleway";
+	}
+
+.logo {
+	max-width: 80%;
+	margin: auto;
+}
+
+.navbar i {
+	color: #bbb;
+	font-size: 24px;
+}
+
+.navbar .left, .navbar .right {
+	min-width: 26px;
+	display: inline-block;
+}
+
+.navbar .active i {
+	color: #5ac8fa;
+}
+
+/* Vertically center content */
+.swipes, .popup-match {
+	/* Safari, Opera, and Chrome */
+	display:-webkit-box !important;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+
+	/* W3C */
+	display:box;
+	box-pack:center;
+	box-align:center;
+
+	width: 100%;
+	min-height: 100%;
+}
+
+.swipes {
+	background: url('../img/congruent_outline.png') repeat;
+}
+
+.swipe .content-block.inset {
+	margin: 10px;
+}
+
+.swipe .heading.content-block-inner {
+	text-align: center;
+	padding: 10px 15px;
+	border-radius: 5px 5px 0 0;
+}
+
+.thumbnail {
+	border-radius: 200px;
+	border: solid 6px #5ac8fa;
+	margin: 15px 0 0 0;
+}
+
+.swipe h1 {
+	font-weight: normal;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #5ac8fa;
+	margin: 5px;
+}
+
+.swipe h2 {
+	font-weight: normal;
+	font-size: 14px;
+	color: #5ac8fa;
+	margin: 5px;
+}
+
+.swipe h3 {
+	font-weight: normal;
+	font-size: 12px;
+	color: #888;
+	margin: 10px 0 5px 0;
+}
+
+.swipe h3 span {
+	margin: 0 10px;
+}
+
+.swipe .footer.content-block-inner {
+	text-align: center;
+	background: #5ac8fa;
+	border-radius: 0 0 5px 5px;
+	color: #fff;
+}
+
+.swipe h4 {
+	margin: 0 0 10px 0;
+	font-weight: normal;
+}
+
+.swipe .common a {
+	color: #fff;
+	margin: 0 10px;
+	display: inline-block;
+}
+
+.swipe .common a.active {
+	color: #5ac8fa;
+	background: #fff;
+	border-radius: 3px;
+	padding: 2px 5px;
+}
+
+.swipe .choice {
+	text-align: center;
+	padding: 20px;
+}
+
+.swipe .choice .nope, .swipe .choice .interesting {
+	width: 70px;
+	height: 70px;
+	border-radius: 70px;
+	background: #fff;
+	border: solid 8px #bbb;
+	display: inline-block;
+	line-height: 70px;
+	font-size: 30px;
+	font-weight: normal;
+	-webkit-box-shadow: inset 1px 1px 1px 0px #ccc;
+	box-shadow: inset 1px 1px 1px 0px #ccc;
+}
+
+.swipe .choice .info {
+	width: 40px;
+	height: 40px;
+	border-radius: 40px;
+	background: #fff;
+	border: solid 8px #bbb;
+	display: inline-block;
+	line-height: 40px;
+	font-size: 15px;
+	font-weight: normal;
+	margin: 0;
+	-webkit-box-shadow: inset 1px 1px 1px 0px #ccc;
+	box-shadow: inset 1px 1px 1px 0px #ccc;
+}
+
+.swipe .choice .nope {
+	margin-right: -10px;
+	color: #ff2d55;
+}
+
+.swipe .choice .nope a {
+
+}
+
+.swipe .choice .interesting {
+	margin-left: -10px;
+	color: #4cd964;
+}
+
+.swipe .show-yes, .swipe .show-nope {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.swipe .show-yes {
+	background: url('../img/yes.png') center center no-repeat;
+}
+
+.swipe .show-nope {
+	background: url('../img/nope.png') center center no-repeat;
+}
+
+.no-more-results {
+	text-align: center;
+}
+
+.spinner {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: #5ac8fa;
+
+  border-radius: 100%;  
+  -webkit-animation: scaleout 2.0s infinite ease-in-out;
+  animation: scaleout 2.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+.swipe .details {
+	width: 100%;
+	display: none;
+}
+
+.swipe .details-buttons {
+	text-align: center;
+}
+
+.swipe .details-buttons a {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	border: solid 2px #5ac8fa;
+	background: #fff;
+	display: inline-block;
+	margin: 15px;
+	line-height: 50px;
+	font-size: 24px;
+}
+
+.swipe .list-block {
+	width: 100%;
+	margin: 0;
+}
+
+.swipe .list-block ul {
+	border: none;
+	font-family: "Raleway";
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.swipe .list-block .item-content {
+	border-bottom: solid 1px #ddd;
+}
+
+.swipe .list-block .item-content:last-child {
+	border-bottom: none;
+}
+
+.swipe .list-block .item-inner {
+	border: none;
+}
+
+.swipe .list-block .item-title {
+	font-size: 14px;
+	color: #888;
+}
+
+.settings .heading {
+	text-align: center;
+	background: #5ac8fa;
+	padding: 20px 0;
+}
+
+.settings .heading img {
+	margin: 0;
+}
+
+.settings .heading a {
+	color: #fff;
+}
+
+.settings .list-block {
+	margin-top: 15px;
+}
+
+.settings .list-block li i {
+	font-size: 28px;
+	color: #bbb;
+}
+
+.settings .list-block li .item-title {
+	color: #5ac8fa;
+}
+
+.popup-match {
+	background: url('../img/congruent_outline_black.png');
+	text-align: center;
+}
+
+.popup-match .content-block {
+	color: #fff;
+}
+
+.popup-match h1 {
+	font-weight: normal;
+}
+
+.popup-match .thumbnails-line {
+	border: solid 3px #5ac8fa;
+	height: 0;
+	width: 30px;
+	margin: -60px auto 80px auto;
+}
+
+.popup-match .thumbnail {
+	margin: 10px;
+}
+
+.popup-match .buttons a {
+	width: 70%;
+	margin: 10px auto;
+}
+
+.popup-settings .list-block li i {
+	font-size: 22px;
+	color: #bbb;
+}
+
+.popup {
+	background: #eee;
+}
+
+.small-margins {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

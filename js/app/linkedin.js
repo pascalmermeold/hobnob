@@ -8,7 +8,8 @@ var linkedinapi = {
       client_id: client_id,
       redirect_uri: server_url,
       response_type: 'code',
-      state: 'adazd324234Fs1413'
+      state: 'adazd324234Fs1413',
+      scope: 'r_fullprofile r_emailaddress r_network'
     });
 
     var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');

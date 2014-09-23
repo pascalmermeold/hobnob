@@ -11,16 +11,15 @@ function add_swipe(object, mark_callback) {
 
 	$('.swipes').append(rendered);
 	new_swipe = $('.swipes #' + object.id);
-	new_swipe.css('zIndex',lowest_index - 100);
+	new_swipe.css('zIndex',lowest_index + 100);
 	new_swipe.swipe_profile(mark_callback);
-	new_swipe.find('.profile-buttons')
 }
 
 (function($)
 {
     $.fn.swipe_profile=function(callback)
     {
-       $(this).swipe( {
+       	$(this).swipe( {
 	        swipeStatus:function(event, phase, direction, distance, duration, fingers)
 	        {
 	        	if ((phase == 'end') || (phase == 'cancel'))  {

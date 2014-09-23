@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>AftrWork</title>
+
+  <!-- Path to Framework7 Library CSS-->
+  <link rel="stylesheet" href="css/framework7-new.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/aftrwork-new.css">
+  <!-- Font Awesome -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+  <!--  jQuery -->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body class="theme-lightblue">
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar-overlay"></div>
+  <!-- Views-->
+  <div class="views">
+
+
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view main-view">
+      
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-through">
+
+        <!-- Page, data-page contains page name -->
+        <div class="page" data-page="index">
+
+          <!-- Top Navbar-->
+          <div class="navbar">
+              <div class="navbar-inner">
+                  <div class="left">
+                      <a href="#" class="link"><i class='fa fa-cog'></i></a>
+                  </div>
+                  <div class="center"><img src='img/logo-blue.png' class='logo' /></div>
+                  <div class="right">
+                      <a href="#" class="link"><i class='fa fa-comment'></i></a>
+                  </div>
+              </div>
+          </div>
+          <!-- /End of Top Navbar--> 
+
+          <div class="page-content">
+
+            <div class='swipes'>
+
+
+
+              <!-- Start swipe -->
+              <div class='swipe'>
+                <a data-popup=".popup-match" class="open-popup" href='#'>Open Match</a>
+              </div>
+              <!-- end swipe -->
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+ 
+    </div>
+   
+  </div>
+
+  <div class="popup popup-match">
+    <div class="content-block">
+      <h1>Hey, you'll HobNob!</h1>
+      <p>Sophie et vous souhaitez vous rencontrer.</p>
+      <div class='thumbnails'>
+        <img src='https://media.licdn.com/mpr/mprx/0_SEVdfpW5FUioFD_XS7InfYIcbx9XIm-XfHanfxsBZJGqqoLk3uoLT0aMWtnReW1HuW4ch4XeOihF' class='thumbnail'/>
+        <img src='https://media.licdn.com/mpr/mprx/0_SEVdfpW5FUioFD_XS7InfYIcbx9XIm-XfHanfxsBZJGqqoLk3uoLT0aMWtnReW1HuW4ch4XeOihF' class='thumbnail'/>
+      </div>
+      <div class='thumbnails-line'></div>
+      <div class='buttons'>
+        <a href='#' class='button active'><i class='fa fa-comment'></i> Envoyer un message</a>
+        <a href='#' class='button active'><i class='fa fa-users'></i> Continuer à chercher</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Cordova.js will be add when building -->
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="js/libs/framework7.js"></script>
+  <!-- Path to other libraries-->
+  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <script type="text/javascript" src="js/libs/mustache.js"></script>
+  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+
+  <script type="text/javascript" src="js/aftrwork.js"></script>
+  <script type="text/javascript" src="js/app/home.js"></script>
+
+  
+</body>
+</html>
+
+
+<!--<p class="buttons-row swipe-buttons">
+<a href="" class="left-button button button-big button-fill color-pink">Non merci.</a>
+<a href="" class="right-button button button-big button-fill color-green">Intéressant !</a>
+</p>-->
