@@ -1,0 +1,94 @@
+ <!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding">
+            <a href="#" class="link back-to-chat"><i class='fa fa-comment'></i></a>
+        </div>
+        <div class="center"><a href="#" class="link active"><i class='fa fa-info-circle'></i></a></div>
+        <div class="right">
+        </div>
+    </div>
+</div>
+<!-- /End of Top Navbar--> 
+
+<!-- Page, data-page contains page name -->
+<div class="page" data-page='profile'>
+
+  <div class="page-content profile_wrapper">
+
+    <script id="profile_template" type="x-tmpl-mustache">
+
+      <div id="{{id}}" class="profile">
+        
+        <div class="content-block inset">
+
+          <div class='heading content-block-inner'>
+            <img src='{{picture_url}}' class='thumbnail'/>
+            <h1>{{first_name}} {{last_name}}</h1>
+            <h2>{{headline}}</h2>
+          </div>
+
+          <div class='footer content-block-inner'>
+            
+          </div>
+        </div>
+
+        <div class="content-block-title"><i class='fa fa-building'></i> Jobs</div>
+        <div class="content-block inset scroll">
+          <div class="list-block media-list">
+            <ul>
+              {{#positions}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{company_name}}</div>
+                    <div class="item-after">{{end_date}}</div>
+                  </div>
+                  <div class="item-subtitle">{{title}}</div>
+                </div>
+              </li>
+              {{/positions}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-block-title"><i class='fa fa-graduation-cap'></i> Schools</div>
+        <div class="content-block inset scroll">
+          <div class="list-block media-list">
+            <ul>
+              {{#educations}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{school_name}}</div>
+                    <div class="item-after">{{end_date}}</div>
+                  </div>
+                  <div class="item-subtitle">{{field_of_study}}</div>
+                </div>
+              </li>
+              {{/educations}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="content-block-title"><i class='fa fa-heart'></i> Skills</div>
+        <div class="content-block inset scroll">
+          <div class="list-block">
+            <ul>
+              {{#skills}}
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">{{name}}</div>
+                </div>
+              </li>
+              {{/skills}}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </script>
+
+  </div>
+
+</div>

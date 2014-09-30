@@ -1,34 +1,71 @@
-<!-- Page, data-page contains page name-->
-<div class="page toolbar-fixed settings" data-page="settings">
-  
-  <!-- Scrollable page content-->
+
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center"><a href="#" class="link active"><i class='fa fa-cog'></i></a></div>
+        <div class="right sliding">
+            <a href="index.html" class="link"><i class='fa fa-users'></i></a>
+        </div>
+    </div>
+</div>
+<!-- /End of Top Navbar--> 
+
+<!-- Page, data-page contains page name -->
+<div class="page settings" data-page='settings'>
+
   <div class="page-content">
 
-    <div class="content-block-title">Distance max</div>
-    <div class="list-block inset">  
-      <ul>
-        <li> 
-          <div class="item-content">
-            <div class="item-inner">
-              <div class="item-title label"><span class="distance">10km</span></div>
-              <div class="item-input">
-                <div class="range-slider">
-                  <input id='distance' type="range" min="1" max="50" value="10" step="1">
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <div class='heading'>
+      <img src='' class='thumbnail' id='profile-pic'/><br/>
+      <span id='profile-name'></span>
     </div>
-    
-    <div class="list-block inset">
+
+    <div class="list-block media-list inset">
       <ul>
         <li>
-          <a href="#" class="item-link list-button" id="send-feedback">Envoyer un feedback</a>
+          <a href="#" class="item-link item-content open-popup" data-popup='.popup-settings'>
+            <div class="item-media"><i class="fa fa-globe"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Découverte</div>
+              </div>
+              <div class="item-subtitle">Modifiez vos critères de recherche</div>
+            </div>
+          </a>
         </li>
         <li>
-          <a href="#" class="item-link list-button" id="disconnect-button">Se déconnecter</a>
+          <a href="#" class="item-link item-content open-popup" data-popup='.popup-contact'>
+            <div class="item-media"><i class="fa fa-envelope"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Contactez HobNob</div>
+              </div>
+              <div class="item-subtitle">Des remarques ? Suggestions ?</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-link item-content">
+            <div class="item-media"><i class="fa fa-cloud-upload"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Partagez HobNob</div>
+              </div>
+              <div class="item-subtitle">Aidez-nous à nous faire connaître !</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="item-link item-content" id='disconnect'>
+            <div class="item-media"><i class="fa fa-sign-out"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Déconnexion</div>
+              </div>
+              <div class="item-subtitle">Votre compte restera actif</div>
+            </div>
+          </a>
         </li>
       </ul>
     </div>

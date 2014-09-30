@@ -5,79 +5,284 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>AftrWork</title>
+  <title>HobNob</title>
 
-  <!-- Path to Framework7 Library CSS-->
   <link rel="stylesheet" href="css/framework7-new.css">
-  <!-- Path to your custom app styles-->
-  <link rel="stylesheet" href="css/aftrwork.css">
-  <!-- Font Awesome -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/aftrwork-new.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'> -->
   <!--  jQuery -->
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/libs/jquery-1.11.0.min.js"></script>
 </head>
 <body class="theme-lightblue">
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
-  <!-- Views-->
-  <div class="views navbar-through toolbar-through">
 
+  <div class="views">
 
     <!-- Your main view, should have "view-main" class-->
     <div class="view main-view">
 
       <!-- Top Navbar-->
       <div class="navbar">
-        <div class="navbar-inner">
-          <div class="nav-left">
-            <a href="contacts.html" class="back_to_contacts"><i class="fa fa-chevron-circle-left"></i></a>
+          <div class="navbar-inner">
+              <div class="left sliding">
+                  <a href="settings.html" class="link"><i class='fa fa-cog'></i></a>
+              </div>
+              <div class="center"><img src='img/logo-blue.png' class='logo'/></div>
+              <div class="right sliding">
+                  <a href="contacts.html" class="link"><i class='fa fa-comments'></i></a>
+              </div>
           </div>
-          <div class="nav-center">
-            <img src="img/logo-white.png" />
-          </div>
-          <div class="nav-right"></div>
-          <div class="clearfix"></div>
-        </div>
       </div>
       <!-- /End of Top Navbar--> 
 
-      <div class="loader">
-        <span class="preloader"></span>
-      </div>
-
       <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages ">
-
+      <div class="pages navbar-through">
         <!-- Page, data-page contains page name -->
-        <div class="page" data-page="index">
+        <div class="page" data-page='home'>
+
+          <div class="loader">
+            <div class="spinner2">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+            </div>
+            <span>Initialisation</span>
+          </div>
+
+          <div class="page-content">
+
+            <div class='swipes'>
+
+              <div class='swipe'>
+                <div class='no-more-results'>
+                  <div>
+                    <div class="spinner"></div>
+                  </div>
+                  <div class="content-block inset">
+                    <div class='content-block-inner'>
+                      <p>Aucune nouvelle personne à proximité ou suivant votre tag.</p>
+                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts !</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script id="swipe_template" type="x-tmpl-mustache">
+
+                <div id="{{id}}" class="swipe">
+                  <div class='slider-container'>
+                    <div class="slider-wrapper">
+
+                      <div class="slider-slide">
+                        <div class="content-block inset">
+
+                          <div class='heading content-block-inner'>
+                            <img src='{{picture_url}}' class='thumbnail'/>
+                            <h1>{{first_name}} {{last_name}}</h1>
+                            <h2>{{headline}}</h2>
+                            <h3>
+                              <span><i class='fa fa-map-marker'></i> à {{distance}}km</span>
+                              {{#tag}}
+                                <span><i class='fa fa-bookmark'></i> #{{tag}}</span>
+                              {{/tag}}
+                            </h3>
+                          </div>
+
+                          <div class='footer content-block-inner'>
+                            <div class='common'>
+                              <a href='#'><i class='fa fa-building'></i> {{common_positions}}</a>
+                              <a href='#'><i class='fa fa-graduation-cap'></i> {{common_educations}}</a>
+                              <a href='#'><i class='fa fa-heart'></i> {{common_skills}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-building'></i> Jobs</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block media-list">
+                            <ul>
+                              {{#positions}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title-row">
+                                    <div class="item-title">{{company_name}}</div>
+                                    <div class="item-after">{{end_date}}</div>
+                                  </div>
+                                  <div class="item-subtitle">{{title}}</div>
+                                </div>
+                              </li>
+                              {{/positions}}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-graduation-cap'></i> Schools</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block media-list">
+                            <ul>
+                              {{#educations}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title-row">
+                                    <div class="item-title">{{school_name}}</div>
+                                    <div class="item-after">{{end_date}}</div>
+                                  </div>
+                                  <div class="item-subtitle">{{field_of_study}}</div>
+                                </div>
+                              </li>
+                              {{/educations}}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-heart'></i> Skills</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block">
+                            <ul>
+                              {{#skills}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">{{name}}</div>
+                                </div>
+                              </li>
+                              {{/skills}}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class='choice'>
+                    <a href='#' class='nope'><i class='fa fa-times'></i></a>
+                    <a href='#' class='info'><i class='fa fa-info'></i></a>
+                    <a href='#' class='yes'><i class='fa fa-check'></i></a>
+                  </div>
+
+                </div>
+              </script>
+
+            </div>
+
+          </div>
+
         </div>
       </div>
-
-      <!-- Bottom Toolbar-->
-      <div class="toolbar tabbar">
-        <div class="toolbar-inner">
-          <a href="home.html" class="tab-link active home-button">
-              <i class="fa fa-users"></i>
-          </a>
-          <a href="contacts.html" class="tab-link contacts-button">
-              <i class="fa fa-comments-o"></i>
-          </a>
-          <a href="tags.html" class="tab-link tags-button">
-              <i class="fa fa-bullseye"></i>
-          </a>
-          <a href="settings.html" class="tab-link settings-button">
-              <i class="fa fa-sliders"></i>
-          </a>
-        </div>
-      </div>          
-      <!-- /End of Bottom Toolbar-->
 
     </div>
    
   </div>
+
+  <div class='show-yes'></div>
+  <div class='show-nope'></div>
+
+  <!-- Settings popup so it can be opened from start AND settings page -->
+  <div class="popup popup-settings">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center" style="left: 0px;">Paramètres de Découverte</div>
+        <div class="right"><a href="#" class="close-popup" id='save-settings'>OK</a></div>
+      </div>
+    </div>
+
+    <div class='content-block'>
+      <p><h3>Vous participez à un événement ? </h3> <b>Entrez le HashTag de l'évènement pour networker avec les autres participants !</b> Sinon vous pouvez rechercher les personnes autour de vous en laissant le champs vide.</p>
+    </div>
+
+    <div class="content-block-title">Recherche par évènement</div>
+    <div class="list-block">  
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label"><i class='fa fa-tags'></i> Event</div>
+              <div class="item-input">
+                <input id='tag' type="text" placeholder="#HashTag">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-block-title">Distance max</div>
+    <div class="list-block">  
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label"><i class='fa fa-globe'></i> <span class="distance">10km</span></div>
+              <div class="item-input">
+                <div class="range-slider">
+                  <input id='distance' type="range" min="1" max="50" value="10" step="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="popup popup-contact">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center" style="left: 0px;">Contactez HobNob</div>
+        <div class="right"><a href="#" class="close-popup">OK</a></div>
+      </div>
+    </div>
+
+    <div class='content-block'>
+      <p><h3>Laissez-nous un message !</h3> HobNob est en constante évolution ! Faites-nous part de vos remarques et des bugs rencontrés sur l'application. </p>
+    </div>
+
+    <div class="content-block-title">Message</div>
+    <div class="list-block inset small-margins">  
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-input">
+                  <textarea></textarea>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class='content-block small-margins'>
+      <a href='#' class='button button-big active'>Envoyer</a>
+    </div>
+  </div>
+
+  <div class="popup popup-match">
+    <div class="content-block">
+      <h1>Hey, you'll HobNob!</h1>
+      <p><span class='first_name'></span> et vous souhaitez vous rencontrer.</p>
+      <div class='thumbnails'>
+        <img src='' class='thumbnail other_user_pic'/>
+        <img src='' class='thumbnail current_user_pic'/>
+      </div>
+      <div class='thumbnails-line'></div>
+      <div class='buttons'>
+        <a href='#' class='button active button-big go-to-chat'><i class='fa fa-comment'></i> Envoyer un message</a>
+        <a href='#' class='button active button-big close-popup'><i class='fa fa-users'></i> Continuer à chercher</a>
+      </div>
+    </div>
+  </div>
+
 
 
   <!--  Cordova.js will be add when building -->
@@ -85,23 +290,22 @@
   <!-- Path to Framework7 Library JS-->
   <script type="text/javascript" src="js/libs/framework7.js"></script>
   <!-- Path to other libraries-->
-  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <!--<script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>-->
   <script type="text/javascript" src="js/libs/mustache.js"></script>
-  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+  <script type='application/javascript' src='js/libs/fastclick.js'></script>
+  <script type='application/javascript' src='js/libs/jquery.waitforimages.min.js'></script>
+  
 
 
   <!-- Path to your app js-->
-  <script type="text/javascript" src="js/aftrwork.js"></script>
-
-  <!-- Paths to custom js-->
+  <script type="text/javascript" src="js/hobnob.js"></script>
+  <script type="text/javascript" src="js/app/home.js"></script>
   <script type="text/javascript" src="js/app/linkedin.js"></script>
   <script type="text/javascript" src="js/app/database.js"></script>
-  <script type="text/javascript" src="js/app/home.js"></script>
   <script type="text/javascript" src="js/app/swipe.js"></script>
-  <script type="text/javascript" src="js/app/chat.js"></script>
   <script type="text/javascript" src="js/app/notifications.js"></script>
   <script type="text/javascript" src="js/app/settings.js"></script>
-  <script type="text/javascript" src="js/app/tags.js"></script>
+  <script type="text/javascript" src="js/app/chat.js"></script>
 
 </body>
 </html>

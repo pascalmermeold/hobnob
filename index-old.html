@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>AftrWork</title>
+
+  <!-- Path to Framework7 Library CSS-->
+  <link rel="stylesheet" href="css/framework7-new.css">
+  <!-- Path to your custom app styles-->
+  <link rel="stylesheet" href="css/aftrwork.css">
+  <!-- Font Awesome -->
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+  <!--  jQuery -->
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body class="theme-lightblue">
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar-overlay"></div>
+  <!-- Views-->
+  <div class="views navbar-through toolbar-through">
+
+
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view main-view">
+
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="nav-left">
+            <a href="contacts.html" class="back_to_contacts"><i class="fa fa-chevron-circle-left"></i></a>
+          </div>
+          <div class="nav-center">
+            <img src="img/logo-white.png" />
+          </div>
+          <div class="nav-right"></div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <!-- /End of Top Navbar--> 
+
+      <div class="loader">
+        <span class="preloader"></span>
+      </div>
+
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages ">
+
+        <!-- Page, data-page contains page name -->
+        <div class="page" data-page="index">
+        </div>
+      </div>
+
+      <!-- Bottom Toolbar-->
+      <div class="toolbar tabbar">
+        <div class="toolbar-inner">
+          <a href="home.html" class="tab-link active home-button">
+              <i class="fa fa-users"></i>
+          </a>
+          <a href="contacts.html" class="tab-link contacts-button">
+              <i class="fa fa-comments-o"></i>
+          </a>
+          <a href="tags.html" class="tab-link tags-button">
+              <i class="fa fa-bullseye"></i>
+          </a>
+          <a href="settings.html" class="tab-link settings-button">
+              <i class="fa fa-sliders"></i>
+          </a>
+        </div>
+      </div>          
+      <!-- /End of Bottom Toolbar-->
+
+    </div>
+   
+  </div>
+
+
+  <!--  Cordova.js will be add when building -->
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- Path to Framework7 Library JS-->
+  <script type="text/javascript" src="js/libs/framework7.js"></script>
+  <!-- Path to other libraries-->
+  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <script type="text/javascript" src="js/libs/mustache.js"></script>
+  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+
+
+  <!-- Path to your app js-->
+  <script type="text/javascript" src="js/aftrwork.js"></script>
+
+  <!-- Paths to custom js-->
+  <script type="text/javascript" src="js/app/linkedin.js"></script>
+  <script type="text/javascript" src="js/app/database.js"></script>
+  <script type="text/javascript" src="js/app/home.js"></script>
+  <script type="text/javascript" src="js/app/swipe.js"></script>
+  <script type="text/javascript" src="js/app/chat.js"></script>
+  <script type="text/javascript" src="js/app/notifications.js"></script>
+  <script type="text/javascript" src="js/app/settings.js"></script>
+  <script type="text/javascript" src="js/app/tags.js"></script>
+
+</body>
+</html>

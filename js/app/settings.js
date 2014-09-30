@@ -2,28 +2,34 @@ function initSettings() {
   $('#distance').on('change mousemove',function() {
     $('.distance').text($(this).val()+'km');
   });
-  $('#distance').on('change',function() {
-    database.sql_query("DELETE FROM OPTIONS WHERE key = 'distance'", function() {});
-    database.sql_query("INSERT INTO OPTIONS (key, value) VALUES ('distance', '" + $(this).val() + "')", function() {});     
+
+  $('#save-settings').bind('click', function() {
+    database.save_option('distance',$('#distance').val());
+    database.save_option('selected_tag', $('#tag').val().toLowerCase());
+    options['distance'] = $('#distance').val();
+    options['selected_tag'] = $('#tag').val();
   });
-  $('#disconnect-button').bind('click', function() {
+  
+  $('#disconnect').bind('click', function() {
     database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
     mainView.loadPage('login.html');
   });
 
-  $('#send-feedback').bind('click', sendFeedback);
-}
+  $('#tag').bind('keyup', function() {
+    $(this).val($(this).val().toLowerCase());
+  });
 
-function loadSettings() {
   setDistance();
+  setTag();
 }
 
 function setDistance() {
-  database.sql_query("SELECT value FROM OPTIONS WHERE key = 'distance'", function(tx, res) {
-    options['distance'] = res.rows.item(0).value;
-    $('#distance').val(options['distance']);
-    $('.distance').text(options['distance']+'km');
-  }, function() {});
+  $('#distance').val(options['distance']);
+  $('.distance').text(options['distance']+'km');
+}
+
+function setTag() {
+  $('#tag').val(options['selected_tag']);
 }
 
 function sendFeedback() {
@@ -37,4 +43,9 @@ function sendFeedback() {
       
     }
   );
+}
+
+function loadProfileHeading() {
+  $('#profile-pic').attr('src',options['user_picture_url']);
+  $('#profile-name').html(options['user_name']);
 }

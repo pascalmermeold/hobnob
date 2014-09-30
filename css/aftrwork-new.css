@@ -1,6 +1,23 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/raleway-regular-webfont.eot');
+    src: url('../fonts/raleway-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-regular-webfont.woff2') format('woff2'),
+         url('../fonts/raleway-regular-webfont.woff') format('woff'),
+         url('../fonts/raleway-regular-webfont.ttf') format('truetype'),
+         url('../fonts/raleway-regular-webfont.svg#ralewayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
 	font-family: "Raleway";
 	}
+
+.popup {
+	background: #eee;
+}
 
 .logo {
 	max-width: 80%;
@@ -22,42 +39,81 @@ body {
 }
 
 /* Vertically center content */
-.swipes, .popup-match {
-	/* Safari, Opera, and Chrome */
-	display:-webkit-box !important;
-	-webkit-box-pack:center;
-	-webkit-box-align:center;
+.popup-match, .loader, .swipe {
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
 
-	/* W3C */
-	display:box;
-	box-pack:center;
-	box-align:center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    /*old syntax*/
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-ms-box-orient: vertical;
+	/*new syntax*/
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
 
 	width: 100%;
 	min-height: 100%;
 }
 
 .swipes {
-	background: url('../img/congruent_outline.png') repeat;
+	background: url('../img/furley.png') repeat;
 }
 
-.swipe .content-block.inset {
-	margin: 10px;
+.swipe, .profile {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	background: url('../img/furley.png') repeat;
+}
+.swipe {
+	padding-top: 26px;
 }
 
-.swipe .heading.content-block-inner {
+.content-block.inset {
+	background-color: #fff;
+}
+
+.swipe .list-block .item-title, .swipe .list-block .item-subtitle, .profile .list-block .item-title, .profile .list-block .item-subtitle {
+	white-space: normal;
+} 
+
+.swipe .heading.content-block-inner, .profile .heading.content-block-inner  {
 	text-align: center;
-	padding: 10px 15px;
+	padding: 15px 15px 5px 15px;
 	border-radius: 5px 5px 0 0;
 }
 
 .thumbnail {
 	border-radius: 200px;
 	border: solid 6px #5ac8fa;
-	margin: 15px 0 0 0;
+	margin: 0;
+	width: 80px;
+	height: 80px;
+	background: url('../img/pic-placeholder.png');
 }
 
-.swipe h1 {
+.swipe h1, .profile h1 {
 	font-weight: normal;
 	font-size: 20px;
 	text-transform: uppercase;
@@ -65,55 +121,74 @@ body {
 	margin: 5px;
 }
 
-.swipe h2 {
+.swipe h2, .profile h2 {
 	font-weight: normal;
 	font-size: 14px;
 	color: #5ac8fa;
 	margin: 5px;
 }
 
-.swipe h3 {
+.swipe h3, .profile h3 {
 	font-weight: normal;
 	font-size: 12px;
 	color: #888;
 	margin: 10px 0 5px 0;
 }
 
-.swipe h3 span {
+.swipe h3 span, .profile h3 span {
 	margin: 0 10px;
 }
 
-.swipe .footer.content-block-inner {
+.swipe .footer.content-block-inner, .profile .footer.content-block-inner {
 	text-align: center;
 	background: #5ac8fa;
 	border-radius: 0 0 5px 5px;
 	color: #fff;
 }
 
-.swipe h4 {
+.swipe h4, .profile h4  {
 	margin: 0 0 10px 0;
 	font-weight: normal;
 }
 
-.swipe .common a {
+.swipe .common a, .profile .common a {
 	color: #fff;
 	margin: 0 10px;
 	display: inline-block;
 }
 
-.swipe .common a.active {
+.swipe .common a.active, .profile .common a.active {
 	color: #5ac8fa;
 	background: #fff;
 	border-radius: 3px;
 	padding: 2px 5px;
 }
 
-.swipe .choice {
-	text-align: center;
-	padding: 20px;
+.swipe .slider-container, .profile .slider-container {
+	width: 100%;
+	height: 310px;
 }
 
-.swipe .choice .nope, .swipe .choice .interesting {
+.slider-slide .content-block.inset.scroll {
+	overflow: scroll;
+	height: 100%;
+}
+
+.slider-slide .content-block-title, .profile .content-block-title {
+	font-size: 24px;
+	color: #fff;
+	background: #5ac8fa;
+	padding: 10px;
+	border-radius: 7px;
+}
+
+.swipe .choice {
+	text-align: center;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.swipe .choice .nope, .swipe .choice .yes {
 	width: 70px;
 	height: 70px;
 	border-radius: 70px;
@@ -125,6 +200,10 @@ body {
 	font-weight: normal;
 	-webkit-box-shadow: inset 1px 1px 1px 0px #ccc;
 	box-shadow: inset 1px 1px 1px 0px #ccc;
+}
+
+.swipe .choice a:active {
+	background: #eee;
 }
 
 .swipe .choice .info {
@@ -147,20 +226,16 @@ body {
 	color: #ff2d55;
 }
 
-.swipe .choice .nope a {
-
-}
-
-.swipe .choice .interesting {
+.swipe .choice .yes {
 	margin-left: -10px;
 	color: #4cd964;
 }
 
-.swipe .show-yes, .swipe .show-nope {
+.show-yes, .show-nope {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 1000;
+	z-index: 6000;
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -168,16 +243,20 @@ body {
 	display: block;
 }
 
-.swipe .show-yes {
+.show-yes {
 	background: url('../img/yes.png') center center no-repeat;
+	display: none;
 }
 
-.swipe .show-nope {
+.show-nope {
 	background: url('../img/nope.png') center center no-repeat;
+	display: none;
 }
 
 .no-more-results {
 	text-align: center;
+	position: relative;
+	z-index: 0;
 }
 
 .spinner {
@@ -210,52 +289,89 @@ body {
   }
 }
 
-.swipe .details {
-	width: 100%;
-	display: none;
-}
-
-.swipe .details-buttons {
-	text-align: center;
-}
-
-.swipe .details-buttons a {
-	width: 50px;
-	height: 50px;
-	border-radius: 50px;
-	border: solid 2px #5ac8fa;
+.loader {
 	background: #fff;
-	display: inline-block;
-	margin: 15px;
-	line-height: 50px;
-	font-size: 24px;
+	z-index: 10000;
+	position: relative;
 }
 
-.swipe .list-block {
+.loader span {
+	text-transform: uppercase;
+	color: #fff;
+	background: #888;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.spinner2 {
+  width: 50px;
+  height: 50px;
+
+  position: relative;
+  margin: 20px;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+.swipe .list-block, .profile .list-block {
 	width: 100%;
 	margin: 0;
 }
 
-.swipe .list-block ul {
+.swipe .list-block ul, .profile .list-block ul {
 	border: none;
 	font-family: "Raleway";
 	font-weight: 400;
 	font-size: 14px;
 }
 
-.swipe .list-block .item-content {
+.swipe .list-block .item-content, .profile .list-block .item-content {
 	border-bottom: solid 1px #ddd;
+	padding-left: 0;
 }
 
-.swipe .list-block .item-content:last-child {
+.swipe .list-block .item-content:last-child, .profile .list-block .item-content:last-child {
 	border-bottom: none;
 }
 
-.swipe .list-block .item-inner {
+.swipe .list-block .item-inner, .profile .list-block .item-inner {
 	border: none;
+	padding-right: 0;
 }
 
-.swipe .list-block .item-title {
+.swipe .list-block .item-title, .profile .list-block .item-title {
 	font-size: 14px;
 	color: #888;
 }
@@ -264,6 +380,8 @@ body {
 	text-align: center;
 	background: #5ac8fa;
 	padding: 20px 0;
+	color: #fff;
+	font-size: 14px;
 }
 
 .settings .heading img {
@@ -312,7 +430,6 @@ body {
 }
 
 .popup-match .buttons a {
-	width: 70%;
 	margin: 10px auto;
 }
 
@@ -321,11 +438,30 @@ body {
 	color: #bbb;
 }
 
-.popup {
-	background: #eee;
-}
-
 .small-margins {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.login {
+	text-align: center;
+}
+
+.contacts-block .thumbnail {
+	width: 64px;
+	height: 64px;
+	background-size: 64px 64px;
+}
+
+.contacts-block li {
+	border-bottom: solid 1px #ddd;
+}
+
+.contacts .item-title {
+	font-size: 20px;
+}
+
+.profile {
+	padding-top: 46px;
+	overflow: scroll;
 }

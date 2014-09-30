@@ -33,6 +33,11 @@ var database = {
 		});
 	},
 
+	save_option: function(option_name, value) {
+		database.sql_query("DELETE FROM OPTIONS WHERE key = '" + option_name + "'", function() {});
+		database.sql_query("INSERT INTO OPTIONS (key, value) VALUES ('" + option_name + "', '" + value + "')", function() {});	
+	},
+
 	error_callback: function(e) {
 		alert(e);
 	}

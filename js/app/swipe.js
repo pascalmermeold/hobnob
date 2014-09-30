@@ -12,7 +12,8 @@ function add_swipe(object, mark_callback) {
 	$('.swipes').append(rendered);
 	new_swipe = $('.swipes #' + object.id);
 	new_swipe.css('zIndex',lowest_index + 100);
-	new_swipe.swipe_profile(mark_callback);
+	new_swipe.bind('click', switchDetails);
+	//new_swipe.swipe_profile(mark_callback);
 }
 
 (function($)
