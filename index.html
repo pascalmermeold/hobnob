@@ -44,15 +44,13 @@
         <!-- Page, data-page contains page name -->
         <div class="page" data-page='random'>
 
-          <div class="loader">
-            <div class="spinner2">
-              <div class="double-bounce1"></div>
-              <div class="double-bounce2"></div>
-            </div>
-            <span>Initialisation</span>
-          </div>
+          <div class="page-content pull-to-refresh-content">
 
-          <div class="page-content">
+            <!-- Default pull to refresh layer-->
+            <div class="pull-to-refresh-layer">
+              <div class="preloader"></div>
+              <div class="pull-to-refresh-arrow"></div>
+            </div>
 
             <div class='swipes'>
 
@@ -63,16 +61,18 @@
                   </div>
                   <div class="content-block inset">
                     <div class='content-block-inner'>
-                      <p>Aucune nouvelle personne à proximité ou suivant votre tag.</p>
-                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts !</a>
+                      <p>Aucune nouvelle personne à proximité.</p>
+                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts</a><br/>
+                      <a href="settings.html" class="button button-big"><i class='fa fa-coffee'></i> Explorez les évènements</a>
                     </div>
                   </div>
+                  <a href="#" class="button button-big active refresh-random"><i class='fa fa-refresh'></i></a>
                 </div>
               </div>
 
               <script id="swipe_template" type="x-tmpl-mustache">
 
-                <div id="{{id}}" class="swipe">
+                <div id="s_{{id}}" class="swipe">
                   <div class='slider-container'>
                     <div class="slider-wrapper">
 

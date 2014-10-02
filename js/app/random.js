@@ -1,15 +1,12 @@
 function initRandom() {
-  if(just_logged_in) {
-    just_logged_in = false;
-  }
   setIndexNavbar();
   getRandom();
+  $('.refresh-random').bind('click',getRandom);
 }
 
 function getRandom() {
   $.get(server_url + "/random?access_token="+access_token+"&tag="+options.tag+"&latitude="+options.latitude+"&longitude="+options.longitude+"&accuracy="+options.accuracy+"&distance="+options.distance).done(function(res) {
     res.forEach(add_profile);
-    $('.loader').hide();
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
   });
@@ -18,6 +15,8 @@ function getRandom() {
 function add_profile(profile, index, array) {
   var rendered = Mustache.render($('#swipe_template').html(), profile);
   var highest_index = 0;
+
+  //Get highest index
   $('.swipe').each(function() {
     var current_index = parseInt($(this).css("zIndex"), 10);
       if(current_index > highest_index) {
@@ -26,12 +25,12 @@ function add_profile(profile, index, array) {
   });
 
   $('.swipes').append(rendered);
-  new_swipe = $('.swipes #' + profile.id);
+  new_swipe = $('.swipes #s_' + profile.id);
   new_swipe.css('zIndex',highest_index + 1);
   new_swipe.find('.yes').bind('click', {id: profile.id}, yes);
   new_swipe.find('.nope').bind('click', {id: profile.id}, nope);
 
-  slider = myApp.slider('.swipes #' + profile.id + ' .slider-container');
+  slider = myApp.slider('.swipes #s_' + profile.id + ' .slider-container');
   new_swipe.find('.info').bind('click', {slider: slider}, nextSlide);
 }
 
@@ -40,11 +39,11 @@ function yes(e) {
   $('.show-yes').fadeIn(100);
   setInterval(function() {
     $('.show-yes').fadeOut(100);
-    $('#' + e.data.id).remove();
+    $('#s_' + e.data.id).remove();
   }, 500);
   
 
-  if($('.swipes .swipe').size() < 2) {
+  if($('.swipes .swipe').length <= 3) {
     getRandom();
   }
 
@@ -56,10 +55,10 @@ function nope(e) {
   $('.show-nope').fadeIn(100);
   setInterval(function() {
     $('.show-nope').fadeOut(100);
-    $('#' + e.data.id).remove();
+    $('#s_' + e.data.id).remove();
   }, 500);
 
-  if($('.swipes .swipe').size() < 2) {
+  if($('.swipes .swipe').length <= 3) {
     getRandom();
   }
 
