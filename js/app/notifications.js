@@ -86,18 +86,18 @@ function onNotification(e) {
 // iOS
 function onNotificationAPN (event) {
   notification = {};
-  notification['foreground'] = parseInt(event.foreground);
-  notification['type'] = event.t;
+  notification.foreground = parseInt(event.foreground);
+  notification.type = event.t;
 
   if(event.t == 'message') {
-    notification['title'] = event.alert;
-    notification['sender_id'] = event.s;
+    notification.title = event.alert;
+    notification.sender_id = event.s;
   }
 
   if(event.t == 'match') {
-    notification['name'] = event.n;
-    notification['picture_url'] = event.p;
-    notification['user_id'] = event.u;
+    notification.name = event.n;
+    notification.picture_url = event.p;
+    notification.user_id = event.u;
   }
 
   doNotification(notification);
@@ -151,16 +151,16 @@ function onNotificationAPN (event) {
 // }
 
 function doNotification(notification) {
-  if ((!notification['foreground']) && (notification['type'] = 'message')) {
-    mainView.loadPage('chat.html?linkedin_id=' + notification['sender_id']);
+  if ((!notification.foreground) && (notification.type = 'message')) {
+    mainView.loadPage('chat.html?linkedin_id=' + notification.sender_id);
   }
 
-  if (notification['type'] == 'match') {
-    $('.popup-match').find('.first_name').text(notification['name']);
-    $('.popup-match').find('.other_user_pic').attr('src', notification['picture_url']);
-    $('.popup-match').find('.current_user_pic').attr('src', options['user_picture_url']);
+  if (notification.type == 'match') {
+    $('.popup-match').find('.first_name').text(notification.name);
+    $('.popup-match').find('.other_user_pic').attr('src', notification.picture_url);
+    $('.popup-match').find('.current_user_pic').attr('src', options.user_picture_url);
 
-    $('.popup-match').find('.go-to-chat').bind('click', {user_id: notification['user_id']}, function(e) {
+    $('.popup-match').find('.go-to-chat').bind('click', {user_id: notification.user_id}, function(e) {
       myApp.closeModal('.popup-match');
       mainView.loadPage('chat.html?linkedin_id=' + e.data.user_id);
     });
@@ -170,18 +170,18 @@ function doNotification(notification) {
     });
   }
 
-  if (notification['type'] == 'message') {
+  if (notification.type == 'message') {
     if(mainView.activePage.name == 'chat') {
-      loadLastReceivedMessage(notification['sender_id']);
+      loadLastReceivedMessage(notification.sender_id);
     } else {
       myApp.addNotification({
         title: 'HobNob',
-        message: notification['title'],
+        message: notification.title,
         hold: 8000,
         closeOnClick: true,
         closeIcon: false,
         onClick: function(e) {
-          mainView.loadPage('chat.html?linkedin_id=' + notification['sender_id']);
+          mainView.loadPage('chat.html?linkedin_id=' + notification.sender_id);
         }
       });
     }

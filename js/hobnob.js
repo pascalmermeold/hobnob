@@ -18,6 +18,7 @@ var mainView = myApp.addView('.main-view', {
 
 // Device ready handler
 $(document).on('deviceready', function() {
+	geoLocate();
 	database.init();
 	checkAccessToken();
 	checkOptions();
@@ -27,27 +28,35 @@ $(document).on('deviceready', function() {
 // Page init handlers
 $$(document).on('pageInit', function (e) {
 
-  var page = e.detail.page;
+	page = e.detail.page;
 
-  if (page.name == 'login') {
-    initLoginPage();
-  }
-  if (page.name == 'home') {
-    initHomePage();
-  }
-  if (page.name == 'contacts') {
-    loadContacts();
-  }
-  if (page.name == 'chat') {
-    initChat(page.query['linkedin_id']);
-  }
-  if (page.name == 'profile') {
-    initProfile();
-  }
-  if (page.name == "settings") {
-	initSettings();
-	loadProfileHeading();
-  }
+  	switch(page.name) {
+	  	case 'login':
+	  		initLoginPage();
+	  		break;
+	  	case 'random':
+	  		initRandom();
+	  		break;
+	  	case 'home':
+	  		initHome();
+	  		break;
+	  	case 'contacts':
+	  		loadContacts();
+	  		break;
+	  	case 'chat':
+	  		initChat(page.query.linkedin_id);
+	  		break;
+	  	case 'profile':
+	  		initProfile();
+	  		break;
+	  	case 'settings':
+	  		initSettings();
+	  		break;
+	  	case 'external':
+	  		initExternal(page.query.pagename, page.query.pageurl);
+	  		break;
+	}
+
 });
 
 function checkAccessToken() {
@@ -56,16 +65,19 @@ function checkAccessToken() {
 
 function checkOptions() {
 	database.fetch_option('distance', 10);
-	database.fetch_option('selected_tag', '');
+	database.fetch_option('tag', '');
 }
 
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
 	$.get(server_url + "/hello?access_token=" + access_token).done(function(res) {
-		options['user_picture_url'] = res['user']['picture_url'];
-		options['user_name'] = res['user']['first_name'] + " " + res['user']['last_name'];
+		options.hello = 'ok';
+		options.name = res.user.first_name + " " + res.user.last_name;
+		options.picture_url = res.user.picture_url;
 		registerPushNotification();
-		initHomePage();
+		if(options.longitude) {
+			initRandom();
+		}
 	}).fail(function(res, textStatus, errorThrown) {
 		mainView.loadPage('login.html');
 	});

@@ -48,11 +48,11 @@ function sendMessage(e) {
 function loadChatHistory(linkedin_id) {
   lastMessageTimestamp = 0;
   $.get(server_url + "/messages?access_token="+access_token+"&linkedin_id="+linkedin_id).done(function(res) {
-    res['messages'].forEach(loadChatMessage, res);
-    profile = res['contact_user'];
-    current_user_first_name = res['current_user']['first_name'];
-    current_user_picture_url = res['current_user']['picture_url'];
-    contact_linkedin_id = res['contact_user']['linkedin_id'];
+    res.messages.forEach(loadChatMessage, res);
+    profile = res.contact_user;
+    current_user_first_name = res.current_user.first_name;
+    current_user_picture_url = res.current_user.picture_url;
+    contact_linkedin_id = res.contact_user.linkedin_id;
     stopPreload('chat');
     myApp.scrollMessagesContainer('.messages-content');
     $('.messages-content').show();
@@ -64,46 +64,46 @@ function loadChatHistory(linkedin_id) {
 
 function loadLastReceivedMessage(linkedin_id) {
   $.get(server_url + "/last_message?access_token="+access_token+"&linkedin_id="+linkedin_id).done(function(res) {
-    message = res['message'];
-    d = new Date(Number(message['time'])*1000);
+    message = res.message;
+    d = new Date(Number(message.time)*1000);
     myApp.addMessage({
-      text: message['content'],
+      text: message.content,
       type: 'received',
-      avatar: profile['picture_url'],
-      name: profile['first_name'],
-      day: (Number(message['time']) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
-      time: (Number(message['time']) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
+      avatar: profile.picture_url,
+      name: profile.first_name,
+      day: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
+      time: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
     });
-    lastMessageTimestamp = Number(message['time']);
+    lastMessageTimestamp = Number(message.time);
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
   });
 }
 
 function loadChatMessage(message) {
-  if (message['sender_id']['$oid'] == this['current_user']['_id']['$oid']) {
+  if (message.sender_id['$oid'] == this.current_user['_id']['$oid']) {
     messageType = 'sent';
-    avatar = this['current_user']['picture_url'];
-    name = this['current_user']['first_name'];
+    avatar = this.current_user.picture_url;
+    name = this.current_user.first_name;
   } else {
-    messageType = 'received'
-    avatar = this['contact_user']['picture_url'];
-    name = this['contact_user']['first_name'];
+    messageType = 'received';
+    avatar = this.contact_user.picture_url;
+    name = this.contact_user.first_name;
   }
-  d = new Date(Number(message['time'])*1000);
+  d = new Date(Number(message.time)*1000);
   myApp.addMessage({
     // Message text
-    text: message['content'],
+    text: message.content,
     // Random message type
     type: messageType,
     // Avatar and name:
     avatar: avatar,
     name: name,
     // Day
-    day: (Number(message['time']) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
-    time: (Number(message['time']) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
+    day: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
+    time: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
   });
-  lastMessageTimestamp = Number(message['time']);
+  lastMessageTimestamp = Number(message.time);
 }
 
 function loadContacts() {
@@ -112,7 +112,7 @@ function loadContacts() {
     $('.contacts').empty();
     res.forEach(loadContact);
     stopPreload('contacts');
-    if($('.contacts').children().size() == 0) {
+    if($('.contacts').children().size() === 0) {
       $('.contacts').append("<div class='content-block no-contacts'>Vous n'avez aucune connexion pour le moment</div>");
     }
   }).fail(function(res) {
@@ -126,7 +126,7 @@ function loadContact(object, index, array) {
 }
 
 function initProfile() {
-  $('.back-to-chat').attr('href','chat.html?linkedin_id=' + profile['linkedin_id']);
+  $('.back-to-chat').attr('href','chat.html?linkedin_id=' + profile.linkedin_id);
   startPreload('profile', 'chargement du profil');
   var rendered = Mustache.render($('#profile_template').html(), profile);
   $('.profile_wrapper .profile').remove();

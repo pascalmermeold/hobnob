@@ -21,9 +21,49 @@
       <span id='profile-name'></span>
     </div>
 
-    <div class="list-block media-list inset">
+    <div id='event-selector'>
+      <div class='content-block-title'>évènements autour de vous</div>
+      <div class="list-block media-list">
+        <ul>
+          <script id='event-items'>
+            {{#event_items}}
+            <li>
+              <a href="#" class="item-link item-content" data-tag='{{tag}}'>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{name}}</div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            {{/event_items}}
+          </script>
+        </ul>
+      </div>
+    </div>
+
+    <div class='content-block-title'>Distance max.</div>
+    <div class="list-block">
       <ul>
-        <li>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label"><i class='fa fa-globe'></i> <span class="distance">10km</span></div>
+              <div class="item-input">
+                <div class="range-slider">
+                  <input id='distance' type="range" min="1" max="50" value="10" step="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class='content-block-title'>HobNob Settings</div>
+    <div class="list-block media-list">
+      <ul>
+        <!-- <li>
           <a href="#" class="item-link item-content open-popup" data-popup='.popup-settings'>
             <div class="item-media"><i class="fa fa-globe"></i></div>
             <div class="item-inner">
@@ -33,7 +73,7 @@
               <div class="item-subtitle">Modifiez vos critères de recherche</div>
             </div>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="#" class="item-link item-content open-popup" data-popup='.popup-contact'>
             <div class="item-media"><i class="fa fa-envelope"></i></div>

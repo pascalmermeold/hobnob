@@ -1,0 +1,60 @@
+
+<!-- Top Navbar-->
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left sliding">
+          <a href="settings.html" class="link"><i class='fa fa-cog'></i></a>
+        </div>
+        <div class="center"><a href="#" class="link active"><i class='fa fa-home'></i></a></div>
+        <div class="right sliding">
+            <a href="index.html" class="link"><i class='fa fa-users'></i></a>
+        </div>
+    </div>
+</div>
+<!-- /End of Top Navbar--> 
+
+<!-- Page, data-page contains page name -->
+<div class="page home" data-page='home'>
+
+  <div class="page-content">
+
+    <div class='heading'>
+      <img src='img/logo-blue.png' class='event-logo'/><br/>
+    </div>
+
+    <div id='custom-event-menu' class="list-block media-list">
+      <ul>
+        <script id='menu-items'>
+          {{#menu_items}}
+           <li>
+            <a href="external.html?pagename={{title}}&pageurl={{url}}" class="item-link item-content menu-item">
+              <div class="item-media"><i class="fa fa-{{icon}}"></i></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">{{title}}</div>
+                </div>
+                <div class="item-subtitle">{{subtitle}}</div>
+              </div>
+            </a>
+          </li>
+          {{/menu_items}}
+        </script>
+        
+        <li id='quit-event'>
+          <a href="#" class="item-link item-content" id='quit-event'>
+            <div class="item-media"><i class="fa fa-sign-out"></i></div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">Quitter cet évènement</div>
+              </div>
+              <div class="item-subtitle">Revenir en mode classique</div>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+</div>

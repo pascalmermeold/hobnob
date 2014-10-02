@@ -1,35 +1,59 @@
 function initSettings() {
+  startPreload('settings', 'chargement');
+
+  setSettingsNavbar();
+  setSettingsHeading();
+
   $('#distance').on('change mousemove',function() {
-    $('.distance').text($(this).val()+'km');
+    d = $(this).val();
+    $('.distance').text(d +'km');
+    database.save_option('distance', d);
+    options.distance = d;
   });
 
-  $('#save-settings').bind('click', function() {
-    database.save_option('distance',$('#distance').val());
-    database.save_option('selected_tag', $('#tag').val().toLowerCase());
-    options['distance'] = $('#distance').val();
-    options['selected_tag'] = $('#tag').val();
-  });
+  loadEventSelector();
   
   $('#disconnect').bind('click', function() {
     database.sql_query("DELETE FROM OPTIONS WHERE key = 'access_token'", function() {});
     mainView.loadPage('login.html');
   });
 
-  $('#tag').bind('keyup', function() {
-    $(this).val($(this).val().toLowerCase());
-  });
-
   setDistance();
-  setTag();
+}
+
+function loadEventSelector() {
+  $.get(server_url + "/close_events?access_token="+access_token+"&tag="+options.tag).done(function(res) {
+    var event_items = res.event_items;
+
+    if(event_items.length === 0) {
+      $('#event-selector').hide();
+    } else {
+      var rendered = Mustache.render($('#event-items').html(), res);
+      $('#event-selector li').remove();
+      $('#event-selector ul').append(rendered);
+
+      $('#event-selector a').bind('click', function() {
+        var tag = $(this).data('tag');
+        database.save_option('tag', tag);
+        options.tag = tag;
+        mainView.loadPage('home.html');
+      });
+
+      $('#event-selector').show();
+      $('#custom-event-menu').hide();
+    }
+    stopPreload('settings');
+  }).fail(function(res) {
+    myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
+    $('#event-selector').hide();
+    $('#custom-event-menu').hide();
+    stopPreload('settings');
+  });
 }
 
 function setDistance() {
-  $('#distance').val(options['distance']);
-  $('.distance').text(options['distance']+'km');
-}
-
-function setTag() {
-  $('#tag').val(options['selected_tag']);
+  $('#distance').val(options.distance);
+  $('.distance').text(options.distance+'km');
 }
 
 function sendFeedback() {
@@ -45,7 +69,19 @@ function sendFeedback() {
   );
 }
 
-function loadProfileHeading() {
-  $('#profile-pic').attr('src',options['user_picture_url']);
-  $('#profile-name').html(options['user_name']);
+function setSettingsHeading() {
+  $('#profile-pic').attr('src',options.picture_url);
+  $('#profile-name').text(options.name)
+}
+
+function setSettingsNavbar() {
+  if(options.tag) {
+    $('.navbar .right a').attr('href','home.html');
+    $('.navbar .right a i').removeClass('fa-users');
+    $('.navbar .right a i').addClass('fa-home');
+  } else {
+    $('.navbar .right a').attr('href','index.html');
+    $('.navbar .right a i').removeClass('fa-home');
+    $('.navbar .right a i').addClass('fa-users');
+  }
 }
