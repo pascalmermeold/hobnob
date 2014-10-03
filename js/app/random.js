@@ -1,11 +1,18 @@
 function initRandom() {
   setIndexNavbar();
-  geoLocate();
   getRandom();
   $('.refresh-random').bind('click',getRandom);
 }
 
 function getRandom() {
+  geoLocate(randomRequest);
+}
+
+function randomRequest(position) {
+  options.latitude = position.coords.latitude;
+  options.longitude = position.coords.longitude;
+  options.accuracy = position.coords.accuracy;
+  
   $.get(server_url + "/random?access_token="+access_token+"&tag="+options.tag+"&latitude="+options.latitude+"&longitude="+options.longitude+"&accuracy="+options.accuracy+"&distance="+options.distance).done(function(res) {
     res.forEach(add_profile);
   }).fail(function(res) {

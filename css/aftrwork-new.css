@@ -20,8 +20,7 @@ body {
 }
 
 .logo {
-	max-width: 80%;
-	margin: auto;
+	margin: 7px auto 0 auto;
 }
 
 .navbar i {

@@ -18,7 +18,6 @@ var mainView = myApp.addView('.main-view', {
 
 // Device ready handler
 $(document).on('deviceready', function() {
-	geoLocate();
 	database.init();
 	checkAccessToken();
 	checkOptions();
@@ -71,13 +70,10 @@ function checkOptions() {
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
 	$.get(server_url + "/hello?access_token=" + access_token).done(function(res) {
-		options.hello = 'ok';
 		options.name = res.user.first_name + " " + res.user.last_name;
 		options.picture_url = res.user.picture_url;
 		registerPushNotification();
-		if(options.longitude) {
-			initRandom();
-		}
+		initRandom();
 	}).fail(function(res, textStatus, errorThrown) {
 		mainView.loadPage('login.html');
 	});
