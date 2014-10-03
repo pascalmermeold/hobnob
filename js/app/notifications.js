@@ -117,8 +117,17 @@ function doNotification(notification) {
 
   if (notification.type == 'match') {
     $('.popup-match').find('.first_name').text(notification.name);
-    $('.popup-match').find('.other_user_pic').attr('src', notification.picture_url);
-    $('.popup-match').find('.current_user_pic').attr('src', options.picture_url);
+    if(notification.picture_url) {
+      $('.popup-match').find('.other_user_pic').css('background-image', 'url(' + notification.picture_url + ')');
+    } else {
+      $('.popup-match').find('.other_user_pic').css('background-image', 'url(img/pic-placeholder.png)');
+    }
+    if(options.picture_url) {
+      $('.popup-match').find('.current_user_pic').css('background-image', 'url(' + options.picture_url + ')');
+    } else {
+      $('.popup-match').find('.current_user_pic').css('background-image', 'url(img/pic-placeholder.png)');
+    }
+    
 
     $('.popup-match').find('.go-to-chat').bind('click', {user_id: notification.user_id}, function(e) {
       myApp.closeModal('.popup-match');

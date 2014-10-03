@@ -413,6 +413,7 @@ body {
 
 .popup-match .thumbnail {
 	margin: 10px;
+	display: inline-block;
 }
 
 .popup-match .buttons a {
