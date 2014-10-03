@@ -1,5 +1,6 @@
 function initRandom() {
   setIndexNavbar();
+  geoLocate();
   getRandom();
   $('.refresh-random').bind('click',getRandom);
 }

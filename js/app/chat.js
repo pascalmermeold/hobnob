@@ -62,19 +62,20 @@ function loadChatHistory(linkedin_id) {
   });
 }
 
-function loadLastReceivedMessage(linkedin_id) {
-  $.get(server_url + "/last_message?access_token="+access_token+"&linkedin_id="+linkedin_id).done(function(res) {
-    message = res.message;
-    d = new Date(Number(message.time)*1000);
-    myApp.addMessage({
-      text: message.content,
-      type: 'received',
-      avatar: profile.picture_url,
-      name: profile.first_name,
-      day: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
-      time: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
+function loadLastReceivedMessages(linkedin_id) {
+  $.get(server_url + "/last_messages?access_token="+access_token+"&linkedin_id="+linkedin_id).done(function(res) {
+    res.messages.forEach(function(message) {
+      d = new Date(Number(message.time)*1000);
+      myApp.addMessage({
+        text: message.content,
+        type: 'received',
+        avatar: profile.picture_url,
+        name: profile.first_name,
+        day: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() : false,
+        time: (Number(message.time) - lastMessageTimestamp) > 300 ? d.getHours() + ':' + d.getMinutes() : false
+      });
+      lastMessageTimestamp = Number(message.time);
     });
-    lastMessageTimestamp = Number(message.time);
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
   });

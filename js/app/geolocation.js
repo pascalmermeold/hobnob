@@ -6,9 +6,9 @@ function geolocationSuccess(position) {
 	options.latitude = position.coords.latitude;
 	options.longitude = position.coords.longitude;
 	options.accuracy = position.coords.accuracy;
-	if(options.hello) {
-		initRandom();
-	}
+	// if(options.hello) {
+	// 	initRandom();
+	// }
 }
 
 function geolocationError(error) {

@@ -6,7 +6,7 @@ function registerPushNotification() {
       errorHandler,
       {
           "senderID":"52505588173",
-          "ecb":"onNotification"
+          "ecb":"onNotificationGCM"
       });
   } else {
       pushNotification.register(
@@ -40,46 +40,49 @@ function errorHandler (error) {
 }
 
 // Android and Amazon Fire OS
-function onNotification(e) {
-  alert('notif');
-  alert(e.event);
-  alert(e.regid);
+function onNotificationGCM(e) {
+
   switch( e.event )
   {
-  case 'registered':
-    if ( e.regid.length > 0 )
-    {
-      $.get(server_url + "/register_phone?access_token="+access_token+"&token="+e.regid+"&platform="+device.platform).done(function(res) {
-        return true;
-      }).fail(function(res) {
-        alert('error when registering phone');
-        return false;
-      });
-    }
-  break;
+    case 'registered':
+      if ( e.regid.length > 0 )
+      {
+        $.get(server_url + "/register_phone?access_token="+access_token+"&token="+e.regid+"&platform="+device.platform).done(function(res) {
+          return true;
+        }).fail(function(res) {
+          alert('error when registering phone');
+          return false;
+        });
+      }
+    break;
 
-  case 'message':
-    // if this flag is set, this notification happened while we were in the foreground.
-    // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-    if ( e.foreground )
-    {
+    case 'message':
 
-      //inAppNotification(event);
-    }
-    else
-    {  
-      // if (event.t == 'message') {
-      //   mainView.loadPage('chat.html?linkedin_id=' + event.s);
-      // }
-    }
-    // if ( event.badge ) {
-    //   pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-    // }    
-  break;
+      console.log(e);
 
-  case 'error':
-      alert('error = ' + e.msg);
-  break;
+      notification = {};
+      notification.foreground = e.foreground;
+      notification.type = e.payload.custom.t;
+
+      if(notification.type == 'message') {
+        notification.title = e.payload.title;
+        notification.sender_id = e.payload.custom.s;
+      }
+
+      if(notification.type == 'match') {
+        notification.name = e.payload.custom.n;
+        notification.picture_url = e.payload.custom.p;
+        notification.user_id = e.payload.custom.u;
+      }
+      console.log(notification);
+
+      doNotification(notification);
+
+    break;
+
+    case 'error':
+        alert('error = ' + e.msg);
+    break;
   }
 }
 
@@ -102,53 +105,10 @@ function onNotificationAPN (event) {
 
   doNotification(notification);
 
-  // if (parseInt(event.foreground)) {
-  //   inAppNotification(event);
-  // } else {
-  //   if (event.t == 'message') {
-  //     mainView.loadPage('chat.html?linkedin_id=' + event.s);
-  //   }
-  // }
-
   if ( event.badge ) {
     pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
   }
 }
-
-// function inAppNotification(event) {
-//   if (event.t == 'match') {
-//     $('.popup-match').find('.first_name').text(event.n);
-//     $('.popup-match').find('.other_user_pic').attr('src', event.p);
-//     $('.popup-match').find('.current_user_pic').attr('src', options['user_picture_url']);
-
-//     $('.popup-match').find('.go-to-chat').bind('click', {event: event}, function(e) {
-//       myApp.closeModal('.popup-match');
-//       mainView.loadPage('chat.html?linkedin_id=' + e.data.event.u);
-//     });
-    
-//     $('.popup-match').waitForImages(function() {
-//       myApp.popup('.popup-match');
-//     });
-//   }
-  
-//   if (event.t == 'message') {
-//     if(mainView.activePage.name == 'chat') {
-//       loadLastReceivedMessage(event.s);
-//     } else {
-//       myApp.addNotification({
-//         title: 'HobNob',
-//         message: event.alert,
-//         media: '<img width="44" height="44" style="border-radius:100%" src="' + event.media + '">',
-//         hold: 8000,
-//         closeOnClick: true,
-//         closeIcon: false,
-//         onClick: function(e) {
-//           mainView.loadPage(event.url);
-//         }
-//       });
-//     }
-//   }
-// }
 
 function doNotification(notification) {
   if ((!notification.foreground) && (notification.type = 'message')) {
@@ -158,7 +118,7 @@ function doNotification(notification) {
   if (notification.type == 'match') {
     $('.popup-match').find('.first_name').text(notification.name);
     $('.popup-match').find('.other_user_pic').attr('src', notification.picture_url);
-    $('.popup-match').find('.current_user_pic').attr('src', options.user_picture_url);
+    $('.popup-match').find('.current_user_pic').attr('src', options.picture_url);
 
     $('.popup-match').find('.go-to-chat').bind('click', {user_id: notification.user_id}, function(e) {
       myApp.closeModal('.popup-match');
@@ -172,7 +132,7 @@ function doNotification(notification) {
 
   if (notification.type == 'message') {
     if(mainView.activePage.name == 'chat') {
-      loadLastReceivedMessage(notification.sender_id);
+      loadLastReceivedMessages(notification.sender_id);
     } else {
       myApp.addNotification({
         title: 'HobNob',
