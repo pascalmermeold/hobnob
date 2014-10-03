@@ -12,7 +12,7 @@ function randomRequest(position) {
   options.latitude = position.coords.latitude;
   options.longitude = position.coords.longitude;
   options.accuracy = position.coords.accuracy;
-  
+
   $.get(server_url + "/random?access_token="+access_token+"&tag="+options.tag+"&latitude="+options.latitude+"&longitude="+options.longitude+"&accuracy="+options.accuracy+"&distance="+options.distance).done(function(res) {
     res.forEach(add_profile);
   }).fail(function(res) {
@@ -21,20 +21,24 @@ function randomRequest(position) {
 }
 
 function add_profile(profile, index, array) {
+  if(!profile.picture_url) {
+    profile.picture_url = 'img/pic-placeholder.png';
+  }
   var rendered = Mustache.render($('#swipe_template').html(), profile);
   var highest_index = 0;
 
   //Get highest index
   $('.swipe').each(function() {
     var current_index = parseInt($(this).css("zIndex"), 10);
-      if(current_index > highest_index) {
-          highest_index = current_index;
-      }
+      // if(current_index > highest_index) {
+      //     highest_index = current_index;
+      // }
+    $(this).css('zIndex', current_index + 1);
   });
 
   $('.swipes').append(rendered);
   new_swipe = $('.swipes #s_' + profile.id);
-  new_swipe.css('zIndex',highest_index + 1);
+  //new_swipe.css('zIndex',highest_index + 1);
   new_swipe.find('.yes').bind('click', {id: profile.id}, yes);
   new_swipe.find('.nope').bind('click', {id: profile.id}, nope);
 

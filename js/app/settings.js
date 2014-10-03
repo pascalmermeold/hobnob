@@ -70,8 +70,10 @@ function sendFeedback() {
 }
 
 function setSettingsHeading() {
-  $('#profile-pic').attr('src',options.picture_url);
-  $('#profile-name').text(options.name)
+  if(options.picture_url) {
+    $('#profile-pic').css('background-image','url(' + options.picture_url + ')');
+  }
+  $('#profile-name').text(options.name);
 }
 
 function setSettingsNavbar() {

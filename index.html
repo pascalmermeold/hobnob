@@ -44,11 +44,11 @@
         <!-- Page, data-page contains page name -->
         <div class="page" data-page='random'>
 
-          <div class="page-content pull-to-refresh-content">
+          <div class="page-content">
 
             <div class='swipes'>
 
-              <div class='swipe'>
+              <div class='no-swipe'>
                 <div class='no-more-results'>
                   <div>
                     <div class="spinner"></div>
@@ -65,7 +65,6 @@
               </div>
 
               <script id="swipe_template" type="x-tmpl-mustache">
-
                 <div id="s_{{id}}" class="swipe">
                   <div class='slider-container'>
                     <div class="slider-wrapper">
@@ -74,7 +73,7 @@
                         <div class="content-block inset">
 
                           <div class='heading content-block-inner'>
-                            <img src='{{picture_url}}' class='thumbnail'/>
+                            <div class='thumbnail' style="background: url('{{picture_url}}');"></div>
                             <h1>{{first_name}} {{last_name}}</h1>
                             <h2>{{headline}}</h2>
                             <h3>

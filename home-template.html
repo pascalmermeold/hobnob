@@ -50,24 +50,25 @@
         <div class="page" data-page="index">
 
           <div class="page-content">
+            <div class="swipes">
 
-              <div class='profile' style='z-index: 0;'>
+              <div class='swipe' style='z-index: 0;'>
                 <div class='no-more-results'>
-                <div>
-                  <div class="spinner"></div>
-                </div>
-                <div class="content-block inset">
-                  <div class='content-block-inner'>
-                    <p>Aucune nouvelle personne à proximité ou suivant votre tag.</p>
-                    <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts !</a>
+                  <div>
+                    <div class="spinner"></div>
+                  </div>
+                  <div class="content-block inset">
+                    <div class='content-block-inner'>
+                      <p>Aucune nouvelle personne à proximité ou suivant votre tag.</p>
+                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts !</a>
+                    </div>
                   </div>
                 </div>
-              </div>
 
               </div>
 
               <!-- Start swipe -->
-              <div class='profile' style='z-index: 1;' id='test'>
+              <div class='swipe' style='z-index: 1;' id='test'>
                 <div class='slider-container'>
 
                   <div class="slider-wrapper">
@@ -242,13 +243,21 @@
                     </div>
 
                   </div>
-                  
+                
 
                 </div>
+                  <div class='choice'>
+                    <a href='#' class='nope'><i class='fa fa-times'></i></a>
+                    <a href='#' class='info'><i class='fa fa-info'></i></a>
+                    <a href='#' class='yes'><i class='fa fa-check'></i></a>
+                  </div>
+                  
                 
               </div>
               <!-- end swipe -->
-                  
+
+
+               
               
               <!--<div class='show-nope'></div>-->
             </div>
