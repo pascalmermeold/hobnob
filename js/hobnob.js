@@ -4,6 +4,7 @@ var access_token;
 var pushNotification;
 
 var options = {};
+options.lang = 'en-US';
 var just_logged_in = false;
 
 var server_url = 'http://hobnobapp.herokuapp.com';
@@ -18,8 +19,10 @@ var mainView = myApp.addView('.main-view', {
 
 // Device ready handler
 $(document).on('deviceready', function() {
+	i18n.init({ lng: options.lang, resGetPath: 'locales/__lng__/__ns__.json' });
+	navigator.globalization.getPreferredLanguage(successGlobalization, errorGlobalization);
 	database.init();
-	checkAccessToken();
+	//checkAccessToken();
 	checkOptions();
 	FastClick.attach(document.body);
 });
@@ -28,6 +31,8 @@ $(document).on('deviceready', function() {
 $$(document).on('pageInit', function (e) {
 
 	page = e.detail.page;
+
+	$('.page').i18n();
 
   	switch(page.name) {
 	  	case 'login':
@@ -69,7 +74,7 @@ function checkOptions() {
 
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
-	$.get(server_url + "/hello?access_token=" + access_token).done(function(res) {
+	$.get(server_url + "/hello?access_token=" + access_token + "&lang=" + options.lang).done(function(res) {
 		options.name = res.user.first_name + " " + res.user.last_name;
 		options.picture_url = res.user.picture_url;
 		registerPushNotification();
@@ -108,4 +113,17 @@ function startPreload(page, text) {
 function stopPreload(page) {
 	$('div[data-page=' + page + ']').children().show();
 	$('div[data-page=' + page + ']').find('.loader').remove();
+}
+
+function successGlobalization(language) {
+	options.lang = language.value;
+	checkAccessToken();
+	i18n.setLng(options.lang, function(t) { 
+		$('body').i18n();
+	});
+	
+}
+
+function errorGlobalization() {
+	
 }

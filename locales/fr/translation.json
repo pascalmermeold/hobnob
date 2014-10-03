@@ -1,0 +1,36 @@
+{
+	"index": {
+		"no-more-people": "Il n'y a plus personne autour de vous.",
+		"invite-contacts": "Invitez vos contacts",
+		"explore-events": "Explorez les évènements"
+	},
+	"contact": {
+		"contact-hobnob": "Contactez HobNob",
+		"intro": "Laissez-nous un message ! HobNob est en constante évolution ! Faites-nous part de vos remarques et des bugs rencontrés sur l'application.",
+		"send": "Envoyer"
+	},
+	"match": {
+		"wanna-meet": "et vous souhaitez vous rencontrer.",
+		"send": "Envoyer un message",
+		"search": "Continuer à chercher"
+	},
+	"home": {
+		"quit-event": "Quittez cet évènement",
+		"quit-event-text": "Revenez en mode classique"
+	},
+	"login": {
+		"intro": "Connectez-vous avec votre compte LinkedIn pour commencer à networker !",
+		"button": "Me connecter via LinkedIn"
+	},
+	"settings": {
+		"events-around": "évènements autour de vous",
+		"max": "Distance max.",
+		"title-settings": "Paramètres HobNob",
+		"contact": "Contactez HobNob",
+		"contact-text": "Des remarques ? Suggestions ?",
+		"share": "Partagez HobNob",
+		"share-text": "Aidez-nous à nous faire connaître !",
+		"disconnect": "Déconnexion",
+		"disconnect-text": "Votre compte restera actif"
+	}
+}

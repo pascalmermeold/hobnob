@@ -44,6 +44,7 @@ function add_profile(profile, index, array) {
 
   slider = myApp.slider('.swipes #s_' + profile.id + ' .slider-container');
   new_swipe.find('.info').bind('click', {slider: slider}, nextSlide);
+  new_swipe.i18n();
 }
 
 function yes(e) {
