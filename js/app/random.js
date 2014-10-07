@@ -5,7 +5,8 @@ function initRandom() {
 }
 
 function getRandom() {
-  geoLocate(randomRequest);
+  $('.refresh-random i').addClass('spin-effect');
+  geoLocate();
 }
 
 function randomRequest(position) {
@@ -14,6 +15,9 @@ function randomRequest(position) {
   options.accuracy = position.coords.accuracy;
 
   $.get(server_url + "/random?access_token="+access_token+"&tag="+options.tag+"&latitude="+options.latitude+"&longitude="+options.longitude+"&accuracy="+options.accuracy+"&distance="+options.distance).done(function(res) {
+    setTimeout(function(){
+        $('.refresh-random i').removeClass('spin-effect');
+    },1000);
     res.forEach(add_profile);
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
@@ -53,7 +57,7 @@ function yes(e) {
   setInterval(function() {
     $('.show-yes').fadeOut(100);
     $('#s_' + e.data.id).remove();
-  }, 500);
+  }, 800);
   
 
   if($('.swipes .swipe').length <= 3) {
@@ -69,7 +73,7 @@ function nope(e) {
   setInterval(function() {
     $('.show-nope').fadeOut(100);
     $('#s_' + e.data.id).remove();
-  }, 500);
+  }, 800);
 
   if($('.swipes .swipe').length <= 3) {
     getRandom();

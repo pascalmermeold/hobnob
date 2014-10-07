@@ -36,13 +36,17 @@ function loadEventSelector() {
         var tag = $(this).data('tag');
         database.save_option('tag', tag);
         options.tag = tag;
+
         mainView.loadPage('home.html');
       });
 
       $('#event-selector').show();
       $('#custom-event-menu').hide();
+      
+      $('.heading').waitForImages(function() {  
+        stopPreload('settings');
+      });
     }
-    stopPreload('settings');
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
     $('#event-selector').hide();

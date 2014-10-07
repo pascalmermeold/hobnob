@@ -19,10 +19,12 @@ function loadEvent() {
     var rendered = Mustache.render($('#menu-items').html(), res);
     $('#custom-event-menu .menu-item').remove();
     $('.event-logo').attr('src',res.logo_url);
-    $('#custom-event-menu ul').prepend(rendered);
+    $('#network-in-event').after(rendered);
     $('#custom-event-menu').show();
     $('#event-selector').hide();
-    stopPreload('home');
+    $('.heading').waitForImages(function() {  
+      stopPreload('home');
+    });
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
     $('#custom-event-menu').hide();

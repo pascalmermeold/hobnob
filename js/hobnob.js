@@ -22,9 +22,7 @@ $(document).on('deviceready', function() {
 	i18n.init({ lng: options.lang, resGetPath: 'locales/__lng__/__ns__.json' });
 	navigator.globalization.getPreferredLanguage(successGlobalization, errorGlobalization);
 	database.init();
-	//checkAccessToken();
 	checkOptions();
-	FastClick.attach(document.body);
 });
 
 // Page init handlers
@@ -75,6 +73,7 @@ function checkOptions() {
 function setAccessTokenAndHello(tx, res) {
 	access_token = res.rows.item(0).value;
 	$.get(server_url + "/hello?access_token=" + access_token + "&lang=" + options.lang).done(function(res) {
+		console.log('hello ok');
 		options.name = res.user.first_name + " " + res.user.last_name;
 		options.picture_url = res.user.picture_url;
 		registerPushNotification();
@@ -86,17 +85,19 @@ function setAccessTokenAndHello(tx, res) {
 
 function initLoginPage() {
 	var $loginButton = $('#login a');
-    var $loginStatus = $('#status');
 
     $loginButton.on('click', function() {
+    	startPreload('login','connexion');
 		linkedinapi.authorize().done(function(data) {
 			access_token = data.access_token;
 			database.save_option('access_token', access_token);
 			checkAccessToken();
 			mainView.loadPage('index.html');
 			just_logged_in = true;
+			stopPreload('login');
 		}).fail(function(data) {
-			$loginStatus.html(data);
+			alert('Problème de connexion');
+			stopPreload('login');
 		});
 	});	
 }

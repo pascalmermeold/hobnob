@@ -58,8 +58,6 @@ function onNotificationGCM(e) {
 
     case 'message':
 
-      console.log(e);
-
       notification = {};
       notification.foreground = e.foreground;
       notification.type = e.payload.custom.t;
@@ -74,7 +72,6 @@ function onNotificationGCM(e) {
         notification.picture_url = e.payload.custom.p;
         notification.user_id = e.payload.custom.u;
       }
-      console.log(notification);
 
       doNotification(notification);
 

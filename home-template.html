@@ -5,292 +5,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>AftrWork</title>
+  <title>HobNob</title>
 
-  <!-- Path to Framework7 Library CSS-->
-  <link rel="stylesheet" href="css/framework7-new.css">
-  <!-- Path to your custom app styles-->
-  <link rel="stylesheet" href="css/aftrwork-new.css">
-  <!-- Font Awesome -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/hobnob.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'> -->
   <!--  jQuery -->
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/libs/jquery-1.11.0.min.js"></script>
 </head>
 <body class="theme-lightblue">
   <!-- Status bar overlay for fullscreen mode-->
   <div class="statusbar-overlay"></div>
-  <!-- Views-->
+
   <div class="views">
 
-
     <!-- Your main view, should have "view-main" class-->
-    <div class="view main-view navbar-through">
+    <div class="view main-view">
 
       <!-- Top Navbar-->
       <div class="navbar">
           <div class="navbar-inner">
-              <div class="left">
-                  <a href="settings-template.html" class="link"><i class='fa fa-cog'></i></a>
+              <div class="left sliding">
+                  <a href="home.html" class="link"><i class='fa fa-cog'></i></a>
               </div>
-              <div class="center"><img src='img/logo-blue.png' class='logo'/></div>
-              <div class="right">
-                  <a href="#" class="link"><i class='fa fa-comment'></i></a>
+              <div class="center"><img src='img/logo-blue@2x.png' class='logo' width='150' height='29'/></div>
+              <div class="right sliding">
+                  <a href="contacts.html" class="link"><i class='fa fa-comments'></i></a>
               </div>
           </div>
       </div>
       <!-- /End of Top Navbar--> 
-      
-      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-      <div class="pages">
 
+      <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+      <div class="pages navbar-through">
         <!-- Page, data-page contains page name -->
-        <div class="page" data-page="index">
+        <div class="page" data-page='random'>
 
           <div class="page-content">
-            <div class="swipes">
 
-              <div class='swipe' style='z-index: 0;'>
+            <div class='swipes'>
+
+              <div class='no-swipe'>
                 <div class='no-more-results'>
-                  <div>
+                  <!-- <div>
                     <div class="spinner"></div>
-                  </div>
+                  </div> -->
                   <div class="content-block inset">
                     <div class='content-block-inner'>
-                      <p>Aucune nouvelle personne à proximité ou suivant votre tag.</p>
-                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> Invitez vos contacts !</a>
+                      <p data-i18n="index.no-more-people"></p>
+                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> <span data-i18n="index.invite-contacts"></span></a>
+                      <a href="settings.html" class="button button-big"><i class='fa fa-coffee'></i> <span data-i18n="index.explore-events"></span></a>
                     </div>
                   </div>
+                  <a href="#" class="button button-big active refresh-random"><i class='fa fa-refresh'></i></a>
                 </div>
-
               </div>
 
-              <!-- Start swipe -->
-              <div class='swipe' style='z-index: 1;' id='test'>
-                <div class='slider-container'>
+                <div id="s_{{id}}" class="swipe">
+                  <div class='slider-container'>
+                    <div class="slider-wrapper">
 
-                  <div class="slider-wrapper">
+                      <div class="slider-slide">
+                        <div class="content-block inset">
 
-                    <div class="slider-slide">
-                      <div class="content-block inset">
+                          <div class='heading content-block-inner'>
+                            <div class='thumbnail' style="background: url('{{picture_url}}');"></div>
+                            <h1>{{first_name}} sfd fus fusyf usdyf</h1>
+                            <h2>{{headline}} fidhs f ertertert e ert ert  sdify  ify sdiyf sdify </h2>
+                            <h3>
+                              <span><i class='fa fa-map-marker'></i> 0km</span>
+                              {{#tag}}
+                                <span><i class='fa fa-bookmark'></i> #{{tag}}</span>
+                              {{/tag}}
+                            </h3>
+                          </div>
 
-                        <div class='heading content-block-inner'>
-                          <img src='' class='thumbnail'/>
-                          <h1>Pascal Merme</h1>
-                          <h2>Entrepreneur, Webdesigner, Développeur</h2>
-                          <h3>
-                            <span><i class='fa fa-map-marker'></i> à 3km</span>
-                            <span><i class='fa fa-bookmark'></i> #leweb</span>
-                          </h3>
-                        </div>
-
-                        <div class='footer content-block-inner'>                          <div class='common'>
-                            <a href='#' data-popup=".popup-xxx" class='open-popup'><i class='fa fa-building'></i> 0</a>
-                            <a href='#' class='active'><i class='fa fa-graduation-cap'></i> 1</a>
-                            <a href='#'><i class='fa fa-heart'></i> 0</a>
+                          <div class='footer content-block-inner'>
+                            <div class='common'>
+                              <a href='#'><i class='fa fa-building'></i> 3</a>
+                              <a href='#'><i class='fa fa-graduation-cap'></i> 2</a>
+                              <a href='#'><i class='fa fa-heart'></i> 1</a>
+                            </div>
                           </div>
                         </div>
-
-                        
                       </div>
-                    </div>
 
-                    <div class="slider-slide">
-                      <div class="content-block-title"><i class='fa fa-building'></i> Jobs</div>
-                      <div class="content-block inset">
-                        <div class="list-block media-list">
-                          <ul>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-building'></i> Jobs</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block media-list">
+                            <ul>
+                              {{#positions}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title-row">
+                                    <div class="item-title">{{company_name}}</div>
+                                    <div class="item-after">{{end_date}}</div>
+                                  </div>
+                                  <div class="item-subtitle">{{title}}</div>
                                 </div>
-                                <div class="item-subtitle">Fondateur fs fsd fsd fsd gerg regvdfger dfg dfg re gerg er g</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria fsiuf sifu sifu sidfu sdiuf sidfu </div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                          </ul>
+                              </li>
+                              {{/positions}}
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="slider-slide">
-                      <div class="content-block inset">
-                        <div class="list-block media-list">
-                          <ul>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-graduation-cap'></i> Schools</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block media-list">
+                            <ul>
+                              {{#educations}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title-row">
+                                    <div class="item-title">{{school_name}}</div>
+                                    <div class="item-after">{{end_date}}</div>
+                                  </div>
+                                  <div class="item-subtitle">{{field_of_study}}</div>
                                 </div>
-                                <div class="item-subtitle">Fondateur fs fsd fsd fsd gerg regvdfger dfg dfg re gerg er g</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                          </ul>
+                              </li>
+                              {{/educations}}
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="slider-slide">
-                      <div class="content-block inset">
-                        <div class="list-block media-list">
-                          <ul>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
+                      <div class="slider-slide">
+                        <div class="content-block-title"><i class='fa fa-heart'></i> Skills</div>
+                        <div class="content-block inset scroll">
+                          <div class="list-block">
+                            <ul>
+                              {{#skills}}
+                              <li class="item-content">
+                                <div class="item-inner">
+                                  <div class="item-title">{{name}}</div>
                                 </div>
-                                <div class="item-subtitle">Fondateur fs fsd fsd fsd gerg regvdfger dfg dfg re gerg er g</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title-row">
-                                  <div class="item-title">La Factoria</div>
-                                  <div class="item-after">08/2014</div>
-                                </div>
-                                <div class="item-subtitle">Fondateur</div>
-                              </div>
-                            </li>
-                          </ul>
+                              </li>
+                              {{/skills}}
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
+                    </div>
                   </div>
-                
-
-                </div>
                   <div class='choice'>
                     <a href='#' class='nope'><i class='fa fa-times'></i></a>
                     <a href='#' class='info'><i class='fa fa-info'></i></a>
                     <a href='#' class='yes'><i class='fa fa-check'></i></a>
                   </div>
-                  
-                
-              </div>
-              <!-- end swipe -->
 
+                </div>
 
-               
-              
-              <!--<div class='show-nope'></div>-->
             </div>
-            
+
           </div>
-          
 
         </div>
       </div>
- 
+
     </div>
    
   </div>
 
   <div class='show-yes'></div>
+  <div class='show-nope'></div>
+
+  <div class="popup popup-contact">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="left"></div>
+        <div class="center" style="left: 0px;" data-i18n="contact.contact-hobnob"></div>
+        <div class="right"><a href="#" class="close-popup">OK</a></div>
+      </div>
+    </div>
+
+    <div class='content-block'>
+      <p data-i18n="contact.intro"></p>
+    </div>
+
+    <div class="content-block-title">Message</div>
+    <div class="list-block inset small-margins">  
+      <ul>
+        <li> 
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-input">
+                  <textarea></textarea>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class='content-block small-margins'>
+      <a href='#' class='button button-big active' data-i18n="contact.send"></a>
+    </div>
+  </div>
+
+  <div class="popup popup-match">
+    <div class="content-block">
+      <h1>Hey, you'll HobNob!</h1>
+      <p><span class='first_name'></span> <span data-i18n="match.wanna-meet"></span></p>
+      <div class='thumbnails'>
+        <div class='thumbnail other_user_pic'></div>
+        <div class='thumbnail current_user_pic'></div>
+      </div>
+      <div class='thumbnails-line'></div>
+      <div class='buttons'>
+        <a href='#' class='button active button-big go-to-chat'><i class='fa fa-comment'></i> <span data-i18n="match.send"></span></a>
+        <a href='#' class='button active button-big close-popup'><i class='fa fa-users'></i> <span data-i18n="match.search"></span></a>
+      </div>
+    </div>
+  </div>
 
   <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Path to Framework7 Library JS-->
   <script type="text/javascript" src="js/libs/framework7.js"></script>
   <!-- Path to other libraries-->
-  <script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>
+  <!--<script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>-->
   <script type="text/javascript" src="js/libs/mustache.js"></script>
-  <script type="text/javascript" src="js/libs/plugins/PushNotification.js"></script>
+  <script type='application/javascript' src='js/libs/fastclick.js'></script>
+  <script type='application/javascript' src='js/libs/jquery.waitforimages.min.js'></script>
+  <script type='application/javascript' src='js/libs/i18next-1.7.4.min.js'></script>
 
+  <!-- Path to your app js-->
   <script type="text/javascript" src="js/hobnob.js"></script>
+  <script type="text/javascript" src="js/app/geolocation.js"></script>
+  <script type="text/javascript" src="js/app/random.js"></script>
+  <script type="text/javascript" src="js/app/settings.js"></script>
   <script type="text/javascript" src="js/app/home.js"></script>
+  <script type="text/javascript" src="js/app/linkedin.js"></script>
+  <script type="text/javascript" src="js/app/database.js"></script>
+  <script type="text/javascript" src="js/app/notifications.js"></script>
+  <script type="text/javascript" src="js/app/chat.js"></script>
+  <script type="text/javascript" src="js/app/external.js"></script>
+
+
+<script>
+  myApp.slider('.slider-container');
+</script>
+
 
 </body>
 </html>
-
-
-<!--<p class="buttons-row swipe-buttons">
-<a href="" class="left-button button button-big button-fill color-pink">Non merci.</a>
-<a href="" class="right-button button button-big button-fill color-green">Intéressant !</a>
-</p>-->

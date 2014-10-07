@@ -16,10 +16,12 @@
 	},
 	"home": {
 		"quit-event": "Quittez cet évènement",
-		"quit-event-text": "Revenez en mode classique"
+		"quit-event-text": "Revenez en mode classique",
+		"see-users": "Networkez!",
+		"see-users-text": "Rencontrez d'autres participants"
 	},
 	"login": {
-		"intro": "Connectez-vous avec votre compte LinkedIn pour commencer à networker !",
+		"intro": "Connectez-vous avec votre compte LinkedIn pour commencer à networker.",
 		"button": "Me connecter via LinkedIn"
 	},
 	"settings": {

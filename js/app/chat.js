@@ -125,9 +125,9 @@ function loadContact(object, index, array) {
   if(!object.picture_url) {
     object.picture_url = 'img/pic-placeholder.png';
   }
-  console.log(object);
+
   var rendered = Mustache.render($('#contact_template').html(), object);
-  console.log(rendered);
+
   $('.contacts').append(rendered);
 }
 

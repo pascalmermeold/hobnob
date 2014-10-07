@@ -7,12 +7,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>HobNob</title>
 
-  <link rel="stylesheet" href="css/framework7-new.css">
-  <link rel="stylesheet" href="css/aftrwork-new.css">
+  <link rel="stylesheet" href="css/framework7.css">
+  <link rel="stylesheet" href="css/hobnob.css">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <!-- <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'> -->
+
   <!--  jQuery -->
   <script src="js/libs/jquery-1.11.0.min.js"></script>
 </head>
@@ -50,13 +48,13 @@
 
               <div class='no-swipe'>
                 <div class='no-more-results'>
-                  <div>
+                 <!-- <div class='spinner-container'>
                     <div class="spinner"></div>
-                  </div>
+                  </div> -->
                   <div class="content-block inset">
                     <div class='content-block-inner'>
-                      <p data-i18n="index.no-more-people"></p>
-                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> <span data-i18n="index.invite-contacts"></span></a><br/>
+                      <p data-i18n="index.no-more-people">No more people around you.</p>
+                      <a href="#" class="button active button-big"><i class='fa fa-user'></i> <span data-i18n="index.invite-contacts">Invite your contacts</span></a>
                       <a href="settings.html" class="button button-big"><i class='fa fa-coffee'></i> <span data-i18n="index.explore-events"></span></a>
                     </div>
                   </div>
@@ -226,16 +224,12 @@
     </div>
   </div>
 
-
-
   <!--  Cordova.js will be add when building -->
   <script type="text/javascript" src="cordova.js"></script>
   <!-- Path to Framework7 Library JS-->
   <script type="text/javascript" src="js/libs/framework7.js"></script>
   <!-- Path to other libraries-->
-  <!--<script type="text/javascript" src="js/libs/jquery.touchSwipe.min.js"></script>-->
   <script type="text/javascript" src="js/libs/mustache.js"></script>
-  <script type='application/javascript' src='js/libs/fastclick.js'></script>
   <script type='application/javascript' src='js/libs/jquery.waitforimages.min.js'></script>
   <script type='application/javascript' src='js/libs/i18next-1.7.4.min.js'></script>
 

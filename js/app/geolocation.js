@@ -1,16 +1,13 @@
-function geoLocate(callback) {
-  navigator.geolocation.getCurrentPosition(callback, geolocationError, {timeout: 5000, enableHighAccuracy: true});
+function geoLocate() {
+	navigator.geolocation.getCurrentPosition(randomRequest, geolocationHighAccuracyError, {maximumAge: 0, timeout: 5000, enableHighAccuracy: true});
+	console.log('High accuracy geolocation');
 }
 
-// function geolocationSuccess(position) {
-// 	options.latitude = position.coords.latitude;
-// 	options.longitude = position.coords.longitude;
-// 	options.accuracy = position.coords.accuracy;
-// 	// if(options.hello) {
-// 	// 	initRandom();
-// 	// }
-// }
+function geolocationHighAccuracyError(error) {
+	navigator.geolocation.getCurrentPosition(randomRequest, geolocationError, {maximumAge: 0, timeout: 10000, enableHighAccuracy: false});
+	console.log('Low accuracy geolocation');
+}
 
 function geolocationError(error) {
-  alert("La géolocalisation ne fonctionne pas sur votre smartphone. Vous devez activer le GPS et autoriser HobNob à y accéder pour que l'application fonctionne.");
+	alert("La géolocalisation ne fonctionne pas sur votre smartphone. Avez-vous bien activé le GPS ou le Wifi ?");
 }

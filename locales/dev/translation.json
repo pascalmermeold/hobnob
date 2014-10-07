@@ -16,7 +16,9 @@
 	},
 	"home": {
 		"quit-event": "Quit this event",
-		"quit-event-text": "Back in default mode"
+		"quit-event-text": "Back in default mode",
+		"see-users": "Network!",
+		"see-users-text": "Meet other attendees"
 	},
 	"login": {
 		"intro": "Connect with your LinkedIn account and start networking!",
