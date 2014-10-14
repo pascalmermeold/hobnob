@@ -21,6 +21,7 @@ function randomRequest(position) {
     res.forEach(add_profile);
   }).fail(function(res) {
     myApp.alert('Il semblerait que vous ayez des problèmes de connexion !', 'Erreur');
+    $('.refresh-random i').removeClass('spin-effect');
   });
 }
 
@@ -53,9 +54,9 @@ function add_profile(profile, index, array) {
 
 function yes(e) {
 
-  $('.show-yes').fadeIn(100);
+  $('.show-yes').show();
   setInterval(function() {
-    $('.show-yes').fadeOut(100);
+    $('.show-yes').hide();
     $('#s_' + e.data.id).remove();
   }, 800);
   
@@ -69,9 +70,9 @@ function yes(e) {
 
 function nope(e) {
   
-  $('.show-nope').fadeIn(100);
+  $('.show-nope').show();
   setInterval(function() {
-    $('.show-nope').fadeOut(100);
+    $('.show-nope').hide();
     $('#s_' + e.data.id).remove();
   }, 800);
 

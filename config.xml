@@ -2,7 +2,7 @@
 <widget id="in.hobnob" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>HobNob</name>
     <description>
-        Networking for Events
+        Tinder + LinkedIn for Events
     </description>
     <author email="pascal@lafactoria.fr" href="http://happycommit.com">
         LaFactoria

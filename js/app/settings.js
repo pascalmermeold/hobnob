@@ -43,7 +43,7 @@ function loadEventSelector() {
       $('#event-selector').show();
       $('#custom-event-menu').hide();
       
-      $('.heading').waitForImages(function() {  
+      $('.settings .heading').waitForImages(function() {  
         stopPreload('settings');
       });
     }

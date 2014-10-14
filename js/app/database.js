@@ -2,7 +2,7 @@ var database = {
 	db: '',
 
 	init: function() {
-		this.db = window.openDatabase("aftrworkDb", "1.0", "AftrWork DB", 1000000);
+		this.db = window.openDatabase("hobnob", "1.0", "HobNob", 1000000);
 		this.create_table_if_not_exists('OPTIONS','id unique, key, value');
 		this.create_table_if_not_exists('TAGS','id unique, tag, enabled');
 	},

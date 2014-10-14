@@ -126,5 +126,5 @@ function successGlobalization(language) {
 }
 
 function errorGlobalization() {
-	
+	alert('globalization error');
 }

@@ -108,7 +108,7 @@ function onNotificationAPN (event) {
 }
 
 function doNotification(notification) {
-  if ((!notification.foreground) && (notification.type = 'message')) {
+  if ((!notification.foreground) && (notification.type == 'message')) {
     mainView.loadPage('chat.html?linkedin_id=' + notification.sender_id);
   }
 

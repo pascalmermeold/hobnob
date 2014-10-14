@@ -22,7 +22,7 @@ function loadEvent() {
     $('#network-in-event').after(rendered);
     $('#custom-event-menu').show();
     $('#event-selector').hide();
-    $('.heading').waitForImages(function() {  
+    $('.home .heading').waitForImages(function() {  
       stopPreload('home');
     });
   }).fail(function(res) {

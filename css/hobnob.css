@@ -523,3 +523,7 @@ input[type='range']::-webkit-slider-thumb {
 	margin-bottom: 10px;
 }
 
+.contacts .item-inner {
+	border: none;
+}
+
